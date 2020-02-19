@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local ="clr-namespace:ScoutSheet"
+             x:Class="ScoutSheet.MainPage">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Reset" x:Name="Reset" Clicked="Reset_Clicked" ></ToolbarItem>
+        <ToolbarItem Text="Save" x:Name="SaveData" Clicked="SaveData_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Export" x:Name="Export" Clicked="Export_Clicked"></ToolbarItem>
+    </TabbedPage.ToolbarItems>
+    <local:Scout Title="Scout" IconImageSource=""> <!--PLEASE INPUT ICON SOURCES-->
+        
+    </local:Scout>
+    <local:PastMatches Title="Past Matches" IconImageSource=""> <!--PLEASE INPUT ICON SOURCES-->
+        
+    </local:PastMatches>
+    <local:Settings Title="Settings"> <!--PLEASE INPUT ICON SOURCES-->
+        
+    </local:Settings>
+</TabbedPage>

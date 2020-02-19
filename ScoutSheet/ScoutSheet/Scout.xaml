@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ScoutSheet.Scout">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"></Setter>
+        </Style>
+        <Style x:Key="Title_Words" TargetType="Label">
+            <Setter Property="FontSize" Value="Large"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+        </Style>
+        <Style x:Key="Prompt_Words" TargetType="Label">
+            <Setter Property="FontSize" Value="Default"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>            
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Entry Text="Enter Team Number Here"></Entry>
+                <Label Text="Match Number:"></Label>
+                <Picker x:Name="Match_Type" Title="Click Here to select the match type">
+                </Picker>
+                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
+                <Entry Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
+                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
+                <Label Text="Scouters"></Label>
+                <Entry></Entry>
+                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
+                <Image x:Name="PowerCellPhoto" Aspect="AspectFill" HorizontalOptions="FillAndExpand"></Image>
+                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
+                <Label x:Name="PowerCellCount" Text="Something"></Label> <!--Set Text in C#!-->
+                <Label Text="Autonomous" FontSize="Large" HorizontalTextAlignment="Center"></Label>
+                <Image x:Name="Field"></Image> <!--Set the source in C#!!!-->
+                <Button Text="Crosses Initiation Line"></Button>
+                <Button Text="Left"></Button>
+                <Button Text="Middle"></Button>
+                <Button Text="Right"></Button>
+                <Button Text="Low"></Button>
+                <Button Text="Outer"></Button>
+                <Button Text="Inner"></Button>
+                <Button Text="Missed"></Button>
+                <Button Text="Balls Picked Up"></Button>
+                <Label Text="Comments"></Label>
+                <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
+                <Entry></Entry>
+                <Label Text="Tele-Op"></Label>
+                <Button Text="Plays Defense"></Button>
+                <Button Text="Balls Picked Up From Loading Station"></Button>
+                <Button Text="Rotation"></Button>
+                <Button Text="Color"></Button>
+                <Button Text="Fits Under Trench"></Button>
+                <Button Text="Balls Picked Up from Floor"></Button>
+                <Button Text="Trench Zone"></Button>
+                <Button Text="Target Zone"></Button>
+                <Button Text="Other"></Button>
+                <Button Text="Low"></Button>
+                <Button Text="Outer"></Button>
+                <Button Text="Inner"></Button>
+                <Button Text="Missed"></Button>
+                <Label Text="Comments"></Label>
+                <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
+                <Entry></Entry>
+                <Label Text="Endgame"></Label>
+                <Button Text="Balls Scored"></Button>
+                <!--I guess I will leave the park/climb/none to later-->
+                <Button Text="Start Stopwatch"></Button>
+                <Button Text="Stop Stopwatch"></Button>
+                <!--Same Thing with initial climb height I guess-->
+                <Label Text="Climb Position"></Label>
+                <Button Text="Edge"></Button>
+                <Button Text ="Middle Bar"></Button>
+                <Button Text="Center"></Button>
+                <Image x:Name="Bar_Thingy"></Image>
+                <Label Text="Comments"></Label>
+                <Label Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
+                <Entry></Entry>
+                <Label Text ="Other"></Label>
+                <Button Text ="Yellow Card"></Button>
+                <Button Text="Red Card"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
