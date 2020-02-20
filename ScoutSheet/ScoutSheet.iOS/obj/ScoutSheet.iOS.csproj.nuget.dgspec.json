@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj": {}
+    "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj": {
+    "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj",
+        "projectUniqueName": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj",
         "projectName": "ScoutSheet.iOS",
-        "projectPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj",
-        "packagesPath": "C:\\Users\\grgwn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.iOS\\obj\\",
+        "projectPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.iOS\\ScoutSheet.iOS.csproj",
+        "packagesPath": "C:\\Users\\Eric\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\grgwn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Eric\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj": {
-                "projectPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj"
+              "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj": {
+                "projectPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj"
               }
             }
           }
@@ -65,20 +65,21 @@
         }
       }
     },
-    "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj": {
+    "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj",
+        "projectUniqueName": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj",
         "projectName": "ScoutSheet",
-        "projectPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj",
-        "packagesPath": "C:\\Users\\grgwn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\obj\\",
+        "projectPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj",
+        "packagesPath": "C:\\Users\\Eric\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\grgwn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Eric\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -132,7 +133,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

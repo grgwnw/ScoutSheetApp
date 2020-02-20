@@ -2104,24 +2104,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\grgwn\\.nuget\\packages\\": {},
+    "C:\\Users\\Eric\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.Android\\ScoutSheet.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.Android\\ScoutSheet.Android.csproj",
       "projectName": "ScoutSheet.Android",
-      "projectPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.Android\\ScoutSheet.Android.csproj",
-      "packagesPath": "C:\\Users\\grgwn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet.Android\\obj\\",
+      "projectPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.Android\\ScoutSheet.Android.csproj",
+      "packagesPath": "C:\\Users\\Eric\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\grgwn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Eric\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -2135,8 +2135,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj": {
-              "projectPath": "C:\\Users\\grgwn\\source\\repos\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj"
+            "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj": {
+              "projectPath": "C:\\Users\\Eric\\Documents\\GitHub\\ScoutSheetApp\\ScoutSheet\\ScoutSheet\\ScoutSheet.csproj"
             }
           }
         }

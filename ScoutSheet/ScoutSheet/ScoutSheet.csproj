@@ -11,6 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Icons\Past Matches.png" />
+    <None Remove="Assets\Icons\Scout.png" />
+    <None Remove="Assets\Icons\Settings.png" />
+    <None Remove="Assets\Images\Climb Position.png" />
+    <None Remove="Assets\Images\End High.png" />
+    <None Remove="Assets\Images\End Level.png" />
+    <None Remove="Assets\Images\End Low.png" />
+    <None Remove="Assets\Images\field.jpg" />
+    <None Remove="Assets\Images\field.png" />
     <None Remove="Assets\PowerCell.jpg" />
   </ItemGroup>
 
@@ -45,10 +54,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Icons\Past Matches.png" />
+    <EmbeddedResource Include="Assets\Icons\Scout.png" />
+    <EmbeddedResource Include="Assets\Icons\Settings.png" />
+    <EmbeddedResource Include="Assets\Images\field.jpg" />
+    <EmbeddedResource Include="Assets\Images\Climb Position.png" />
+    <EmbeddedResource Include="Assets\Images\End High.png" />
+    <EmbeddedResource Include="Assets\Images\End Level.png" />
+    <EmbeddedResource Include="Assets\Images\End Low.png" />
     <EmbeddedResource Include="Assets\Images\PowerCell.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Assets\Icons\" />
   </ItemGroup>
 </Project>
