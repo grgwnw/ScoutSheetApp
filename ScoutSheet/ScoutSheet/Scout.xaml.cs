@@ -16,6 +16,7 @@ namespace ScoutSheet
 	{
         private Matches currentMatch = new Matches();
         private Color ButtonClickedColor = Color.Beige;
+        private Stopwatch timeElapsedClimb = new Stopwatch();
         public Scout()
 	    {
             InitializeComponent();
@@ -29,11 +30,16 @@ namespace ScoutSheet
 			Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field2.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field3.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
+            Bar_Thingy.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.Climb Position.png", assembly);
             currentMatch.MatchNumberEntry = 0;
+            LowInitClimb.ImageSource = ImageSource.FromResource("ScoutSheet.Assets.Images.End Low.png", assembly);
+            LowInitClimb.Scale = .5;
+            BalInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Level.png", assembly);
+            HighInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End High.png", assembly);
         }
         public void ResetData()
         {
-            DisplayAlert("Successful!", "Your data has been cleared", "Confirm");
+            DisplayAlert("Successful!", "You cleared the data!", "Confirm");
             //MANUALLY RESET EVERYTHING!!!!!!!!MWAHAHAHAHAHA!!!!!!
         }
 		public Matches RecordAllData() { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
@@ -62,8 +68,8 @@ namespace ScoutSheet
             currentMatch.YellowCards = YellowCard.BackgroundColor == Color.Yellow;
             currentMatch.RedCards = RedCard.BackgroundColor == Color.Red;
             currentMatch.Rotations = Rotation.BackgroundColor == ButtonClickedColor;
+            currentMatch.ClimbTime = "" + (timeElapsedClimb.ElapsedMilliseconds / 1000) + "." + (timeElapsedClimb.ElapsedMilliseconds % 1000);
             //Missing TShootingLocation and StartingLocation because of other buttons....
-            //Missing Timers because hasn't been implemented yet
             return currentMatch;
         }
         //Match Number Methods. MatchNumber.Text is the data value for MatchNumberEntry
@@ -262,5 +268,25 @@ namespace ScoutSheet
             currentMatch.TShootingLocation = ((Button)sender).Text;
             ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
+
+        private void Stopwatch_Clicked(object sender, EventArgs e)
+        {
+            if(((Button)sender).Text == "Start Stopwatch"){
+                ((Button)sender).Text = "Stop Stopwatch";
+                timeElapsedClimb.Start();
+                return;
+            }
+            if(((Button)sender).Text == "Stop Stopwatch")
+            {
+                ((Button)sender).IsEnabled = false;
+                timeElapsedClimb.Stop();
+            }
+        }
+
+        private void InitClimb_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

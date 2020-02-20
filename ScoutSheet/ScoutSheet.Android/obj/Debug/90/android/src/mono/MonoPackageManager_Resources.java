@@ -4,6 +4,8 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "ScoutSheet.Android.dll" comes first in this list. */
 		"ScoutSheet.Android.dll",
 		"FormsViewGroup.dll",
+		"Plugin.Segmented.Control.Droid.dll",
+		"Plugin.Segmented.dll",
 		"ScoutSheet.dll",
 		"SQLite-net.dll",
 		"SQLitePCLRaw.batteries_green.dll",
@@ -44,6 +46,8 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Xamarin.Android.Support.v7.CardView.dll",
+		"Xamarin.Android.Support.v7.MediaRouter.dll",
+		"Xamarin.Android.Support.v7.Palette.dll",
 		"Xamarin.Android.Support.v7.RecyclerView.dll",
 		"Xamarin.Android.Support.Vector.Drawable.dll",
 		"Xamarin.Android.Support.VersionedParcelable.dll",

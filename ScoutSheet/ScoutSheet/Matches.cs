@@ -35,9 +35,8 @@ namespace ScoutSheet
         public bool Rotations { get; set; } = false;
         //Endgame
         public int EScore { get; set; }
-        public bool Park { get; set; }
-        public bool Climb { get; set; }
-        //public Timer ClimbTime { get; set; }    Until we figure out what to do with the climb timer
+        public string EndLocation { get; set; }
+        public string ClimbTime { get; set; }   
         public string InitialClimbHeight { get; set; } //Low, Balanced, 
         public string ClimbPosition { get; set; } //Edge, Bar, 
         public string EComments { get; set; }
