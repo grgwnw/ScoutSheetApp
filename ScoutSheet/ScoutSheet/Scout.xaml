@@ -21,19 +21,19 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Entry Text="Enter Team Number Here"></Entry>
+                <Entry Text="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
                 <Label Text="Match Number:"></Label>
                 <Picker x:Name="Match_Type" Title="Click Here to select the match type">
                 </Picker>
                 <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
                 <Entry Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
                 <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
-                <Label Text="Scouters"></Label>
+                <Label Text="Scouters" x:Name="ScouterEntry"></Label>
                 <Entry></Entry>
                 <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
                 <Image x:Name="PowerCellPhoto" Aspect="AspectFill" HorizontalOptions="FillAndExpand"></Image>
                 <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
-                <Label x:Name="PowerCellCount"></Label> <!--Set Text in C#!-->
+                <Label x:Name="PowerCellCount" Text="0/3"></Label> <!--Set Text in C#!-->
                 <Label Text="Autonomous" FontSize="Large" HorizontalTextAlignment="Center"></Label>
                 <Image x:Name="Field" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image> <!--Set the source in C#!!!-->
                 <Button Text="Crosses Initiation Line" x:Name="ILine" Clicked="ILine_Clicked"></Button>
@@ -47,7 +47,7 @@
                 <Button Text="Balls Picked Up (0)" x:Name="APickedUp" Clicked="APickedUp_Clicked"></Button>
                 <Label Text="Comments"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <Entry></Entry>
+                <Entry x:Name="ACommentsEntry"></Entry>
                 <Label Text="Tele-Op"></Label>
                 <Image x:Name="Field2" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
                 <Button Text="Plays Defense" x:Name="DefenseButton" Clicked="Defense_Clicked"></Button>
@@ -65,7 +65,7 @@
                 <Button Text="Missed(0)" x:Name="TMissed" Clicked="TMissed_Clicked"></Button>
                 <Label Text="Comments"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <Entry></Entry>
+                <Entry x:Name="TeleopCommentsEntry"></Entry>
                 <Label Text="Endgame"></Label>
                 <Image x:Name="Field3" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
                 <!--Set the source in C#!!!-->
@@ -81,7 +81,7 @@
                 <Image x:Name="Bar_Thingy"></Image>
                 <Label Text="Comments"></Label>
                 <Label Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
-                <Entry></Entry>
+                <Entry x:Name="EndgameCommentsEntry"></Entry>
                 <Label Text ="Other"></Label>
                 <Button Text ="Yellow Card" x:Name="YellowCard" Clicked="YellowCard_Clicked"></Button>
                 <Button Text="Red Card" x:Name="RedCard" Clicked="RedCard_Clicked"></Button>
