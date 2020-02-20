@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Entry Text="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
+                <Entry Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
                 <Label Text="Match Number:"></Label>
                 <Picker x:Name="Match_Type" Title="Click Here to select the match type">
                 </Picker>

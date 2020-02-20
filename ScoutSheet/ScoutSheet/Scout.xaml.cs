@@ -33,6 +33,7 @@ namespace ScoutSheet
         }
         public void ResetData()
         {
+            DisplayAlert("Successful!", "Your data has been cleared", "Confirm");
             //MANUALLY RESET EVERYTHING!!!!!!!!MWAHAHAHAHAHA!!!!!!
         }
 		public Matches RecordAllData() { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
@@ -124,27 +125,27 @@ namespace ScoutSheet
         //This controls the ALow button for the ALowerScored Property
         private void ALow_Clicked(object sender, EventArgs e)
         {
-            ALow.Text = "Low (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            ALow.Text = "Low (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //AOuter Button with AOuterScored Property
         private void AOuter_Clicked(object sender, EventArgs e)
         {
-            AOuter.Text = "Outer (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            AOuter.Text = "Outer (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //AInner Button with AInnerScored Text
         private void AInner_Clicked(object sender, EventArgs e)
         {
-            AInner.Text = "Inner (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            AInner.Text = "Inner (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //AMissed Button with AMissedBalls Property
         private void AMissed_Clicked(object sender, EventArgs e)
         {
-            AMissed.Text = "Missed (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            AMissed.Text = "Missed (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //APickedUp Button with ABallsPickedUp Property
         private void APickedUp_Clicked(object sender, EventArgs e)
         {
-            APickedUp.Text = "Balls Picked Up (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            APickedUp.Text = "Balls Picked Up (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //DefenseButton Button with Defense Property
         private void Defense_Clicked(object sender, EventArgs e)
@@ -159,7 +160,7 @@ namespace ScoutSheet
         //BallsFromLoadingStationTeleop is button Name (longest button name ever...) and TBallsFromLoadStation is the property
         private void BallsFromLoadingStationTeleop_Clicked(object sender, EventArgs e)
         {
-            BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //ColorWheelColor Property. Do not instantiate this...
         private void ColorWheel_Clicked(object sender, EventArgs e)
@@ -194,33 +195,33 @@ namespace ScoutSheet
         //TLow is the button Name and TLowerScored is the property
         private void TLow_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Low (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            ((Button)sender).Text = "Low (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
 
         //TOuter is button Name and TOuterScored is the property
         private void TOuter_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Outer (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            ((Button)sender).Text = "Outer (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //TInner is the button Name with TInnerScored
         private void TInner_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Inner (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            ((Button)sender).Text = "Inner (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //TMissed is button name and TMissedBalls is property
         private void TMissed_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Missed (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            ((Button)sender).Text = "Missed (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //PickedUpT is the button name and TBallsFromFloor is the property
         private void PickedUpT_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Balls Picked Up From The Floor (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            ((Button)sender).Text = "Balls Picked Up From The Floor (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //EScores is button name and EScore is the property
         private void EScores_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Balls Scored (" + getParenthesisValue(((Button)sender).Text) + 1 + ")";
+            ((Button)sender).Text = "Balls Scored (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //YellowCard is the button and YellowCards is the property
         private void YellowCard_Clicked(object sender, EventArgs e)

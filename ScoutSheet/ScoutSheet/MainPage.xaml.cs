@@ -22,11 +22,10 @@ namespace ScoutSheet
 			PastMatchesTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Past Matches.png");
 			SettingsTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Settings.png");
 		}
-		private void Reset_Clicked(object sender, EventArgs e)
+		private async void Reset_Clicked(object sender, EventArgs e)
 		{
 			//Some ConfirmationDialog that checks whetheer it's ok. Maybe an overloaded version of AlertDialog?
-			var option = DisplayAlert("Are you sure?", "Would you really like to reset data? Unless you saved it, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No");
-			if (option == null) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
+			if (await DisplayAlert("Are you sure?", "Would you really like to reset data? Unless you saved it, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No")) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
 			{
 				Scouting.ResetData();
 			}
