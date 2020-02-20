@@ -18,10 +18,13 @@ namespace ScoutSheet
 		{
 			InitializeComponent();
 			var assembly = typeof(MainPage);
+			Scouting.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Scout.png");
+			PastMatchesTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Past Matches.png");
+			SettingsTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Settings.png");
 		}
 		private void Reset_Clicked(object sender, EventArgs e)
 		{
-			Debug.WriteLine(Scout.TestingThis);
+
 		}
 
 		private void SaveData_Clicked(object sender, EventArgs e)

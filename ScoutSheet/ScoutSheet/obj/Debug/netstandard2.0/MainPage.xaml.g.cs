@@ -26,11 +26,23 @@ namespace ScoutSheet {
         private global::Xamarin.Forms.ToolbarItem Export;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::ScoutSheet.Scout Scouting;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::ScoutSheet.PastMatches PastMatchesTab;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::ScoutSheet.Settings SettingsTab;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
             Reset = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ToolbarItem>(this, "Reset");
             SaveData = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ToolbarItem>(this, "SaveData");
             Export = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ToolbarItem>(this, "Export");
+            Scouting = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ScoutSheet.Scout>(this, "Scouting");
+            PastMatchesTab = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ScoutSheet.PastMatches>(this, "PastMatchesTab");
+            SettingsTab = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::ScoutSheet.Settings>(this, "SettingsTab");
         }
     }
 }
