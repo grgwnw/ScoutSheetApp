@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Plugin.SegmentedControl.Netstandard" Version="4.2.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />

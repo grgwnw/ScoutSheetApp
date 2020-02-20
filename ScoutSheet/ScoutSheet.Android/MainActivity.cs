@@ -22,10 +22,8 @@ namespace ScoutSheet.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            string dataBaseName = "matches_db.sqlite";
-            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            string fullPath = Path.Combine(folderPath, dataBaseName);
-            LoadApplication(new App(fullPath));
+            string folderPath = Android.OS.Environment.DirectoryDownloads;
+            LoadApplication(new App((Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, folderPath, "test.json"))));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

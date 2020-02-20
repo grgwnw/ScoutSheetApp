@@ -39,6 +39,8 @@ namespace ScoutSheet
 
 		private void Export_Clicked(object sender, EventArgs e)
 		{
+			Scouting.RecordAllData().SerializeJson(App.DatabaseLocation);
+			DisplayAlert("Something", "Something", "Something");
 			//Exports the last thing stored in the database Match object. Export Multiple? I'm not sure....
 		}
 	}

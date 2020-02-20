@@ -4,6 +4,7 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "ScoutSheet.Android.dll" comes first in this list. */
 		"ScoutSheet.Android.dll",
 		"FormsViewGroup.dll",
+		"Newtonsoft.Json.dll",
 		"Plugin.Segmented.Control.Droid.dll",
 		"Plugin.Segmented.dll",
 		"ScoutSheet.dll",
