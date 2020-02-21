@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
-using Xamarin.Forms; 
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 namespace ScoutSheet
 {
@@ -87,6 +88,7 @@ namespace ScoutSheet
             //{
             //    writer.Write(value);
             //}
+            Resource
             File.WriteAllText(file, value);
         }
     }
