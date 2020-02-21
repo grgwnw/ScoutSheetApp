@@ -34,19 +34,25 @@ namespace ScoutSheet
 
 		private void SaveData_Clicked(object sender, EventArgs e)
 		{
-			SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
-			conn.CreateTable<Matches>();
-			int rows = conn.Insert(Scouting.RecordAllData());
-			conn.Close();
-			if(rows > 0)
+			try
 			{
-				DisplayAlert("Successful", "Data Store is successful!", "Ok");
+				SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+				conn.CreateTable<Matches>();
+				int rows = conn.Insert(Scouting.RecordAllData());
+				conn.Close();
+				if (rows > 0)
+				{
+					DisplayAlert("Successful", "Data Store is successful!", "Ok");
+				}
+				else
+				{
+					DisplayAlert("Error", "Something is wrong. Please contact me...", "Ok");
+				}
 			}
-			else
+			catch (SQLiteException)
 			{
-				DisplayAlert("Error", "Something is wrong. Please contact me...", "Ok");
+				DisplayAlert("Database Error", "Perhaps the match number is the same as a previous entry? Please try again or contact me.", "Ok");
 			}
-			//Save into database or what????
 		}
 
 		private void Export_Clicked(object sender, EventArgs e)
