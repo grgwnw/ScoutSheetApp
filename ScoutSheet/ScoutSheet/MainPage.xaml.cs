@@ -59,6 +59,11 @@ namespace ScoutSheet
 
 			if (status != PermissionStatus.Granted)
 			{
+				if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Storage))
+				{
+					await DisplayAlert("Need storage access", "Need storage access to export data", "OK");
+				}
+
 				status = (await CrossPermissions.Current.RequestPermissionsAsync(new Permission[] { Permission.Storage }))[Permission.Storage];
 			}
 
@@ -66,11 +71,11 @@ namespace ScoutSheet
 			{
 				var json = JsonConvert.SerializeObject(Scouting.RecordAllData());
 				File.WriteAllText(App.DatabaseLocation, json);
-				await DisplayAlert("Export successed", "Data exported.", "Ok");
+				await DisplayAlert("Export successed", "Data exported.", "OK");
 			}
 			else
 			{
-				await DisplayAlert("Export failed", "Insufficient permissions to export data.", "Ok");
+				await DisplayAlert("Export failed", "Insufficient permissions to export data.", "OK");
 			}
 			//Exports the last thing stored in the database Match object. Export Multiple? I'm not sure....
 		}
