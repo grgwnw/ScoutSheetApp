@@ -990,4 +990,3 @@ C:\Users\Eric\Documents\GitHub\ScoutSheetApp\ScoutSheet\ScoutSheet.Android\obj\D
 C:\Users\Eric\Documents\GitHub\ScoutSheetApp\ScoutSheet\ScoutSheet.Android\obj\Debug\90\android\src\android\support\v7\mediarouter\R.java
 C:\Users\Eric\Documents\GitHub\ScoutSheetApp\ScoutSheet\ScoutSheet.Android\obj\Debug\90\android\src\crc647f25f480157a6a21\SegmentedControlRenderer.java
 C:\Users\Eric\Documents\GitHub\ScoutSheetApp\ScoutSheet\ScoutSheet.Android\obj\Debug\90\android\assets\Newtonsoft.Json.dll
-C:\Users\Eric\Documents\GitHub\ScoutSheetApp\ScoutSheet\ScoutSheet.Android\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp

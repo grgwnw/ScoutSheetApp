@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -33,14 +34,23 @@ namespace ScoutSheet
 
 		private void SaveData_Clicked(object sender, EventArgs e)
 		{
-			Matches ThingToBeStored = Scouting.RecordAllData();
+			SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+			conn.CreateTable<Matches>();
+			int rows = conn.Insert(Scouting.RecordAllData());
+			conn.Close();
+			if(rows > 0)
+			{
+				DisplayAlert("Successful", "Data Store is successful!", "Ok");
+			}
+			else
+			{
+				DisplayAlert("Error", "Something is wrong. Please contact me...", "Ok");
+			}
 			//Save into database or what????
 		}
 
 		private void Export_Clicked(object sender, EventArgs e)
 		{
-			Scouting.RecordAllData().SerializeJson(App.DatabaseLocation);
-			DisplayAlert("Something", "Something", "Something");
 			//Exports the last thing stored in the database Match object. Export Multiple? I'm not sure....
 		}
 	}

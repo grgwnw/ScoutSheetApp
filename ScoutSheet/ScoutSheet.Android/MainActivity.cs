@@ -22,13 +22,13 @@ namespace ScoutSheet.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            string folderPath = Android.OS.Environment.DirectoryDownloads;
-            LoadApplication(new App((Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, folderPath, "test.json"))));
+            string dbName = "mathes_db.sqlite";
+            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            LoadApplication(new App(folderPath, Path.Combine(folderPath,dbName)));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }

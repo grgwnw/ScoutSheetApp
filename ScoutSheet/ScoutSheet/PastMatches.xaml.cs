@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,16 @@ namespace ScoutSheet
 		public PastMatches()
 		{
 			InitializeComponent();
+		}
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+			{
+				conn.CreateTable<Matches>();
+				var match = conn.Table<Matches>().ToList();
+				MatchesListView.ItemsSource = match;
+			}
 		}
 	}
 }
