@@ -5,10 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ScoutSheet.PastMatches">
-    <ListView x:Name="MatchesListView">
+    <ListView x:Name="MatchesListView" IsPullToRefreshEnabled="True" Refreshing="MatchesListView_Refreshing" ItemTapped="MatchesListView_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding MatchNumber}"></TextCell>
+                <TextCell Text="{Binding MatchNumberEntry}"></TextCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ScoutSheet
@@ -25,7 +27,6 @@ namespace ScoutSheet
 		}
 		private async void Reset_Clicked(object sender, EventArgs e)
 		{
-			//Some ConfirmationDialog that checks whetheer it's ok. Maybe an overloaded version of AlertDialog?
 			if (await DisplayAlert("Are you sure?", "Would you really like to reset data? Unless you saved it, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No")) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
 			{
 				Scouting.ResetData();
@@ -57,7 +58,14 @@ namespace ScoutSheet
 
 		private void Export_Clicked(object sender, EventArgs e)
 		{
-			//Exports the last thing stored in the database Match object. Export Multiple? I'm not sure....
+			//SaveData_Clicked(sender, e);
+			//Exporting mechanism....
+			Scouting.RecordAllData().SerializeJson(Path.Combine(App.folderPathSave,"data.json"));
+			Share.RequestAsync(new ShareFileRequest
+			{
+				Title = Title,
+				File = new ShareFile(Path.Combine(App.folderPathSave, "data.json"))
+			});
 		}
 	}
 }

@@ -6,7 +6,7 @@
     <TabbedPage.ToolbarItems>
         <ToolbarItem Text="Reset" x:Name="Reset" Clicked="Reset_Clicked" ></ToolbarItem>
         <ToolbarItem Text="Save" x:Name="SaveData" Clicked="SaveData_Clicked"></ToolbarItem>
-        <ToolbarItem Text="Export" x:Name="Export" Clicked="Export_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Save and Export" x:Name="Export" Clicked="Export_Clicked"></ToolbarItem>
     </TabbedPage.ToolbarItems>
     <local:Scout Title="Scout" x:Name ="Scouting" IconImageSource=""> <!--PLEASE INPUT ICON SOURCES-->
         
