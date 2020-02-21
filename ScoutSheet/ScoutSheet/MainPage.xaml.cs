@@ -1,8 +1,12 @@
-﻿using SQLite;
+﻿using Newtonsoft.Json;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,8 +53,25 @@ namespace ScoutSheet
 			//Save into database or what????
 		}
 
-		private void Export_Clicked(object sender, EventArgs e)
+		private async void Export_Clicked(object sender, EventArgs e)
 		{
+			PermissionStatus status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+
+			if (status != PermissionStatus.Granted)
+			{
+				status = (await CrossPermissions.Current.RequestPermissionsAsync(new Permission[] { Permission.Storage }))[Permission.Storage];
+			}
+
+			if (status == PermissionStatus.Granted)
+			{
+				var json = JsonConvert.SerializeObject(Scouting.RecordAllData());
+				File.WriteAllText(App.DatabaseLocation, json);
+				await DisplayAlert("Export successed", "Data exported.", "Ok");
+			}
+			else
+			{
+				await DisplayAlert("Export failed", "Insufficient permissions to export data.", "Ok");
+			}
 			//Exports the last thing stored in the database Match object. Export Multiple? I'm not sure....
 		}
 	}

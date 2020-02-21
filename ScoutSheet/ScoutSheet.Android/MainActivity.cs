@@ -1,11 +1,7 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Runtime;
 using System.IO;
 
 namespace ScoutSheet.Droid
@@ -22,8 +18,9 @@ namespace ScoutSheet.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            string dbName = "mathes_db.sqlite";
-            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            string dbName = "matches.json";
+            string folderPath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "ScoutSheet");
             LoadApplication(new App(folderPath, Path.Combine(folderPath,dbName)));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
