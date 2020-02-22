@@ -1,7 +1,10 @@
-﻿using Newtonsoft.Json;
-using SQLite;
+﻿using SQLite;
 using System.IO;
 using Xamarin.Forms;
+using System.Diagnostics;
+using CsvHelper;
+using System.Globalization;
+using System.Collections.Generic;
 
 namespace ScoutSheet
 {
@@ -80,16 +83,14 @@ namespace ScoutSheet
 
         }
 
-        public void SerializeJson(string file)
+        public void SerializeExcel()
         {
-            System.Diagnostics.Debug.WriteLine(file);
-            var value = JsonConvert.SerializeObject(this);
-            //using (StreamWriter writer = new StreamWriter(file, false))
-            //{
-            //    writer.Write(value);
-            //}
-            
-            File.WriteAllText(file, value);
+            var records = new List<Matches>{this};
+            using (var writer = new StreamWriter(Path.Combine(App.folderPathSave,"Test.csv")))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(records);
+            }
         }
     }
 }

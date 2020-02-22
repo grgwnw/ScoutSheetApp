@@ -58,13 +58,11 @@ namespace ScoutSheet
 
 		private void Export_Clicked(object sender, EventArgs e)
 		{
-			//SaveData_Clicked(sender, e);
-			//Exporting mechanism....
-			Scouting.RecordAllData().SerializeJson(Path.Combine(App.folderPathSave,"data.json"));
+			Scouting.RecordAllData().SerializeExcel();
 			Share.RequestAsync(new ShareFileRequest
 			{
 				Title = Title,
-				File = new ShareFile(Path.Combine(App.folderPathSave, "data.json"))
+				File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))
 			});
 		}
 	}
