@@ -29,6 +29,7 @@ namespace ScoutSheet
 		{
 			if (await DisplayAlert("Are you sure?", "Would you really like to reset data? Unless you saved it, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No")) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
 			{
+				Scouting = new Scout();
 				Scouting.ResetData();
 			}
 		}
@@ -58,7 +59,7 @@ namespace ScoutSheet
 
 		private void Export_Clicked(object sender, EventArgs e)
 		{
-			Scouting.RecordAllData().SerializeExcel();
+			Scouting.RecordAllData().SerializeCsv();
 			Share.RequestAsync(new ShareFileRequest
 			{
 				Title = Title,

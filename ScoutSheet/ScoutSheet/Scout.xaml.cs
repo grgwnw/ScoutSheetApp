@@ -18,11 +18,13 @@ namespace ScoutSheet
         public Scout()
 	    {
             InitializeComponent();
-			List<string> MatchTypeList = new List<string>();
-			MatchTypeList.Add("Qualification");
-			MatchTypeList.Add("Quaterfinals");
-			MatchTypeList.Add("Semifinals");
-			Match_Type.ItemsSource = MatchTypeList;
+            List<string> MatchTypeList = new List<string>
+            {
+                "Qualification",
+                "Quaterfinals",
+                "Semifinals"
+            };
+            Match_Type.ItemsSource = MatchTypeList;
 			var assembly = typeof(MainPage);
 			PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
 			Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
@@ -30,10 +32,10 @@ namespace ScoutSheet
             Field3.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Bar_Thingy.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.Climb Position.png", assembly);
             currentMatch.MatchNumberEntry = 0;
-            LowInitClimb.ImageSource = ImageSource.FromResource("ScoutSheet.Assets.Images.End Low.png", assembly);
-            LowInitClimb.Scale = .5;
-            BalInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Level.png", assembly);
+            LowInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Low.png", assembly);
+            BallInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Level.png", assembly);
             HighInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End High.png", assembly);
+            None.BackgroundColor = ButtonClickedColor;
         }
         public void ResetData()
         {
@@ -46,28 +48,30 @@ namespace ScoutSheet
             currentMatch.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
             currentMatch.StartingGamePieces = Int32.Parse(PowerCellCount.Text.Substring(0, 1));
             currentMatch.CrossesInitiationLine = ((ILine.BackgroundColor) == ButtonClickedColor);
-            currentMatch.ALowerScored = getParenthesisValue(ALow.Text);
-            currentMatch.AOuterScored = getParenthesisValue(AOuter.Text);
-            currentMatch.AInnerScored = getParenthesisValue(AInner.Text);
-            currentMatch.AMissedBalls = getParenthesisValue(AMissed.Text);
+            currentMatch.ALowerScored = GetParenthesisValue(ALow.Text);
+            currentMatch.AOuterScored = GetParenthesisValue(AOuter.Text);
+            currentMatch.AInnerScored = GetParenthesisValue(AInner.Text);
+            currentMatch.AMissedBalls = GetParenthesisValue(AMissed.Text);
             currentMatch.AComments = ACommentsEntry.Text;
-            currentMatch.ABallsPickedUp = getParenthesisValue(APickedUp.Text);
+            currentMatch.ABallsPickedUp = GetParenthesisValue(APickedUp.Text);
             currentMatch.Defense = DefenseButton.BackgroundColor == ButtonClickedColor;
-            currentMatch.TBallsFromLoadStation = getParenthesisValue(BallsFromLoadingStationTeleop.Text);
+            currentMatch.TBallsFromLoadStation = GetParenthesisValue(BallsFromLoadingStationTeleop.Text);
             currentMatch.FitsUnderTrench = UnderTrench.BackgroundColor == ButtonClickedColor;
-            currentMatch.TLowerScored = getParenthesisValue(TLow.Text);
-            currentMatch.TOuterScored = getParenthesisValue(TOuter.Text);
-            currentMatch.TInnerScored = getParenthesisValue(TInner.Text);
-            currentMatch.TMissedBalls = getParenthesisValue(TMissed.Text);
-            currentMatch.TBallsFromFloor = getParenthesisValue(PickedUpT.Text);
+            currentMatch.TLowerScored = GetParenthesisValue(TLow.Text);
+            currentMatch.TOuterScored = GetParenthesisValue(TOuter.Text);
+            currentMatch.TInnerScored = GetParenthesisValue(TInner.Text);
+            currentMatch.TMissedBalls = GetParenthesisValue(TMissed.Text);
+            currentMatch.TBallsFromFloor = GetParenthesisValue(PickedUpT.Text);
             currentMatch.TComments = TeleopCommentsEntry.Text;
-            currentMatch.EScore = getParenthesisValue(EScores.Text);
+            currentMatch.EScore = GetParenthesisValue(EScores.Text);
             currentMatch.EComments = EndgameCommentsEntry.Text;
-            currentMatch.YellowCards = YellowCard.BackgroundColor == Color.Yellow;
-            currentMatch.RedCards = RedCard.BackgroundColor == Color.Red;
+            currentMatch.Penalities = (YellowCard.BackgroundColor == Color.Yellow && RedCard.BackgroundColor == Color.Red)? "Yellow and Red": (YellowCard.BackgroundColor == Color.Yellow)? "Yellow" : (RedCard.BackgroundColor == Color.Red)? "Red" : "None";
             currentMatch.Rotations = Rotation.BackgroundColor == ButtonClickedColor;
             currentMatch.ClimbTime = "" + (timeElapsedClimb.ElapsedMilliseconds / 1000) + "." + (timeElapsedClimb.ElapsedMilliseconds % 1000);
-            //Missing TShootingLocation and StartingLocation because of other buttons....
+            if (LowInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Low";
+            if (BallInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Middle";
+            if (HighInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "High";
+            currentMatch.ColorWheelColor = ColorWheel.BackgroundColor == ButtonClickedColor;
             return currentMatch;
         }
         //Match Number Methods. MatchNumber.Text is the data value for MatchNumberEntry
@@ -122,34 +126,34 @@ namespace ScoutSheet
             currentMatch.StartingLocation = ((Button)sender).Text;
             ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
-        private int getParenthesisValue(string value)
+        private int GetParenthesisValue(string value)
         {
             return Int32.Parse(Regex.Match(value, @"\d+").Value);
         }
         //This controls the ALow button for the ALowerScored Property
         private void ALow_Clicked(object sender, EventArgs e)
         {
-            ALow.Text = "Low (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            ALow.Text = "Low (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //AOuter Button with AOuterScored Property
         private void AOuter_Clicked(object sender, EventArgs e)
         {
-            AOuter.Text = "Outer (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            AOuter.Text = "Outer (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //AInner Button with AInnerScored Text
         private void AInner_Clicked(object sender, EventArgs e)
         {
-            AInner.Text = "Inner (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            AInner.Text = "Inner (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //AMissed Button with AMissedBalls Property
         private void AMissed_Clicked(object sender, EventArgs e)
         {
-            AMissed.Text = "Missed (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            AMissed.Text = "Missed (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //APickedUp Button with ABallsPickedUp Property
         private void APickedUp_Clicked(object sender, EventArgs e)
         {
-            APickedUp.Text = "Balls Picked Up (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            APickedUp.Text = "Balls Picked Up (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //DefenseButton Button with Defense Property
         private void Defense_Clicked(object sender, EventArgs e)
@@ -164,26 +168,16 @@ namespace ScoutSheet
         //BallsFromLoadingStationTeleop is button Name (longest button name ever...) and TBallsFromLoadStation is the property
         private void BallsFromLoadingStationTeleop_Clicked(object sender, EventArgs e)
         {
-            BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
-        //ColorWheelColor Property. Do not instantiate this...
         private void ColorWheel_Clicked(object sender, EventArgs e)
         {
-            if(((Button)sender).BackgroundColor == Color.Aqua)
+            if (((Button)sender).BackgroundColor == ButtonClickedColor)
             {
-                ((Button)sender).BackgroundColor = Color.DeepPink;
-                currentMatch.ColorWheelColor = "Deep Pink";
+                ((Button)sender).BackgroundColor = Color.Default;
+                return;
             }
-            else if (((Button)sender).BackgroundColor == Color.DeepPink)
-            {
-                ((Button)sender).BackgroundColor = Color.Yellow;
-                currentMatch.ColorWheelColor = "Yellow";
-            }
-            else if (((Button)sender).BackgroundColor == Color.Yellow)
-            {
-                ((Button)sender).BackgroundColor = Color.Aqua;
-                currentMatch.ColorWheelColor = "Aqua";
-            }
+            ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
         //UnderTrench is button name with FitsUnderButton property
         private void UnderTrench_Clicked(object sender, EventArgs e)
@@ -195,37 +189,35 @@ namespace ScoutSheet
             }
             ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
-
         //TLow is the button Name and TLowerScored is the property
         private void TLow_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Low (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            ((Button)sender).Text = "Low (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
-
         //TOuter is button Name and TOuterScored is the property
         private void TOuter_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Outer (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            ((Button)sender).Text = "Outer (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //TInner is the button Name with TInnerScored
         private void TInner_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Inner (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            ((Button)sender).Text = "Inner (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //TMissed is button name and TMissedBalls is property
         private void TMissed_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Missed (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            ((Button)sender).Text = "Missed (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //PickedUpT is the button name and TBallsFromFloor is the property
         private void PickedUpT_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Balls Picked Up From The Floor (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            ((Button)sender).Text = "Balls Picked Up From The Floor (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //EScores is button name and EScore is the property
         private void EScores_Clicked(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Balls Scored (" + (getParenthesisValue(((Button)sender).Text) + 1) + ")";
+            ((Button)sender).Text = "Balls Scored (" + (GetParenthesisValue(((Button)sender).Text) + 1) + ")";
         }
         //YellowCard is the button and YellowCards is the property
         private void YellowCard_Clicked(object sender, EventArgs e)
@@ -280,11 +272,45 @@ namespace ScoutSheet
                 timeElapsedClimb.Stop();
             }
         }
-
         private void InitClimb_Clicked(object sender, EventArgs e)
         {
-
+            LowInitClimb.BorderColor = Color.Gray;
+            BallInitClimb.BorderColor = Color.Gray;
+            HighInitClimb.BorderColor = Color.Gray;
+            ((ImageButton)sender).BorderColor = ButtonClickedColor;
         }
 
+        private void EndLocation_Clicked(object sender, EventArgs e)
+        {
+            Park.BackgroundColor = Color.Default;
+            Climb.BackgroundColor = Color.Default;
+            None.BackgroundColor = Color.Default;
+            ((Button)sender).BackgroundColor = ButtonClickedColor;
+            currentMatch.EndLocation = ((Button)sender).Text;
+            if (((Button)sender).Text == "Climb") { ChangeClimb(true); }
+            else { ChangeClimb(false); }
+        }
+        private void ChangeClimb(bool value)
+        {
+            InitialClimbHeightLabel.IsVisible = value;
+            LowInitClimb.IsVisible = value;
+            BallInitClimb.IsVisible = value;
+            HighInitClimb.IsVisible = value;
+            ClimbPositionTitle.IsVisible = value;
+            EdgeLocation.IsVisible = value;
+            MiddleBarLocation.IsVisible = value;
+            CenterLocation.IsVisible = value;
+            Bar_Thingy.IsVisible = value;
+            Stopwatch.IsVisible = value;
+        }
+
+        private void ClimbLocation_Clicked(object sender, EventArgs e)
+        {
+            EdgeLocation.BackgroundColor = Color.Default;
+            MiddleBarLocation.BackgroundColor = Color.Default;
+            CenterLocation.BackgroundColor = Color.Default;
+            currentMatch.ClimbPosition = ((Button)sender).Text;
+            ((Button)sender).BackgroundColor = ButtonClickedColor;
+        }
     }
 }

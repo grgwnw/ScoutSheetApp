@@ -5,26 +5,33 @@ using System.Diagnostics;
 using CsvHelper;
 using System.Globalization;
 using System.Collections.Generic;
+using CsvHelper.Configuration.Attributes;
 
 namespace ScoutSheet
 {
 	public class Matches
 	{
-        //Thngs that have 0 references next to it must be looked over!!!!!
-        [PrimaryKey]
-        public int MatchNumberEntry { get; set; } = 0; //AutoIncrement. Do we need to have this as a user option?
-        
-        public string TeamNumber { get; set; } //Team numbers but it doesn't go above 4 digits... So....
-        
+        public string TeamNumber { get; set; }
+        public int MatchNumberEntry { get; set; } = 0; //AutoIncrement. Do we need to have this as a user option
+        [CsvHelper.Configuration.Attributes.Ignore]
         public string Scouters { get; set; } // Consists of Scouter Names
-        
-        public int StartingGamePieces { get; set; } = 0; //Number of game pieces stored in the robot at the start of the match
+
+        [BooleanTrueValues("Yes")]
+        [BooleanFalseValues("No")]
+        public bool FitsUnderTrench { get; set; }
+
+        [BooleanTrueValues("Yes")]
+        [BooleanFalseValues("No")]
+        public bool Defense { get; set; }
+        public string Penalities { get; set; }
         //Autonomous
-        
-        public bool CrossesInitiationLine { get; set; } //Pretty self explanitory for autonomous
-        
+        public int StartingGamePieces { get; set; } = 0; //Number of game pieces stored in the robot at the start of the match
         public string StartingLocation { get; set; }
-        
+
+        [BooleanTrueValues("Yes")]
+        [BooleanFalseValues("No")]
+        public bool CrossesInitiationLine { get; set; } //Pretty self explanitory for autonomous
+        public int ABallsPickedUp { get; set; } = 0;        
         public int ALowerScored { get; set; } = 0;
         
         public int AOuterScored { get; set; } = 0;
@@ -32,58 +39,48 @@ namespace ScoutSheet
         public int AInnerScored { get; set; } = 0;
         
         public int AMissedBalls { get; set; } = 0;
-        
-        public int ABallsPickedUp { get; set; }
-        
+
         public string AComments { get; set; }
         //TeleOp
-        
-        public bool Defense { get; set; }
-        
+
         public int TBallsFromLoadStation { get; set; }
         
         public int TBallsFromFloor { get; set; }
-        
-        public bool FitsUnderTrench { get; set; }
-        
+
         public int TLowerScored { get; set; }
         
         public int TOuterScored { get; set; }
         
         public int TInnerScored { get; set; }
-        
+
         public int TMissedBalls { get; set; }
         
         public string TShootingLocation { get; set; }
-        
-        public string TComments { get; set; }
-        
-        public string ColorWheelColor { get; set; } = "Aqua";
-        
+
+        [BooleanTrueValues("Yes")]
+        [BooleanFalseValues("No")]
         public bool Rotations { get; set; } = false;
+
+        [BooleanTrueValues("Yes")]
+        [BooleanFalseValues("No")]
+        public bool ColorWheelColor { get; set; }
+        public string TComments { get; set; }
+
         //Endgame
-        
-        public int EScore { get; set; }
-        
         public string EndLocation { get; set; }
-        
-        public string ClimbTime { get; set; }   
-        
+        public int EScore { get; set; }
         public string InitialClimbHeight { get; set; } //Low, Balanced, 
-        
         public string ClimbPosition { get; set; } //Edge, Bar, 
-        
+        public string ClimbTime { get; set; }   
         public string EComments { get; set; }
         
-        public bool YellowCards { get; set; }
-        
-        public bool RedCards { get; set; }
+
         public Matches()
         {
 
         }
 
-        public void SerializeExcel()
+        public void SerializeCsv()
         {
             var records = new List<Matches>{this};
             using (var writer = new StreamWriter(Path.Combine(App.folderPathSave,"Test.csv")))
