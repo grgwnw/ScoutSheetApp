@@ -70,7 +70,7 @@
                 <Image x:Name="Field3" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
                 <!--Set the source in C#!!!-->
                 <Button Text="Balls Scored(0)" x:Name="EScores" Clicked="EScores_Clicked"></Button>
-                <Button Text="Park" x:Name="Park" Clicked="EndLocation_Clicked"></Button>
+                <Button Text="Park" x:Name="Park" BackgroundColor ="Default" Clicked="EndLocation_Clicked"></Button>
                 <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
                 <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
                 <Button Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>

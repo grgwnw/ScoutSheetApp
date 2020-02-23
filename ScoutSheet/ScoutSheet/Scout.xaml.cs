@@ -39,8 +39,51 @@ namespace ScoutSheet
         }
         public void ResetData()
         {
+            currentMatch = new Matches();
+            TeamNumberEntry.Text = "";
+            Match_Type.SelectedIndex = 0;
+            PowerCellCount.Text = "0/3";
+            ILine.BackgroundColor = Color.Default;
+            StartingLeft.BackgroundColor = Color.Default;
+            StartingMiddle.BackgroundColor = Color.Default;
+            StartingRight.BackgroundColor = Color.Default;
+            ALow.Text = "Low (0)";
+            AOuter.Text = "Outer (0)";
+            AInner.Text = "Inner (0)";
+            AMissed.Text = "Missed (0)";
+            APickedUp.Text = "Balls Picked Up (0)";
+            ACommentsEntry.Text = "";
+            DefenseButton.BackgroundColor = Color.Default;
+            BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (0)";
+            Rotation.BackgroundColor = Color.Default;
+            ColorWheel.BackgroundColor = Color.Default;
+            UnderTrench.BackgroundColor = Color.Default;
+            PickedUpT.Text = "Balls Picked Up from Floor (0)";
+            Trench.BackgroundColor = Color.Default;
+            Target.BackgroundColor = Color.Default;
+            Other.BackgroundColor = Color.Default;
+            TLow.Text = "Low (0)";
+            TOuter.Text = "Outer (0)";
+            TInner.Text = "Inner (0)";
+            TMissed.Text = "Missed (0)";
+            TeleopCommentsEntry.Text = "";
+            EScores.Text = "Balls Scored (0)";
+            Park.BackgroundColor = Color.Default;
+            Climb.BackgroundColor = Color.Default;
+            None.BackgroundColor = Color.Default;
+            Stopwatch.IsEnabled = true;
+            Stopwatch.Text = "Start Stopwatch";
+            LowInitClimb.BorderColor = Color.Default;
+            BallInitClimb.BorderColor = Color.Default;
+            HighInitClimb.BorderColor = Color.Default;
+            EdgeLocation.BackgroundColor = Color.Default;
+            CenterLocation.BackgroundColor = Color.Default;
+            ChangeClimb(false);
+            EndgameCommentsEntry.Text = "";
+            YellowCard.BackgroundColor = Color.Default;
+            RedCard.BackgroundColor = Color.Default;
+            timeElapsedClimb = new Stopwatch();
             DisplayAlert("Successful!", "You cleared the data!", "Confirm");
-            //MANUALLY RESET EVERYTHING!!!!!!!!MWAHAHAHAHAHA!!!!!!
         }
 		public Matches RecordAllData() { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
             currentMatch.TeamNumber = TeamNumberEntry.Text;
