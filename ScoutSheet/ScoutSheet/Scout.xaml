@@ -53,7 +53,7 @@
                 <Button Text="Plays Defense" x:Name="DefenseButton" Clicked="Defense_Clicked"></Button>
                 <Button Text="Balls Picked Up From Loading Station(0)" x:Name="BallsFromLoadingStationTeleop" Clicked="BallsFromLoadingStationTeleop_Clicked"></Button>
                 <Button Text="Rotation" x:Name="Rotation" Clicked="Rotation_Clicked"></Button> <!--Something To see later-->
-                <Button Text="Color" x:Name="ColorWheel" Clicked="ColorWheel_Clicked" BackgroundColor="Aqua"></Button>
+                <Button Text="Color" x:Name="ColorWheel" Clicked="ColorWheel_Clicked"></Button>
                 <Button Text="Fits Under Trench" x:Name="UnderTrench" Clicked="UnderTrench_Clicked"></Button>
                 <Button Text="Balls Picked Up from Floor(0)" x:Name="PickedUpT" Clicked="PickedUpT_Clicked"></Button>
                 <Button Text="Trench Zone" x:Name="Trench" Clicked="Shooting_Location"></Button> <!--Can we do Trench/Target/Other later.....-->
@@ -70,15 +70,20 @@
                 <Image x:Name="Field3" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
                 <!--Set the source in C#!!!-->
                 <Button Text="Balls Scored(0)" x:Name="EScores" Clicked="EScores_Clicked"></Button>
-                <!--I guess I will leave the park/climb/none to later-->
-                <Button Text="Start Stopwatch"></Button>
-                <Button Text="Stop Stopwatch"></Button>
+                <Button Text="Park" x:Name="Park" Clicked="EndLocation_Clicked"></Button>
+                <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
+                <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
+                <Button Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>
                 <!--Same Thing with initial climb height I guess-->
-                <Label Text="Climb Position"></Label>
-                <Button Text="Edge"></Button>
-                <Button Text ="Middle Bar"></Button>
-                <Button Text="Center"></Button>
-                <Image x:Name="Bar_Thingy"></Image>
+                <Label Text="Initial Climb Height" x:Name="InitialClimbHeightLabel"></Label>
+                <ImageButton x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                <ImageButton x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                <ImageButton x:Name="HighInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                <Label Text="Climb Position" x:Name="ClimbPositionTitle" IsVisible="False"></Label>
+                <Button Text="Edge" x:Name="EdgeLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                <Button Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                <Button Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                <Image x:Name="Bar_Thingy" IsVisible="False"></Image>
                 <Label Text="Comments"></Label>
                 <Label Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
                 <Entry x:Name="EndgameCommentsEntry"></Entry>

@@ -1,10 +1,13 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ScoutSheet
@@ -24,22 +27,44 @@ namespace ScoutSheet
 		}
 		private async void Reset_Clicked(object sender, EventArgs e)
 		{
-			//Some ConfirmationDialog that checks whetheer it's ok. Maybe an overloaded version of AlertDialog?
 			if (await DisplayAlert("Are you sure?", "Would you really like to reset data? Unless you saved it, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No")) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
 			{
+				Scouting = new Scout();
 				Scouting.ResetData();
 			}
 		}
 
 		private void SaveData_Clicked(object sender, EventArgs e)
 		{
-			Matches ThingToBeStored = Scouting.RecordAllData();
-			//Save into database or what????
+			try
+			{
+				SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+				conn.CreateTable<Matches>();
+				int rows = conn.Insert(Scouting.RecordAllData());
+				conn.Close();
+				if (rows > 0)
+				{
+					DisplayAlert("Successful", "Data Store is successful!", "Ok");
+				}
+				else
+				{
+					DisplayAlert("Error", "Something is wrong. Please contact me...", "Ok");
+				}
+			}
+			catch (SQLiteException)
+			{
+				DisplayAlert("Database Error", "Perhaps the match number is the same as a previous entry? Please try again or contact me.", "Ok");
+			}
 		}
 
 		private void Export_Clicked(object sender, EventArgs e)
 		{
-			//Exports the last thing stored in the database Match object. Export Multiple? I'm not sure....
+			Scouting.RecordAllData().SerializeCsv();
+			Share.RequestAsync(new ShareFileRequest
+			{
+				Title = Title,
+				File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))
+			});
 		}
 	}
 }
