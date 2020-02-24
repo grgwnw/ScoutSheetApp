@@ -16,21 +16,21 @@ namespace ScoutSheet
         [CsvHelper.Configuration.Attributes.Ignore]
         public string Scouters { get; set; } // Consists of Scouter Names
 
-        [BooleanTrueValues("Yes")]
-        [BooleanFalseValues("No")]
-        public bool FitsUnderTrench { get; set; }
+        
+        
+        public string FitsUnderTrench { get; set; }
 
-        [BooleanTrueValues("Yes")]
-        [BooleanFalseValues("No")]
-        public bool Defense { get; set; }
+        
+        
+        public string Defense { get; set; }
         public string Penalities { get; set; }
         //Autonomous
         public int StartingGamePieces { get; set; } = 0; //Number of game pieces stored in the robot at the start of the match
         public string StartingLocation { get; set; }
 
-        [BooleanTrueValues("Yes")]
-        [BooleanFalseValues("No")]
-        public bool CrossesInitiationLine { get; set; } //Pretty self explanitory for autonomous
+        
+        
+        public string CrossesInitiationLine { get; set; } //Pretty self explanitory for autonomous
         public int ABallsPickedUp { get; set; } = 0;        
         public int ALowerScored { get; set; } = 0;
         
@@ -57,13 +57,13 @@ namespace ScoutSheet
         
         public string TShootingLocation { get; set; }
 
-        [BooleanTrueValues("Yes")]
-        [BooleanFalseValues("No")]
-        public bool Rotations { get; set; } = false;
+        
+        
+        public string Rotations { get; set; }
 
-        [BooleanTrueValues("Yes")]
-        [BooleanFalseValues("No")]
-        public bool ColorWheelColor { get; set; }
+        
+        
+        public string ColorWheelColor { get; set; }
         public string TComments { get; set; }
 
         //Endgame
