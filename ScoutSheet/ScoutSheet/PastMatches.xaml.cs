@@ -36,10 +36,6 @@ namespace ScoutSheet
 			MatchesListView.IsRefreshing = false;
 		}
 
-		private void MatchesListView_ItemTapped(object sender, ItemTappedEventArgs e)
-		{
-			DisplayAlert("What Object is this? (sender)",sender.ToString(), "Ok!"); //Apparently it gives you the listview and not the Match object itself. How do we differentiate which item is picked?
-			DisplayAlert("What Object is this (e)?", e.ToString(), "Ok!");
-		}
+
 	}
 }
