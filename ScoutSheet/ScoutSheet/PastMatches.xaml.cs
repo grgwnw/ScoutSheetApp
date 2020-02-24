@@ -29,13 +29,17 @@ namespace ScoutSheet
 		}
 		private void MatchesListView_Refreshing(object sender, EventArgs e)
 		{
+			using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation)) {
+				MatchesListView.ItemsSource = conn.Table<Matches>().ToList();
+			}
 			DisplayAlert("Refreshed!", "Refresh", "Ok");
+			MatchesListView.IsRefreshing = false;
 		}
 
 		private void MatchesListView_ItemTapped(object sender, ItemTappedEventArgs e)
 		{
-			DisplayAlert("What Object is this?",sender.ToString(), "Ok!"); //Apparently it gives you the listview and not the Match object itself. How do we differentiate which item is picked?
-			DisplayAlert("What Object is this?", e.ToString(), "Ok!");
+			DisplayAlert("What Object is this? (sender)",sender.ToString(), "Ok!"); //Apparently it gives you the listview and not the Match object itself. How do we differentiate which item is picked?
+			DisplayAlert("What Object is this (e)?", e.ToString(), "Ok!");
 		}
 	}
 }
