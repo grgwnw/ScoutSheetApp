@@ -90,16 +90,16 @@ namespace ScoutSheet
             currentMatch.Scouters = ScouterEntry.Text;
             currentMatch.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
             currentMatch.StartingGamePieces = Int32.Parse(PowerCellCount.Text.Substring(0, 1));
-            currentMatch.CrossesInitiationLine = ((ILine.BackgroundColor) == ButtonClickedColor);
+            currentMatch.CrossesInitiationLine = ((ILine.BackgroundColor) == ButtonClickedColor)? "Yes":"No";
             currentMatch.ALowerScored = GetParenthesisValue(ALow.Text);
             currentMatch.AOuterScored = GetParenthesisValue(AOuter.Text);
             currentMatch.AInnerScored = GetParenthesisValue(AInner.Text);
             currentMatch.AMissedBalls = GetParenthesisValue(AMissed.Text);
             currentMatch.AComments = ACommentsEntry.Text;
             currentMatch.ABallsPickedUp = GetParenthesisValue(APickedUp.Text);
-            currentMatch.Defense = DefenseButton.BackgroundColor == ButtonClickedColor;
+            currentMatch.Defense = DefenseButton.BackgroundColor == ButtonClickedColor? "Yes" : "No";
             currentMatch.TBallsFromLoadStation = GetParenthesisValue(BallsFromLoadingStationTeleop.Text);
-            currentMatch.FitsUnderTrench = UnderTrench.BackgroundColor == ButtonClickedColor;
+            currentMatch.FitsUnderTrench = UnderTrench.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
             currentMatch.TLowerScored = GetParenthesisValue(TLow.Text);
             currentMatch.TOuterScored = GetParenthesisValue(TOuter.Text);
             currentMatch.TInnerScored = GetParenthesisValue(TInner.Text);
@@ -109,12 +109,12 @@ namespace ScoutSheet
             currentMatch.EScore = GetParenthesisValue(EScores.Text);
             currentMatch.EComments = EndgameCommentsEntry.Text;
             currentMatch.Penalities = (YellowCard.BackgroundColor == Color.Yellow && RedCard.BackgroundColor == Color.Red)? "Yellow and Red": (YellowCard.BackgroundColor == Color.Yellow)? "Yellow" : (RedCard.BackgroundColor == Color.Red)? "Red" : "None";
-            currentMatch.Rotations = Rotation.BackgroundColor == ButtonClickedColor;
+            currentMatch.Rotations = Rotation.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
             currentMatch.ClimbTime = "" + (timeElapsedClimb.ElapsedMilliseconds / 1000) + "." + (timeElapsedClimb.ElapsedMilliseconds % 1000);
             if (LowInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Low";
             if (BallInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Middle";
             if (HighInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "High";
-            currentMatch.ColorWheelColor = ColorWheel.BackgroundColor == ButtonClickedColor;
+            currentMatch.ColorWheelColor = ColorWheel.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
             return currentMatch;
         }
         //Match Number Methods. MatchNumber.Text is the data value for MatchNumberEntry

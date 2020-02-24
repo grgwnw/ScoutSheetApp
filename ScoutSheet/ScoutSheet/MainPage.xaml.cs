@@ -16,7 +16,7 @@ namespace ScoutSheet
 	// by visiting https://aka.ms/xamarinforms-previewer
 	[DesignTimeVisible(false)]
 	public partial class MainPage : TabbedPage
-	{
+	{ 
 		public MainPage()
 		{
 			InitializeComponent();
@@ -64,6 +64,16 @@ namespace ScoutSheet
 				Title = Title,
 				File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))
 			});
+		}
+
+		private void Red_Clicked(object sender, EventArgs e)
+		{
+			BarBackgroundColor = Color.Red;
+		}
+
+		private void Blue_Clicked(object sender, EventArgs e)
+		{
+			BarBackgroundColor = Color.Blue;
 		}
 	}
 }
