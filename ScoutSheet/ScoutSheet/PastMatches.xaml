@@ -5,7 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ScoutSheet.PastMatches">
-    <ListView x:Name="MatchesListView" IsPullToRefreshEnabled="True" Refreshing="MatchesListView_Refreshing">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear Database" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="MatchesListView" IsPullToRefreshEnabled="True" Refreshing="MatchesListView_Refreshing" ItemSelected="MatchesListView_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding MatchNumberEntry}"></TextCell>

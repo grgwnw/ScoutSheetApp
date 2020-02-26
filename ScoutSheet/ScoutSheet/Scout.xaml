@@ -5,22 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ScoutSheet.Scout">
-    <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="TextColor" Value="Black"></Setter>
-        </Style>
-        <Style x:Key="Title_Words" TargetType="Label">
-            <Setter Property="FontSize" Value="Large"></Setter>
-            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
-        </Style>
-        <Style x:Key="Prompt_Words" TargetType="Label">
-            <Setter Property="FontSize" Value="Default"></Setter>
-            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>            
-        </Style>
-    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Reset" x:Name="Reset" Clicked="Reset_Clicked" ></ToolbarItem>
+        <ToolbarItem Text="Save" x:Name="SaveData" Clicked="SaveData_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Save and Export" x:Name="Export" Clicked="Export_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <Label Text="Team Number:"></Label>
                 <Entry Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
                 <Label Text="Match Number:"></Label>
                 <Picker x:Name="Match_Type" Title="Click Here to select the match type">

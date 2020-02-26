@@ -25,46 +25,7 @@ namespace ScoutSheet
 			PastMatchesTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Past Matches.png");
 			SettingsTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Settings.png");
 		}
-		private async void Reset_Clicked(object sender, EventArgs e)
-		{
-			if (await DisplayAlert("Are you sure?", "Would you really like to reset data? Unless you saved it, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No")) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
-			{
-				Scouting.ResetData();
-			}
-		}
 
-		private void SaveData_Clicked(object sender, EventArgs e)
-		{
-			try
-			{
-				SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
-				conn.CreateTable<Matches>();
-				int rows = conn.Insert(Scouting.RecordAllData());
-				conn.Close();
-				if (rows > 0)
-				{
-					DisplayAlert("Successful", "Data Store is successful!", "Ok");
-				}
-				else
-				{
-					DisplayAlert("Error", "Something is wrong. Please contact me...", "Ok");
-				}
-			}
-			catch (SQLiteException)
-			{
-				DisplayAlert("Database Error", "Perhaps the match number is the same as a previous entry? Please try again or contact me.", "Ok");
-			}
-		}
-
-		private void Export_Clicked(object sender, EventArgs e)
-		{
-			Scouting.RecordAllData().SerializeCsv();
-			Share.RequestAsync(new ShareFileRequest
-			{
-				Title = Title,
-				File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))
-			});
-		}
 
 		private void Red_Clicked(object sender, EventArgs e)
 		{

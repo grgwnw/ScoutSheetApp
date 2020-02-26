@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ScoutSheet.PastMatchesDetailsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="ToolbarItem_Clicked_1"></ToolbarItem>
+        <ToolbarItem Text="Save" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text ="Team Number"></Label>
+            <Entry x:Name="TeamNumber"></Entry>
+            <Label Text="Match Number"></Label>
+            <Entry x:Name="MatchNumber"></Entry>
+            <Label Text="Scouters"></Label>
+            <Entry x:Name="Scouters"></Entry>
+            <Label Text="FitsUnderTrench"></Label>
+            <Label Text="Defense"></Label>
+            <Label Text="Penalities"></Label>
+            <Label Text="StartingGamePieces"></Label>
+            <Label Text="StartingLocation"></Label>
+            <Label Text="CrossesInitiationLine"></Label>
+            <Label Text="ABallsPickedUp"></Label>
+            <Label Text="ALowerScored"></Label>
+            <Label Text="AOuterScored"></Label>
+            <Label Text="AInnerScored"></Label>
+            <Label Text="AMissedBalls"></Label>
+            <Label Text="AComments"></Label>
+            <Label Text="TBallsFromLoadStation"></Label>
+            <Label Text="TBallsFromFloor"></Label>
+            <Label Text="TLowerScored"></Label>
+            <Label Text="TOuterScored"></Label>
+            <Label Text="TInnerScored"></Label>
+            <Label Text="TMissedBalls"></Label>
+            <Label Text="TShootingLocation"></Label>
+            <Label Text="Rotations"></Label>
+            <Label Text="ColorWheelColor"></Label>
+            <Label Text="TComments"></Label>
+            <Label Text="EndLocation"></Label>
+            <Label Text="EScore"></Label>
+            <Label Text="InitialClimbHeight"></Label>
+            <Label Text="ClimbPosition"></Label>
+            <Label Text="ClimbTime"></Label>
+            <Label Text="EComments"></Label>
+              
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

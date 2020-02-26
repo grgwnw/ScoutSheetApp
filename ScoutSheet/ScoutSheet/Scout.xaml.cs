@@ -1,9 +1,12 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +17,7 @@ namespace ScoutSheet
 	{
         private Matches currentMatch = new Matches();
         private Color ButtonClickedColor = Color.Beige;
+        private Color DefaultColor = Color.Default;
         private Stopwatch timeElapsedClimb = new Stopwatch();
         public Scout()
 	    {
@@ -43,45 +47,45 @@ namespace ScoutSheet
             TeamNumberEntry.Text = "";
             Match_Type.SelectedIndex = 0;
             PowerCellCount.Text = "0/3";
-            ILine.BackgroundColor = Color.Default;
-            StartingLeft.BackgroundColor = Color.Default;
-            StartingMiddle.BackgroundColor = Color.Default;
-            StartingRight.BackgroundColor = Color.Default;
+            ILine.BackgroundColor = DefaultColor;
+            StartingLeft.BackgroundColor = DefaultColor;
+            StartingMiddle.BackgroundColor = DefaultColor;
+            StartingRight.BackgroundColor = DefaultColor;
             ALow.Text = "Low (0)";
             AOuter.Text = "Outer (0)";
             AInner.Text = "Inner (0)";
             AMissed.Text = "Missed (0)";
             APickedUp.Text = "Balls Picked Up (0)";
             ACommentsEntry.Text = "";
-            DefenseButton.BackgroundColor = Color.Default;
+            DefenseButton.BackgroundColor = DefaultColor;
             BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (0)";
-            Rotation.BackgroundColor = Color.Default;
-            ColorWheel.BackgroundColor = Color.Default;
-            UnderTrench.BackgroundColor = Color.Default;
+            Rotation.BackgroundColor = DefaultColor;
+            ColorWheel.BackgroundColor = DefaultColor;
+            UnderTrench.BackgroundColor = DefaultColor;
             PickedUpT.Text = "Balls Picked Up from Floor (0)";
-            Trench.BackgroundColor = Color.Default;
-            Target.BackgroundColor = Color.Default;
-            Other.BackgroundColor = Color.Default;
+            Trench.BackgroundColor = DefaultColor;
+            Target.BackgroundColor = DefaultColor;
+            Other.BackgroundColor = DefaultColor;
             TLow.Text = "Low (0)";
             TOuter.Text = "Outer (0)";
             TInner.Text = "Inner (0)";
             TMissed.Text = "Missed (0)";
             TeleopCommentsEntry.Text = "";
             EScores.Text = "Balls Scored (0)";
-            Park.BackgroundColor = Color.Default;
-            Climb.BackgroundColor = Color.Default;
-            None.BackgroundColor = Color.Default;
+            Park.BackgroundColor = DefaultColor;
+            Climb.BackgroundColor = DefaultColor;
+            None.BackgroundColor = DefaultColor;
             Stopwatch.IsEnabled = true;
             Stopwatch.Text = "Start Stopwatch";
-            LowInitClimb.BorderColor = Color.Default;
-            BallInitClimb.BorderColor = Color.Default;
-            HighInitClimb.BorderColor = Color.Default;
-            EdgeLocation.BackgroundColor = Color.Default;
-            CenterLocation.BackgroundColor = Color.Default;
+            LowInitClimb.BorderColor = DefaultColor;
+            BallInitClimb.BorderColor = DefaultColor;
+            HighInitClimb.BorderColor = DefaultColor;
+            EdgeLocation.BackgroundColor = DefaultColor;
+            CenterLocation.BackgroundColor = DefaultColor;
             ChangeClimb(false);
             EndgameCommentsEntry.Text = "";
-            YellowCard.BackgroundColor = Color.Default;
-            RedCard.BackgroundColor = Color.Default;
+            YellowCard.BackgroundColor = DefaultColor;
+            RedCard.BackgroundColor = DefaultColor;
             timeElapsedClimb = new Stopwatch();
             DisplayAlert("Successful!", "You cleared the data!", "Confirm");
         }
@@ -154,7 +158,7 @@ namespace ScoutSheet
         {
             if (ILine.BackgroundColor == ButtonClickedColor)
             {
-                ILine.BackgroundColor = Color.Default;
+                ILine.BackgroundColor = DefaultColor;
                 return;
             }
             ILine.BackgroundColor = ButtonClickedColor;
@@ -163,9 +167,9 @@ namespace ScoutSheet
         private void Starting_Clicked(object sender, EventArgs e)
         {
 
-            StartingLeft.BackgroundColor = Color.Default; //Color.Default apparently doens't work?
-            StartingMiddle.BackgroundColor = Color.Default;
-            StartingRight.BackgroundColor = Color.Default;
+            StartingLeft.BackgroundColor = DefaultColor; //DefaultColor apparently doens't work?
+            StartingMiddle.BackgroundColor = DefaultColor;
+            StartingRight.BackgroundColor = DefaultColor;
             currentMatch.StartingLocation = ((Button)sender).Text;
             ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
@@ -203,7 +207,7 @@ namespace ScoutSheet
         {
             if (DefenseButton.BackgroundColor == ButtonClickedColor)
             {
-                DefenseButton.BackgroundColor = Color.Default;
+                DefenseButton.BackgroundColor = DefaultColor;
                 return;
             }
             DefenseButton.BackgroundColor = ButtonClickedColor;
@@ -217,7 +221,7 @@ namespace ScoutSheet
         {
             if (((Button)sender).BackgroundColor == ButtonClickedColor)
             {
-                ((Button)sender).BackgroundColor = Color.Default;
+                ((Button)sender).BackgroundColor = DefaultColor;
                 return;
             }
             ((Button)sender).BackgroundColor = ButtonClickedColor;
@@ -227,7 +231,7 @@ namespace ScoutSheet
         {
             if (((Button)sender).BackgroundColor == ButtonClickedColor)
             {
-                ((Button)sender).BackgroundColor = Color.Default;
+                ((Button)sender).BackgroundColor = DefaultColor;
                 return;
             }
             ((Button)sender).BackgroundColor = ButtonClickedColor;
@@ -267,7 +271,7 @@ namespace ScoutSheet
         {
             if (YellowCard.BackgroundColor == Color.Yellow)
             {
-                YellowCard.BackgroundColor = Color.Default;
+                YellowCard.BackgroundColor = DefaultColor;
                 return;
             }
             YellowCard.BackgroundColor = Color.Yellow;
@@ -277,7 +281,7 @@ namespace ScoutSheet
         {
             if (RedCard.BackgroundColor == Color.Red)
             {
-                RedCard.BackgroundColor = Color.Default;
+                RedCard.BackgroundColor = DefaultColor;
                 return;
             }
             RedCard.BackgroundColor = Color.Red;
@@ -287,7 +291,7 @@ namespace ScoutSheet
         {
             if (Rotation.BackgroundColor == ButtonClickedColor)
             {
-                Rotation.BackgroundColor = Color.Default;
+                Rotation.BackgroundColor = DefaultColor;
                 return;
             }
             Rotation.BackgroundColor = ButtonClickedColor;
@@ -295,9 +299,9 @@ namespace ScoutSheet
         //Shooting is th button name and TShootingLocation is the property
         private void Shooting_Location(object sender, EventArgs e) 
         {
-            Trench.BackgroundColor = Color.Default; //DEFAULT COLOR!!!!!!
-            Target.BackgroundColor = Color.Default;
-            Other.BackgroundColor = Color.Default;
+            Trench.BackgroundColor = DefaultColor; //DEFAULT COLOR!!!!!!
+            Target.BackgroundColor = DefaultColor;
+            Other.BackgroundColor = DefaultColor;
             currentMatch.TShootingLocation = ((Button)sender).Text;
             ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
@@ -325,9 +329,9 @@ namespace ScoutSheet
 
         private void EndLocation_Clicked(object sender, EventArgs e)
         {
-            Park.BackgroundColor = Color.Default;
-            Climb.BackgroundColor = Color.Default;
-            None.BackgroundColor = Color.Default;
+            Park.BackgroundColor = DefaultColor;
+            Climb.BackgroundColor = DefaultColor;
+            None.BackgroundColor = DefaultColor;
             ((Button)sender).BackgroundColor = ButtonClickedColor;
             currentMatch.EndLocation = ((Button)sender).Text;
             if (((Button)sender).Text == "Climb") { ChangeClimb(true); }
@@ -349,11 +353,54 @@ namespace ScoutSheet
 
         private void ClimbLocation_Clicked(object sender, EventArgs e)
         {
-            EdgeLocation.BackgroundColor = Color.Default;
-            MiddleBarLocation.BackgroundColor = Color.Default;
-            CenterLocation.BackgroundColor = Color.Default;
+            EdgeLocation.BackgroundColor = DefaultColor;
+            MiddleBarLocation.BackgroundColor = DefaultColor;
+            CenterLocation.BackgroundColor = DefaultColor;
             currentMatch.ClimbPosition = ((Button)sender).Text;
             ((Button)sender).BackgroundColor = ButtonClickedColor;
+        }
+        private async void Reset_Clicked(object sender, EventArgs e)
+        {
+            if (await DisplayAlert("Are you sure?", "Would you really like to reset data? Unless you saved it, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No")) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
+            {
+                ResetData();
+            }
+        }
+
+        private async void SaveData_Clicked(object sender, EventArgs e)
+        {
+            SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+            conn.CreateTable<Matches>();
+            int rows = conn.Insert(RecordAllData()); //KEY DOESN'T WORRRRRKKKKK!!!!!!!
+            if (rows > 0)
+            {
+                await DisplayAlert("Successful", "Data Store is successful!", "Ok");
+            }
+            else
+            {
+                await DisplayAlert("Error", "Something is wrong. Please contact me...", "Ok");
+            }
+            //}
+            //catch (SQLiteException)
+            //{
+            //	if (await DisplayAlert("Are you sure?", "Would you like to override match number " + Scouting.RecordAllData().MatchNumberEntry + "?", "Yes", "No"))
+            //	{
+            //		conn.Update(Scouting.RecordAllData());
+            //		await DisplayAlert("Match info updated!", "Match number " + Scouting.RecordAllData().MatchNumberEntry + "updated! Please update past matches.", "Ok");
+            //	}
+            //}
+            conn.Dispose();
+        }
+
+        private void Export_Clicked(object sender, EventArgs e)
+        {
+            SaveData_Clicked(sender, e);
+            RecordAllData().SerializeCsv();
+            Share.RequestAsync(new ShareFileRequest
+            {
+                Title = Title,
+                File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))
+            });
         }
     }
 }
