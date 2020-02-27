@@ -398,8 +398,11 @@ namespace ScoutSheet
             RecordAllData().SerializeCsv();
             await Share.RequestAsync(new ShareFileRequest
             {
-                Title = Title,
-                File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))
+                Title = "Title",
+                File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv")),
+                PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
+                            ? new System.Drawing.Rectangle(0, 20, 50, 40)
+                            : System.Drawing.Rectangle.Empty
             });
         }
     }
