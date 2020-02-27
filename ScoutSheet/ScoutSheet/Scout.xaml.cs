@@ -392,11 +392,11 @@ namespace ScoutSheet
             conn.Dispose();
         }
 
-        private void Export_Clicked(object sender, EventArgs e)
+        private async void Export_Clicked(object sender, EventArgs e)
         {
             SaveData_Clicked(sender, e);
             RecordAllData().SerializeCsv();
-            Share.RequestAsync(new ShareFileRequest
+            await Share.RequestAsync(new ShareFileRequest
             {
                 Title = Title,
                 File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))
