@@ -13,31 +13,36 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="Team Number:"></Label>
-                <Entry Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
-                <Label Text="Match Number:"></Label>
-                <Picker x:Name="Match_Type" Title="Click Here to select the match type">
-                </Picker>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
-                <Entry Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
-                <Label Text="Scouters" x:Name="ScouterEntry"></Label>
-                <Entry></Entry>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
-                <Image x:Name="PowerCellPhoto" Aspect="AspectFill" HorizontalOptions="FillAndExpand"></Image>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
-                <Label x:Name="PowerCellCount" Text="0/3"></Label> <!--Set Text in C#!-->
+                <StackLayout>
+                    <Label Text="Team Number:"></Label>
+                    <Entry Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
+                    <Label Text="Match Number:"></Label>
+                    <Picker x:Name="Match_Type" Title="Click Here to select the match type">
+                    </Picker>
+                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
+                    <Entry Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
+                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
+                    <Label Text="Scouters" x:Name="ScouterEntry"></Label>
+                    <Entry></Entry>
+                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
+                    <Image x:Name="PowerCellPhoto" Aspect="AspectFit" ></Image>
+                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
+                    <Label x:Name="PowerCellCount" Text="0/3"></Label>
+                </StackLayout>
                 <Label Text="Autonomous" FontSize="Large" HorizontalTextAlignment="Center"></Label>
-                <Image x:Name="Field" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image> <!--Set the source in C#!!!-->
-                <Button Text="Crosses Initiation Line" x:Name="ILine" Clicked="ILine_Clicked"></Button>
-                <Button Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                <Button Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                <Button Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                <Button Text="Low (0)" x:Name ="ALow" Clicked="ALow_Clicked"></Button>
-                <Button Text="Outer (0)" x:Name="AOuter" Clicked="AOuter_Clicked"></Button>
-                <Button Text="Inner (0)" x:Name="AInner" Clicked="AInner_Clicked"></Button>
-                <Button Text="Missed (0)" x:Name="AMissed" Clicked="AMissed_Clicked"></Button>
-                <Button Text="Balls Picked Up (0)" x:Name="APickedUp" Clicked="APickedUp_Clicked"></Button>
+                <StackLayout>
+                    <Image x:Name="Field" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
+                    <!--Set the source in C#!!!-->
+                    <Button Text="Crosses Initiation Line" x:Name="ILine" Clicked="ILine_Clicked"></Button>
+                    <Button Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Text="Low (0)" x:Name ="ALow" Clicked="ALow_Clicked"></Button>
+                    <Button Text="Outer (0)" x:Name="AOuter" Clicked="AOuter_Clicked"></Button>
+                    <Button Text="Inner (0)" x:Name="AInner" Clicked="AInner_Clicked"></Button>
+                    <Button Text="Missed (0)" x:Name="AMissed" Clicked="AMissed_Clicked"></Button>
+                    <Button Text="Balls Picked Up (0)" x:Name="APickedUp" Clicked="APickedUp_Clicked"></Button>
+                </StackLayout>
                 <Label Text="Comments"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
                 <Entry x:Name="ACommentsEntry"></Entry>

@@ -52,7 +52,7 @@ namespace ScoutSheet
 			EComments.Text = match.EComments;
 		}
 
-		private void ToolbarItem_Clicked(object sender, EventArgs e)
+		private async void ToolbarItem_Clicked(object sender, EventArgs e)
 		{
 			try
 			{
@@ -90,25 +90,32 @@ namespace ScoutSheet
 			}
 			catch (FormatException)
 			{
-				DisplayAlert("Not a number", "One of your data entries coult not be converted to a number. Please check again", "Ok");
+				await DisplayAlert("Not a number", "One of your data entries coult not be converted to a number. Please check again", "Ok");
 			}
 			using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
 			{
 				conn.CreateTable<Matches>();
 				int rows = conn.InsertOrReplace(matchReference);
+				await DisplayAlert("Saved!", "Match number " + matchReference.MatchNumberEntry + " was updated", "Ok!");
 			}
+			await Application.Current.MainPage.Navigation.PopAsync();
 		}
 
-		private void ToolbarItem_Clicked_1(object sender, EventArgs e)
+		private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
 		{
 			using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
 			{
-				conn.CreateTable<Matches>();
-				int rows = conn.Delete(matchReference);
+				if (await DisplayAlert("Are you sure?", "Would you really like to delete the match? Unless you saved another copy, there is no way of retrieving the data!!!! Proceed with caution.", "Yes", "No")) //Somehow get the boolean out of option and true = yes, false = no... Seriously, it doesn't work atmm...
+				{
+					conn.CreateTable<Matches>();
+					int rows = conn.Delete(matchReference);
+				}
 			}
+			await DisplayAlert("Success", "Updated the match!", "Ok!");
+			await Application.Current.MainPage.Navigation.PopAsync(); //Test out this? Make sure that you are able to remove the page...
 		}
 
-		private void ToolbarItem_Clicked_2(object sender, EventArgs e)
+		private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
 		{
 			matchReference.TeamNumber = TeamNumber.Text;
 			matchReference.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
@@ -142,7 +149,7 @@ namespace ScoutSheet
 			matchReference.ClimbTime = ClimbTime.Text;
 			matchReference.EComments = EComments.Text;
 			matchReference.SerializeCsv();
-			Share.RequestAsync(new ShareFileRequest
+			await Share.RequestAsync(new ShareFileRequest
 			{
 				Title = Title,
 				File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv"))

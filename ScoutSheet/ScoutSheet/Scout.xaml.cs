@@ -17,7 +17,7 @@ namespace ScoutSheet
 	{
         private Matches currentMatch = new Matches();
         private Color ButtonClickedColor = Color.Beige;
-        private Color DefaultColor = Color.Default;
+        private Color DefaultColor = (Device.RuntimePlatform == Device.Android)? Color.FromRgb(214,215,215):Color.White;
         private Stopwatch timeElapsedClimb = new Stopwatch();
         public Scout()
 	    {
