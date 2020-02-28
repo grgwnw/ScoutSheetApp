@@ -3,13 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local ="clr-namespace:ScoutSheet"
              x:Class="ScoutSheet.MainPage">
-    <TabbedPage.ToolbarItems>
-        <ToolbarItem Text="Red" x:Name="Red" Clicked="Red_Clicked"></ToolbarItem>
-        <ToolbarItem Text="Blue" x:Name="Blue" Clicked="Blue_Clicked"></ToolbarItem>
-
-    </TabbedPage.ToolbarItems>
     <local:Scout Title="Scout" x:Name ="Scouting" IconImageSource=""> <!--PLEASE INPUT ICON SOURCES-->
-        
     </local:Scout>
     <local:PastMatches x:Name ="PastMatchesTab" Title="Past Matches" IconImageSource=""> <!--PLEASE INPUT ICON SOURCES-->
         

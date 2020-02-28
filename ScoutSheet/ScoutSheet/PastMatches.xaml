@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="ScoutSheet.PastMatches">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Export All" Clicked="ToolbarItem_Clicked_1"></ToolbarItem>
         <ToolbarItem Text="Clear Database" Clicked="ToolbarItem_Clicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ListView x:Name="MatchesListView" IsPullToRefreshEnabled="True" Refreshing="MatchesListView_Refreshing" ItemSelected="MatchesListView_ItemSelected">

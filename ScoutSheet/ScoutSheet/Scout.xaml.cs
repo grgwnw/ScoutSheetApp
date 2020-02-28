@@ -39,7 +39,7 @@ namespace ScoutSheet
             LowInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Low.png", assembly);
             BallInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Level.png", assembly);
             HighInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End High.png", assembly);
-            None.BackgroundColor = ButtonClickedColor;
+            None.BackgroundColor = ButtonClickedColor;            
         }
         public void ResetData()
         {
@@ -380,15 +380,6 @@ namespace ScoutSheet
             {
                 await DisplayAlert("Error", "Something is wrong. Please contact me...", "Ok");
             }
-            //}
-            //catch (SQLiteException)
-            //{
-            //	if (await DisplayAlert("Are you sure?", "Would you like to override match number " + Scouting.RecordAllData().MatchNumberEntry + "?", "Yes", "No"))
-            //	{
-            //		conn.Update(Scouting.RecordAllData());
-            //		await DisplayAlert("Match info updated!", "Match number " + Scouting.RecordAllData().MatchNumberEntry + "updated! Please update past matches.", "Ok");
-            //	}
-            //}
             conn.Dispose();
         }
 
@@ -399,11 +390,18 @@ namespace ScoutSheet
             await Share.RequestAsync(new ShareFileRequest
             {
                 Title = "Title",
-                File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv")),
-                PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
-                            ? new System.Drawing.Rectangle(0, 20, 50, 40)
-                            : System.Drawing.Rectangle.Empty
+                File = new ShareFile(Path.Combine(App.folderPathSave, RecordAllData().Scouters + RecordAllData().MatchNumberEntry + ".csv")),
+                PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet ? new System.Drawing.Rectangle(0, 20, 50, 40) : System.Drawing.Rectangle.Empty
             });
+        }
+        private void Red_Clicked(object sender, EventArgs e)
+        {
+            App.ChangeColor(Color.Red);
+        }
+
+        private void Blue_Clicked(object sender, EventArgs e)
+        {
+            App.ChangeColor(Color.Blue);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ScoutSheet
 {
 	public class Matches
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey, AutoIncrement, CsvHelper.Configuration.Attributes.Ignore]
         public int Id { get; set; } //WHY DOESN'T THIS AUTOINCREMENT????????s
         public string TeamNumber { get; set; } = "";
         public int MatchNumberEntry { get; set; } = 0; //AutoIncrement. Do we need to have this as a user option
@@ -59,7 +59,7 @@ namespace ScoutSheet
         public void SerializeCsv()
         {
             var records = new List<Matches>{this};
-            using (var writer = new StreamWriter(Path.Combine(App.folderPathSave,"Test.csv")))
+            using (var writer = new StreamWriter(Path.Combine(App.folderPathSave, Scouters + MatchNumberEntry + ".csv")))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 csv.WriteRecords(records);

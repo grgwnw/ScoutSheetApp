@@ -60,7 +60,7 @@ namespace ScoutSheet
 				matchReference.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
 				matchReference.FitsUnderTrench = Trench.Text;
 				matchReference.Scouters = Scouters.Text;
-				matchReference.Defense = Scouters.Text;
+				matchReference.Defense = Defense.Text;
 				matchReference.Penalities = Penalties.Text;
 				matchReference.StartingGamePieces = Int32.Parse(StartingGamePieces.Text);
 				matchReference.StartingLocation = StartingLocation.Text;
@@ -109,10 +109,12 @@ namespace ScoutSheet
 				{
 					conn.CreateTable<Matches>();
 					int rows = conn.Delete(matchReference);
+					await DisplayAlert("Success", "Updated the match!", "Ok!");
+					await Application.Current.MainPage.Navigation.PopAsync(); //Test out this? Make sure that you are able to remove the page...
+					return;
 				}
 			}
-			await DisplayAlert("Success", "Updated the match!", "Ok!");
-			await Application.Current.MainPage.Navigation.PopAsync(); //Test out this? Make sure that you are able to remove the page...
+			
 		}
 
 		private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
@@ -121,7 +123,7 @@ namespace ScoutSheet
 			matchReference.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
 			matchReference.FitsUnderTrench = Trench.Text;
 			matchReference.Scouters = Scouters.Text;
-			matchReference.Defense = Scouters.Text;
+			matchReference.Defense = Defense.Text;
 			matchReference.Penalities = Penalties.Text;
 			matchReference.StartingGamePieces = Int32.Parse(StartingGamePieces.Text);
 			matchReference.StartingLocation = StartingLocation.Text;
@@ -152,7 +154,7 @@ namespace ScoutSheet
 			await Share.RequestAsync(new ShareFileRequest
 			{
 				Title = Title,
-				File = new ShareFile(Path.Combine(App.folderPathSave, "Test.csv")),
+				File = new ShareFile(Path.Combine(App.folderPathSave, matchReference.Scouters + matchReference.MatchNumberEntry + ".csv")),
 				PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet? new System.Drawing.Rectangle(0, 20, 50, 40): System.Drawing.Rectangle.Empty
 			});
 		}

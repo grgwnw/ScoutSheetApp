@@ -25,16 +25,9 @@ namespace ScoutSheet
 			PastMatchesTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Past Matches.png");
 			SettingsTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Settings.png");
 		}
-
-
-		private void Red_Clicked(object sender, EventArgs e)
+		public void SetBarColor(Color color)
 		{
-			BarBackgroundColor = Color.Red;
-		}
-
-		private void Blue_Clicked(object sender, EventArgs e)
-		{
-			BarBackgroundColor = Color.Blue;
+			BarBackgroundColor = color;
 		}
 	}
 }
