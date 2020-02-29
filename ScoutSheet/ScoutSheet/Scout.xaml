@@ -13,22 +13,38 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <StackLayout>
+                <Label Text="Match Info"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
                     <Label Text="Team Number:"></Label>
-                    <Entry Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
-                    <Label Text="Match Number:"></Label>
-                    <Picker x:Name="Match_Type" Title="Click Here to select the match type">
-                    </Picker>
-                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
-                    <Entry Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
-                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
-                    <Label Text="Scouters" x:Name="ScouterEntry"></Label>
-                    <Entry></Entry>
-                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
-                    <Image x:Name="PowerCellPhoto" Aspect="AspectFit" ></Image>
-                    <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
-                    <Label x:Name="PowerCellCount" Text="0/3"></Label>
-                </StackLayout>
+                    <Entry Grid.Column="1" Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
+                    <Label Grid.Row ="1" Grid.Column="0" Text="Match Number:"></Label>
+                    <Entry Grid.Column="2" Grid.Row="1" Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
+                    <Picker Grid.Row="2" x:Name="Match_Type" Title="Click Here to select the match type"></Picker>
+                    <Button Grid.Row ="1" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
+                    <Button Grid.Column="3" Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
+                    <Label Text="Scouters" x:Name="ScouterEntry" Grid.Row="3"></Label>
+                    <Entry Grid.Row ="3" Grid.Column="1"></Entry>
+                    <Button Grid.Row ="4"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
+                    <Image Grid.Row ="4" Grid.Column="1" x:Name="PowerCellPhoto" Aspect="AspectFit" ></Image>
+                    <Button Grid.Row ="4" Grid.Column="2"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
+                    <Label Grid.Row="5" x:Name="PowerCellCount" Text="0/  3"></Label>
+                </Grid>
                 <Label Text="Autonomous" FontSize="Large" HorizontalTextAlignment="Center"></Label>
                 <StackLayout>
                     <Image x:Name="Field" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
@@ -46,6 +62,7 @@
                 <Label Text="Comments"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
                 <Entry x:Name="ACommentsEntry"></Entry>
+                <!-- Teleop-->
                 <Label Text="Tele-Op"></Label>
                 <Image x:Name="Field2" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
                 <Button Text="Plays Defense" x:Name="DefenseButton" Clicked="Defense_Clicked"></Button>
@@ -64,15 +81,14 @@
                 <Label Text="Comments"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
                 <Entry x:Name="TeleopCommentsEntry"></Entry>
+                <!--EndGame -->
                 <Label Text="Endgame"></Label>
                 <Image x:Name="Field3" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
-                <!--Set the source in C#!!!-->
                 <Button Text="Balls Scored(0)" x:Name="EScores" Clicked="EScores_Clicked"></Button>
                 <Button Text="Park" x:Name="Park" BackgroundColor ="Default" Clicked="EndLocation_Clicked"></Button>
                 <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
                 <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
                 <Button Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>
-                <!--Same Thing with initial climb height I guess-->
                 <Label Text="Initial Climb Height" x:Name="InitialClimbHeightLabel"></Label>
                 <ImageButton x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
                 <ImageButton x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>

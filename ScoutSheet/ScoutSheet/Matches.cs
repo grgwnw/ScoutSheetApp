@@ -52,10 +52,6 @@ namespace ScoutSheet
         {
 
         }
-        public bool equals(Matches match)
-        {
-            return (this.ABallsPickedUp == match.ABallsPickedUp && this.AComments == match.AComments && this.AInnerScored == match.AInnerScored && this.ALowerScored == match.ALowerScored && this.AMissedBalls == match.AMissedBalls && this.AOuterScored == match.AOuterScored && this.ClimbPosition == match.ClimbPosition && this.ClimbTime == match.ClimbTime && this.ColorWheelColor == match.ColorWheelColor && this.CrossesInitiationLine == match.CrossesInitiationLine && this.Defense == match.Defense);
-        }
         public void SerializeCsv()
         {
             var records = new List<Matches>{this};
