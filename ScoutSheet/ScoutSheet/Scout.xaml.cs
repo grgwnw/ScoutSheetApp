@@ -19,6 +19,7 @@ namespace ScoutSheet
         private Color ButtonClickedColor = Color.Beige;
         private Color DefaultColor = (Device.RuntimePlatform == Device.Android)? Color.FromRgb(214,215,215):Color.White;
         private Stopwatch timeElapsedClimb = new Stopwatch();
+        public Entry TeamNumberEntry = new Entry();
         public Scout()
 	    {
             InitializeComponent();
@@ -31,6 +32,13 @@ namespace ScoutSheet
             Match_Type.ItemsSource = MatchTypeList;
 			var assembly = typeof(MainPage);
             Image PowerCellPhoto = new Image();
+            Entry scouter = new Entry();
+            TeamNumberEntry.Placeholder = "Enter Team Number Here";
+            TeamNumberEntry.Margin = new Thickness(110, 0, 0, 0);
+            MatchInfo.Children.Add(TeamNumberEntry, 0, 3, 0, 1);
+            scouter.Placeholder = "Scouters";
+            scouter.Margin = new Thickness(80,0,0,0);
+            MatchInfo.Children.Add(scouter, 0, 3, 3, 4);
 			PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
 			Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field2.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);

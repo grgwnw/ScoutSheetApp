@@ -13,13 +13,14 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="Match Info" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
+                <Label Text="Match Info" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold" ></Label>
+                
                 <Grid x:Name="MatchInfo" BackgroundColor="LightGray" Padding="15">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="20"></RowDefinition>
-                        <RowDefinition Height="20"></RowDefinition>
-                        <RowDefinition Height="20"></RowDefinition>
-                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -31,37 +32,68 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Text="Team Number:"></Label>
-                    <Entry Grid.Column="2" Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>
-                    <Label Grid.Row ="1" Grid.Column="0" Text="Match Number:"></Label>
+                    <Label Text="Team Number:" VerticalOptions="Center"></Label>
+                    <!--<Entry Grid.Column="2" Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>-->
+                    <Label VerticalOptions="Center" Grid.Row ="1" Grid.Column="0" Text="Match Number:"></Label>
                     <Entry Grid.Column="2" Grid.Row="1" Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
                     <Picker Grid.Row="2" x:Name="Match_Type" Title="Click Here to select the match type"></Picker>
-                    <Button Grid.Row ="1" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
-                    <Button Grid.Column="3" Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
-                    <Label Text="Scouters:" x:Name="ScouterEntry" Grid.Row="3"></Label>
-                    <Entry Grid.Row ="3" Grid.Column="2"></Entry>
-                    <Button Grid.Row ="1" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
+                    <Button Grid.Row ="1" Grid.Column="3" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
+                    <Button Grid.Column="1" Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
+                    <Label VerticalOptions="Center" Text="Scouters:" x:Name="ScouterEntry" Grid.Row="3"></Label>
+                    <!--<Entry Grid.Row ="3" Grid.Column="0" Margin="100,0,0,0" ></Entry>-->
+                    <Button Grid.Row ="1" Grid.Column="6" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
                     <!--<Image Grid.Row ="3" Grid.Column="5" x:Name="PowerCellPhoto" Aspect="AspectFit" ></Image>-->
-                    <Button Grid.Row ="1" Grid.Column="6"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
+                    <Button Grid.Row ="1" Grid.Column="4"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
                     <Label Grid.Row="4" Grid.Column="5" HorizontalOptions="CenterAndExpand" x:Name="PowerCellCount" Text="0/3"></Label>
                 </Grid>
-                <Label Text="Autonomous" FontSize="Large" HorizontalTextAlignment="Center"></Label>
-                <StackLayout>
-                    <Image x:Name="Field" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
-                    <!--Set the source in C#!!!-->
-                    <Button Text="Crosses Initiation Line" x:Name="ILine" Clicked="ILine_Clicked"></Button>
-                    <Button Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                    <Button Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                    <Button Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                    <Button Text="Low (0)" x:Name ="ALow" Clicked="ALow_Clicked"></Button>
-                    <Button Text="Outer (0)" x:Name="AOuter" Clicked="AOuter_Clicked"></Button>
-                    <Button Text="Inner (0)" x:Name="AInner" Clicked="AInner_Clicked"></Button>
-                    <Button Text="Missed (0)" x:Name="AMissed" Clicked="AMissed_Clicked"></Button>
-                    <Button Text="Balls Picked Up (0)" x:Name="APickedUp" Clicked="APickedUp_Clicked"></Button>
-                </StackLayout>
-                <Label Text="Comments"></Label>
+                <Label Text="Autonomous" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>            
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Field" Grid.ColumnSpan="15" Grid.RowSpan="12"></Image>
+                    <Button Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="3" Text="Crosses Initiation Line" x:Name="ILine" Clicked="ILine_Clicked"></Button>
+                    <Button Grid.Row="4" Grid.Column="11" Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Grid.Row="6" Grid.Column="11" Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Grid.Row="8" Grid.Column="11" Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Text="Low (0)" x:Name ="ALow" Clicked="ALow_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer (0)" x:Name="AOuter" Clicked="AOuter_Clicked"></Button>
+                    <Button Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner (0)" x:Name="AInner" Clicked="AInner_Clicked"></Button>
+                    <Button Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed (0)" x:Name="AMissed" Clicked="AMissed_Clicked"></Button>
+                    <Button Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="3" Text="Balls Picked Up (0)" x:Name="APickedUp" Clicked="APickedUp_Clicked"></Button>
+                    
+                </Grid>
+                <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <Entry x:Name="ACommentsEntry"></Entry>
+                <Entry Placeholder="Enter your comments here..." x:Name="ACommentsEntry"></Entry>
                 <!-- Teleop-->
                 <Label Text="Tele-Op"></Label>
                 <Image x:Name="Field2" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
