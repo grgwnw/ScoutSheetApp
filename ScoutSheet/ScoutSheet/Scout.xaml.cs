@@ -359,6 +359,9 @@ namespace ScoutSheet
             CenterLocation.IsVisible = value;
             Bar_Thingy.IsVisible = value;
             Stopwatch.IsVisible = value;
+            BalanceClimb.IsVisible = value;
+            LowClimb.IsVisible = value;
+            HighClimb.IsVisible = value;
         }
 
         private void ClimbLocation_Clicked(object sender, EventArgs e)
