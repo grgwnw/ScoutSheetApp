@@ -69,7 +69,7 @@ namespace ScoutSheet
             ACommentsEntry.Text = "";
             DefenseButton.BackgroundColor = DefaultColor;
             BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (0)";
-            Rotation.BackgroundColor = DefaultColor;
+            RotationButton.BackgroundColor = DefaultColor;
             ColorWheel.BackgroundColor = DefaultColor;
             UnderTrench.BackgroundColor = DefaultColor;
             PickedUpT.Text = "Balls Picked Up from Floor (0)";
@@ -123,7 +123,7 @@ namespace ScoutSheet
             currentMatch.EScore = GetParenthesisValue(EScores.Text);
             currentMatch.EComments = EndgameCommentsEntry.Text;
             currentMatch.Penalities = (YellowCard.BackgroundColor == Color.Yellow && RedCard.BackgroundColor == Color.Red)? "Yellow and Red": (YellowCard.BackgroundColor == Color.Yellow)? "Yellow" : (RedCard.BackgroundColor == Color.Red)? "Red" : "None";
-            currentMatch.Rotations = Rotation.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
+            currentMatch.Rotations = RotationButton.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
             currentMatch.ClimbTime = "" + (timeElapsedClimb.ElapsedMilliseconds / 1000) + "." + (timeElapsedClimb.ElapsedMilliseconds % 1000);
             if (LowInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Low";
             if (BallInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Middle";
@@ -299,12 +299,12 @@ namespace ScoutSheet
         //Rotation is the button name and Rotations is the property
         private void Rotation_Clicked(object sender, EventArgs e)
         {
-            if (Rotation.BackgroundColor == ButtonClickedColor)
+            if (RotationButton.BackgroundColor == ButtonClickedColor)
             {
-                Rotation.BackgroundColor = DefaultColor;
+                RotationButton.BackgroundColor = DefaultColor;
                 return;
             }
-            Rotation.BackgroundColor = ButtonClickedColor;
+            RotationButton.BackgroundColor = ButtonClickedColor;
         }
         //Shooting is th button name and TShootingLocation is the property
         private void Shooting_Location(object sender, EventArgs e) 
