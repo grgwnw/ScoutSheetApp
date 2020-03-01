@@ -30,6 +30,7 @@ namespace ScoutSheet
             };
             Match_Type.ItemsSource = MatchTypeList;
 			var assembly = typeof(MainPage);
+            Image PowerCellPhoto = new Image();
 			PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
 			Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field2.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
@@ -39,7 +40,9 @@ namespace ScoutSheet
             LowInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Low.png", assembly);
             BallInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Level.png", assembly);
             HighInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End High.png", assembly);
-            None.BackgroundColor = ButtonClickedColor;            
+            None.BackgroundColor = ButtonClickedColor;
+            PowerCellPhoto.Aspect = Aspect.AspectFit;
+            MatchInfo.Children.Add(PowerCellPhoto,4,7,0,4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
         }
         public void ResetData()
         {
