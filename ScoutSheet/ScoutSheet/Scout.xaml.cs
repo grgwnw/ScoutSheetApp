@@ -12,16 +12,16 @@ using Xamarin.Forms.Xaml;
 
 namespace ScoutSheet
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Scout : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Scout : ContentPage
+    {
         private Matches currentMatch = new Matches();
         private Color ButtonClickedColor = Color.Beige;
-        private Color DefaultColor = (Device.RuntimePlatform == Device.Android)? Color.FromRgb(214,215,215):Color.White;
+        private Color DefaultColor = (Device.RuntimePlatform == Device.Android) ? Color.FromRgb(214, 215, 215) : Color.White;
         private Stopwatch timeElapsedClimb = new Stopwatch();
         public Entry TeamNumberEntry = new Entry();
         public Scout()
-	    {
+        {
             InitializeComponent();
             List<string> MatchTypeList = new List<string>
             {
@@ -30,17 +30,17 @@ namespace ScoutSheet
                 "Semifinals"
             };
             Match_Type.ItemsSource = MatchTypeList;
-			var assembly = typeof(MainPage);
+            var assembly = typeof(MainPage);
             Image PowerCellPhoto = new Image();
             Entry scouter = new Entry();
             TeamNumberEntry.Placeholder = "Enter Team Number Here";
             TeamNumberEntry.Margin = new Thickness(110, 0, 0, 0);
             MatchInfo.Children.Add(TeamNumberEntry, 0, 3, 0, 1);
             scouter.Placeholder = "Scouters";
-            scouter.Margin = new Thickness(80,0,0,0);
+            scouter.Margin = new Thickness(80, 0, 0, 0);
             MatchInfo.Children.Add(scouter, 0, 3, 3, 4);
-			PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
-			Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
+            PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
+            Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field2.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Bar_Thingy.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.Climb Position.png", assembly);
             currentMatch.MatchNumberEntry = 0;
@@ -49,7 +49,7 @@ namespace ScoutSheet
             HighInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End High.png", assembly);
             None.BackgroundColor = ButtonClickedColor;
             PowerCellPhoto.Aspect = Aspect.AspectFit;
-            MatchInfo.Children.Add(PowerCellPhoto,4,7,0,4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
+            MatchInfo.Children.Add(PowerCellPhoto, 4, 7, 0, 4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
         }
         public void ResetData()
         {
@@ -69,7 +69,7 @@ namespace ScoutSheet
             ACommentsEntry.Text = "";
             DefenseButton.BackgroundColor = DefaultColor;
             BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (0)";
-            Rotation.BackgroundColor = DefaultColor;
+            RotationButton.BackgroundColor = DefaultColor;
             ColorWheel.BackgroundColor = DefaultColor;
             UnderTrench.BackgroundColor = DefaultColor;
             PickedUpT.Text = "Balls Picked Up from Floor (0)";
@@ -99,19 +99,20 @@ namespace ScoutSheet
             timeElapsedClimb = new Stopwatch();
             DisplayAlert("Successful!", "You cleared the data!", "Confirm");
         }
-		public Matches RecordAllData() { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
+        public Matches RecordAllData()
+        { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
             currentMatch.TeamNumber = TeamNumberEntry.Text;
             currentMatch.Scouters = ScouterEntry.Text;
             currentMatch.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
             currentMatch.StartingGamePieces = Int32.Parse(PowerCellCount.Text.Substring(0, 1));
-            currentMatch.CrossesInitiationLine = ((ILine.BackgroundColor) == ButtonClickedColor)? "Yes":"No";
+            currentMatch.CrossesInitiationLine = ((ILine.BackgroundColor) == ButtonClickedColor) ? "Yes" : "No";
             currentMatch.ALowerScored = GetParenthesisValue(ALow.Text);
             currentMatch.AOuterScored = GetParenthesisValue(AOuter.Text);
             currentMatch.AInnerScored = GetParenthesisValue(AInner.Text);
             currentMatch.AMissedBalls = GetParenthesisValue(AMissed.Text);
             currentMatch.AComments = ACommentsEntry.Text;
             currentMatch.ABallsPickedUp = GetParenthesisValue(APickedUp.Text);
-            currentMatch.Defense = DefenseButton.BackgroundColor == ButtonClickedColor? "Yes" : "No";
+            currentMatch.Defense = DefenseButton.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
             currentMatch.TBallsFromLoadStation = GetParenthesisValue(BallsFromLoadingStationTeleop.Text);
             currentMatch.FitsUnderTrench = UnderTrench.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
             currentMatch.TLowerScored = GetParenthesisValue(TLow.Text);
@@ -122,8 +123,8 @@ namespace ScoutSheet
             currentMatch.TComments = TeleopCommentsEntry.Text;
             currentMatch.EScore = GetParenthesisValue(EScores.Text);
             currentMatch.EComments = EndgameCommentsEntry.Text;
-            currentMatch.Penalities = (YellowCard.BackgroundColor == Color.Yellow && RedCard.BackgroundColor == Color.Red)? "Yellow and Red": (YellowCard.BackgroundColor == Color.Yellow)? "Yellow" : (RedCard.BackgroundColor == Color.Red)? "Red" : "None";
-            currentMatch.Rotations = Rotation.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
+            currentMatch.Penalities = (YellowCard.BackgroundColor == Color.Yellow && RedCard.BackgroundColor == Color.Red) ? "Yellow and Red" : (YellowCard.BackgroundColor == Color.Yellow) ? "Yellow" : (RedCard.BackgroundColor == Color.Red) ? "Red" : "None";
+            currentMatch.Rotations = RotationButton.BackgroundColor == ButtonClickedColor ? "Yes" : "No";
             currentMatch.ClimbTime = "" + (timeElapsedClimb.ElapsedMilliseconds / 1000) + "." + (timeElapsedClimb.ElapsedMilliseconds % 1000);
             if (LowInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Low";
             if (BallInitClimb.BorderColor == ButtonClickedColor) currentMatch.InitialClimbHeight = "Middle";
@@ -132,18 +133,18 @@ namespace ScoutSheet
             return currentMatch;
         }
         //Match Number Methods. MatchNumber.Text is the data value for MatchNumberEntry
-		private void PlusMNumber_Clicked(object sender, EventArgs e)
-		{
+        private void PlusMNumber_Clicked(object sender, EventArgs e)
+        {
             try
             {
                 int something = Int32.Parse(MatchNumber.Text);
                 MatchNumber.Text = (something + 1).ToString();
             }
-            catch (Exception) { DisplayAlert("Error","You have not entered a number in the match number. Please try again","Ok!"); }
-		}
+            catch (Exception) { DisplayAlert("Error", "You have not entered a number in the match number. Please try again", "Ok!"); }
+        }
 
-		private void MinusMNumber_Clicked(object sender, EventArgs e)
-		{
+        private void MinusMNumber_Clicked(object sender, EventArgs e)
+        {
             try
             {
                 int something = Int32.Parse(MatchNumber.Text);
@@ -152,14 +153,14 @@ namespace ScoutSheet
             catch (Exception) { DisplayAlert("Error", "You have not entered a number in the match number. Please try again", "Ok!"); }
         }
         //Number of Power Cell Methods "0/3". PowerCellCount.Text.Substring(0,1) is the data point for StartingGamePieces
-		private void AddPCellNumber_Clicked(object sender, EventArgs e)
-		{
-            int something = (Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1 > 3)? 3: Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1;
+        private void AddPCellNumber_Clicked(object sender, EventArgs e)
+        {
+            int something = (Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1 > 3) ? 3 : Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1;
             PowerCellCount.Text = something + PowerCellCount.Text.Substring(1);
-		}
+        }
 
-		private void MinusPCellNumber_Clicked(object sender, EventArgs e)
-		{
+        private void MinusPCellNumber_Clicked(object sender, EventArgs e)
+        {
             int something = (Int32.Parse(PowerCellCount.Text.Substring(0, 1)) - 1 < 0) ? 0 : Int32.Parse(PowerCellCount.Text.Substring(0, 1)) - 1;
             PowerCellCount.Text = something + PowerCellCount.Text.Substring(1);
         }
@@ -299,15 +300,15 @@ namespace ScoutSheet
         //Rotation is the button name and Rotations is the property
         private void Rotation_Clicked(object sender, EventArgs e)
         {
-            if (Rotation.BackgroundColor == ButtonClickedColor)
+            if (RotationButton.BackgroundColor == ButtonClickedColor)
             {
-                Rotation.BackgroundColor = DefaultColor;
+                RotationButton.BackgroundColor = DefaultColor;
                 return;
             }
-            Rotation.BackgroundColor = ButtonClickedColor;
+            RotationButton.BackgroundColor = ButtonClickedColor;
         }
         //Shooting is th button name and TShootingLocation is the property
-        private void Shooting_Location(object sender, EventArgs e) 
+        private void Shooting_Location(object sender, EventArgs e)
         {
             Trench.BackgroundColor = DefaultColor; //DEFAULT COLOR!!!!!!
             Target.BackgroundColor = DefaultColor;
@@ -318,12 +319,13 @@ namespace ScoutSheet
 
         private void Stopwatch_Clicked(object sender, EventArgs e)
         {
-            if(((Button)sender).Text == "Start Stopwatch"){
+            if (((Button)sender).Text == "Start Stopwatch")
+            {
                 ((Button)sender).Text = "Stop Stopwatch";
                 timeElapsedClimb.Start();
                 return;
             }
-            if(((Button)sender).Text == "Stop Stopwatch")
+            if (((Button)sender).Text == "Stop Stopwatch")
             {
                 ((Button)sender).IsEnabled = false;
                 timeElapsedClimb.Stop();
