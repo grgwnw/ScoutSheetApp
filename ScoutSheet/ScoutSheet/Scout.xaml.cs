@@ -42,7 +42,6 @@ namespace ScoutSheet
 			PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
 			Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field2.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
-            Field3.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Bar_Thingy.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.Climb Position.png", assembly);
             currentMatch.MatchNumberEntry = 0;
             LowInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Low.png", assembly);

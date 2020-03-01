@@ -146,24 +146,46 @@
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
                 <Entry x:Name="TeleopCommentsEntry"></Entry>
                 <!--EndGame -->
-                <Label Text="Endgame"></Label>
-                <Image x:Name="Field3" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
-                <Button Text="Balls Scored(0)" x:Name="EScores" Clicked="EScores_Clicked"></Button>
-                <Button Text="Park" x:Name="Park" BackgroundColor ="Default" Clicked="EndLocation_Clicked"></Button>
-                <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
-                <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
-                <Button Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>
-                <Label Text="Initial Climb Height" x:Name="InitialClimbHeightLabel"></Label>
-                <ImageButton x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
-                <ImageButton x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
-                <ImageButton x:Name="HighInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                <Label Text="Endgame" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
+                <Button Text="Balls Scored(0)" x:Name="EScores" Clicked="EScores_Clicked" HorizontalOptions="CenterAndExpand"></Button>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text="Park" x:Name="Park" BackgroundColor ="Default" Clicked="EndLocation_Clicked"></Button>
+                    <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
+                    <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
+                </StackLayout>
+                <Button HorizontalOptions="CenterAndExpand" Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>
+                <Label HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold" Text="Initial Climb Height" x:Name="InitialClimbHeightLabel"></Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="10s"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ImageButton ScaleY=".7" x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                    <ImageButton Grid.Column="1" ScaleY=".7" x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                    <ImageButton Grid.Column="2" ScaleY=".7" x:Name="HighInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                    <Label Text="Low" Grid.Row="1" x:Name="LowClimb" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+                    <Label Text="Balanced" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="BalanceClimb" VerticalOptions="Start"></Label>
+                    <Label Text="High" Grid.Column="2" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="HighClimb" VerticalOptions="Start"></Label>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                </Grid>
                 <Label Text="Climb Position" x:Name="ClimbPositionTitle" IsVisible="False"></Label>
                 <Button Text="Edge" x:Name="EdgeLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
                 <Button Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
                 <Button Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
                 <Image x:Name="Bar_Thingy" IsVisible="False"></Image>
                 <Label Text="Comments"></Label>
-                <Label Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
+                <Label HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
                 <Entry x:Name="EndgameCommentsEntry"></Entry>
                 <Label Text ="Other"></Label>
                 <Button Text ="Yellow Card" x:Name="YellowCard" Clicked="YellowCard_Clicked"></Button>
