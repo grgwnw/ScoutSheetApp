@@ -15,7 +15,10 @@ namespace ScoutSheet
 			folderPathSave = folderPath;
 			DatabaseLocation = databaseStorage;
 		}
-
+		public static void ChangeColor(Color color)
+		{
+			((NavigationPage)Current.MainPage).BarBackgroundColor = color;
+		}
 		protected override void OnStart()
 		{
 		}
