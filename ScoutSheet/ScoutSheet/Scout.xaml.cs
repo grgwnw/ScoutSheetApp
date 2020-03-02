@@ -402,6 +402,7 @@ namespace ScoutSheet
             BalanceClimb.IsVisible = value;
             LowClimb.IsVisible = value;
             HighClimb.IsVisible = value;
+            ECommentsLabel.IsVisible = value;
         }
 
         private void ClimbLocation_Clicked(object sender, EventArgs e)

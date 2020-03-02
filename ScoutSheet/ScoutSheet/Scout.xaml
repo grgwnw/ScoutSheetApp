@@ -162,16 +162,16 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="400"></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
                     </Grid.RowDefinitions>
                     <ImageButton ScaleY=".7" x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
                     <ImageButton Grid.Column="1" ScaleY=".7" x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
                     <ImageButton Grid.Column="2" ScaleY=".7" x:Name="HighInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
-                </Grid>
-                <Label IsVisible="False" Text="Low" Grid.Row="1" x:Name="LowClimb" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+                                    <Label IsVisible="False" Text="Low" Grid.Row="1" x:Name="LowClimb" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
                 <Label IsVisible="False" Text="Balanced" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="BalanceClimb" VerticalOptions="Start"></Label>
                 <Label IsVisible="False" Text="High" Grid.Column="2" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="HighClimb" VerticalOptions="Start"></Label>
+                </Grid>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
@@ -191,13 +191,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions> <!--Well, we just got an unannouced outside dinner. I will be heading out-->
+                    </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Text="Climb Position" HorizontalOptions="CenterAndExpand" x:Name="ClimbPositionTitle" IsVisible="False" FontAttributes="Bold" FontSize="Subtitle"></Label>
+                    <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" HorizontalOptions="CenterAndExpand" IsVisible="False" x:Name="ECommentsLabel" Text="Comments" FontAttributes="Bold" FontSize="Subtitle"></Label>
                     <Image Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Bar_Thingy" IsVisible="False"></Image>
                     <Button Grid.Row="6" Grid.Column="1" Text="Edge" x:Name="EdgeLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
                     <Button Grid.Row="6" Grid.Column="2" Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
                     <Button Grid.Row="6" Grid.Column="0" Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
-                    <Label Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="1" HorizontalOptions="CenterAndExpand" IsVisible="False" Text="Comments" FontAttributes="Bold" FontSize="Subtitle"></Label>
                     <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" WidthRequest="700" HorizontalOptions="CenterAndExpand" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
                     <Entry Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="4" x:Name="EndgameCommentsEntry"></Entry>
                 </Grid>
