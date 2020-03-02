@@ -50,6 +50,44 @@ namespace ScoutSheet
             None.BackgroundColor = ButtonClickedColor;
             PowerCellPhoto.Aspect = Aspect.AspectFit;
             MatchInfo.Children.Add(PowerCellPhoto, 4, 7, 0, 4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
+            ILine.BackgroundColor = DefaultColor;
+            StartingLeft.BackgroundColor = DefaultColor;
+            StartingMiddle.BackgroundColor = DefaultColor;
+            StartingRight.BackgroundColor = DefaultColor;
+            ALow.BackgroundColor = DefaultColor;
+            AOuter.BackgroundColor = DefaultColor;
+            AInner.BackgroundColor= DefaultColor;
+            AMissed.BackgroundColor = DefaultColor;
+            APickedUp.BackgroundColor = DefaultColor;
+            DefenseButton.BackgroundColor = DefaultColor;
+            BallsFromLoadingStationTeleop.BackgroundColor = DefaultColor;
+            RotationButton.BackgroundColor = DefaultColor;
+            ColorWheel.BackgroundColor = DefaultColor;
+            UnderTrench.BackgroundColor = DefaultColor;
+            PickedUpT.BackgroundColor = DefaultColor;
+            Trench.BackgroundColor = DefaultColor;
+            Target.BackgroundColor = DefaultColor;
+            Other.BackgroundColor = DefaultColor;
+            TLow.BackgroundColor = DefaultColor;
+            TOuter.BackgroundColor = DefaultColor;
+            TInner.BackgroundColor = DefaultColor;
+            TMissed.BackgroundColor = DefaultColor;
+            Park.BackgroundColor = DefaultColor;
+            Climb.BackgroundColor = DefaultColor;
+            None.BackgroundColor = DefaultColor;
+            EScores.BackgroundColor = DefaultColor;
+            LowInitClimb.BorderColor = DefaultColor;
+            BallInitClimb.BorderColor = DefaultColor;
+            HighInitClimb.BorderColor = DefaultColor;
+            EdgeLocation.BackgroundColor = DefaultColor;
+            CenterLocation.BackgroundColor = DefaultColor;
+            YellowCard.BackgroundColor = DefaultColor;
+            RedCard.BackgroundColor = DefaultColor;
+            MiddleBarLocation.BackgroundColor = DefaultColor;
+            CenterLocation.BackgroundColor = DefaultColor;
+            EdgeLocation.BackgroundColor = DefaultColor;
+            ChangeClimb(true);
+            
         }
         public void ResetData()
         {

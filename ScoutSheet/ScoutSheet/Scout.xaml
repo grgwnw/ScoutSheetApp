@@ -187,17 +187,21 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Climb Position" HorizontalOptions="CenterAndExpand" x:Name="ClimbPositionTitle" IsVisible="False" FontAttributes="Bold" FontSize="Subtitle"></Label>
-                    <Image Grid.Row="2" Grid.RowSpan="8" x:Name="Bar_Thingy" IsVisible="False"></Image>
-                    <Button Text="Edge" x:Name="EdgeLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
-                    <Button Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
-                    <Button Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
-                    <Label Grid.Column="1" IsVisible="False" Text="Comments" FontAttributes="Bold" FontSize="Subtitle"></Label>
-                    <Label Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
-                    <Entry Grid.Column="1" Grid.Row="5" Grid.RowSpan="4" x:Name="EndgameCommentsEntry"></Entry>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions> <!--Well, we just got an unannouced outside dinner. I will be heading out-->
+                    <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Text="Climb Position" HorizontalOptions="CenterAndExpand" x:Name="ClimbPositionTitle" IsVisible="False" FontAttributes="Bold" FontSize="Subtitle"></Label>
+                    <Image Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Bar_Thingy" IsVisible="False"></Image>
+                    <Button Grid.Row="6" Grid.Column="1" Text="Edge" x:Name="EdgeLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="2" Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="0" Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                    <Label Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="1" HorizontalOptions="CenterAndExpand" IsVisible="False" Text="Comments" FontAttributes="Bold" FontSize="Subtitle"></Label>
+                    <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" WidthRequest="700" HorizontalOptions="CenterAndExpand" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
+                    <Entry Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="4" x:Name="EndgameCommentsEntry"></Entry>
                 </Grid>
-                <Label Text ="Other"></Label>
+                <Label Text ="Other" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text ="Yellow Card" x:Name="YellowCard" Clicked="YellowCard_Clicked"></Button>
                     <Label Text="     "></Label>
