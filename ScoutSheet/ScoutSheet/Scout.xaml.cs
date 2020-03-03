@@ -27,7 +27,7 @@ namespace ScoutSheet
             List<string> MatchTypeList = new List<string>
             {
                 "Qualification",
-                "Quaterfinals",
+                "Quarterfinals",
                 "Semifinals"
             };
             Match_Type.ItemsSource = MatchTypeList;

@@ -154,7 +154,7 @@
                     <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
                     <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="100,100,0,0">
                     <Label x:Name="StopwatchLabel" IsVisible="False"></Label>
                     <Button HorizontalOptions="CenterAndExpand" Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>
                     <Button Text="Reset" x:Name="ResetStopwatch" Clicked="ResetStopwatch_Clicked" IsVisible="False"></Button>
