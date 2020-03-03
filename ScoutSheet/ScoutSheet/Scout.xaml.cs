@@ -228,31 +228,6 @@ namespace ScoutSheet
             LastClickedButton = sender;
             return Int32.Parse(Regex.Match(sender.Text, @"\d+").Value);
         }
-        //This controls the ALow button for the ALowerScored Property
-        private void ALow_Clicked(object sender, EventArgs e)
-        {
-            ALow.Text = "Low (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //AOuter Button with AOuterScored Property
-        private void AOuter_Clicked(object sender, EventArgs e)
-        {
-            AOuter.Text = "Outer (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //AInner Button with AInnerScored Text
-        private void AInner_Clicked(object sender, EventArgs e)
-        {
-            AInner.Text = "Inner (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //AMissed Button with AMissedBalls Property
-        private void AMissed_Clicked(object sender, EventArgs e)
-        {
-            AMissed.Text = "Missed (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //APickedUp Button with ABallsPickedUp Property
-        private void APickedUp_Clicked(object sender, EventArgs e)
-        {
-            APickedUp.Text = "Balls Picked Up (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
         //DefenseButton Button with Defense Property
         private void Defense_Clicked(object sender, EventArgs e)
         {
@@ -286,36 +261,6 @@ namespace ScoutSheet
                 return;
             }
             ((Button)sender).BackgroundColor = ButtonClickedColor;
-        }
-        //TLow is the button Name and TLowerScored is the property
-        private void TLow_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Low (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //TOuter is button Name and TOuterScored is the property
-        private void TOuter_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Outer (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //TInner is the button Name with TInnerScored
-        private void TInner_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Inner (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //TMissed is button name and TMissedBalls is property
-        private void TMissed_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Missed (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //PickedUpT is the button name and TBallsFromFloor is the property
-        private void PickedUpT_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Balls Picked Up From The Floor (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //EScores is button name and EScore is the property
-        private void EScores_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Balls Scored (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
         }
         //YellowCard is the button and YellowCards is the property
         private void YellowCard_Clicked(object sender, EventArgs e)
@@ -499,6 +444,15 @@ namespace ScoutSheet
             }
             if (beforeText == null | GetParenthesisValue(LastClickedButton) == 0) return;
             LastClickedButton.Text = beforeText + "(" + (GetParenthesisValue(LastClickedButton) + 1) + ")";
+        }
+        private void Color_Change(object sender, EventArgs e)
+        {
+            if (((Button)sender).BackgroundColor == ButtonClickedColor)
+            {
+                ((Button)sender).BackgroundColor = DefaultColor;
+                return;
+            }
+            ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
     }
 }
