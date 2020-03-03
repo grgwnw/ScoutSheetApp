@@ -1,10 +1,13 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ScoutSheet
@@ -13,25 +16,18 @@ namespace ScoutSheet
 	// by visiting https://aka.ms/xamarinforms-previewer
 	[DesignTimeVisible(false)]
 	public partial class MainPage : TabbedPage
-	{
+	{ 
 		public MainPage()
 		{
 			InitializeComponent();
 			var assembly = typeof(MainPage);
+			Scouting.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Scout.png");
+			PastMatchesTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Past Matches.png");
+			SettingsTab.IconImageSource = ImageSource.FromResource("ScoutSheet.Assets.Icons.Settings.png");
 		}
-		private void Reset_Clicked(object sender, EventArgs e)
+		public void SetBarColor(Color color)
 		{
-			Debug.WriteLine(Scout.TestingThis);
-		}
-
-		private void SaveData_Clicked(object sender, EventArgs e)
-		{
-
-		}
-
-		private void Export_Clicked(object sender, EventArgs e)
-		{
-
+			BarBackgroundColor = color;
 		}
 	}
 }

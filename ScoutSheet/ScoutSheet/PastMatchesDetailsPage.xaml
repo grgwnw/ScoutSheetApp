@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ScoutSheet.PastMatchesDetailsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="ToolbarItem_Clicked_1"></ToolbarItem>
+        <ToolbarItem Text="Save" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Export" Clicked="ToolbarItem_Clicked_2"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text ="Team Number"></Label>
+                <Entry x:Name="TeamNumber"></Entry>
+                <Label Text="Match Number"></Label>
+                <Entry x:Name="MatchNumber"></Entry>
+                <Label Text="Scouters"></Label>
+                <Entry x:Name="Scouters"></Entry>
+                <Label Text="FitsUnderTrench"></Label>
+                <Entry x:Name="Trench"></Entry>
+                <Label Text="Defense"></Label>
+                <Entry x:Name="Defense"></Entry>
+                <Label Text="Penalities"></Label>
+                <Entry x:Name="Penalties"></Entry>
+                <Label Text="StartingGamePieces"></Label>
+                <Entry x:Name="StartingGamePieces"></Entry>
+                <Label Text="StartingLocation"></Label>
+                <Entry x:Name="StartingLocation"></Entry>
+                <Label Text="CrossesInitiationLine"></Label>
+                <Entry x:Name="CrossesInitiationLine"></Entry>
+                <Label Text="ABallsPickedUp"></Label>
+                <Entry x:Name="ABallsPickedUp"></Entry>
+                <Label Text="ALowerScored"></Label>
+                <Entry x:Name="ALowerScored"></Entry>
+                <Label Text="AOuterScored"></Label>
+                <Entry x:Name="AOuterScored"></Entry>
+                <Label Text="AInnerScored"></Label>
+                <Entry x:Name="AInnerScored"></Entry>
+                <Label Text="AMissedBalls"></Label>
+                <Entry x:Name="AMissedBalls"></Entry>
+                <Label Text="AComments"></Label>
+                <Entry x:Name="AComments"></Entry>
+                <Label Text="TBallsFromLoadStation"></Label>
+                <Entry x:Name="TBallsFromLoadStation"></Entry>
+                <Label Text="TBallsFromFloor"></Label>
+                <Entry x:Name="TBallsFromFloor"></Entry>
+                <Label Text="TLowerScored"></Label>
+                <Entry x:Name="TLowerScored"></Entry>
+                <Label Text="TOuterScored"></Label>
+                <Entry x:Name="TOuterScored"></Entry>
+                <Label Text="TInnerScored"></Label>
+                <Entry x:Name="TInnerScored"></Entry>
+                <Label Text="TMissedBalls"></Label>
+                <Entry x:Name="TMissedBalls"></Entry>
+                <Label Text="TShootingLocation"></Label>
+                <Entry x:Name="TShootingLocation"></Entry>
+                <Label Text="Rotations"></Label>
+                <Entry x:Name="Rotations"></Entry>
+                <Label Text="ColorWheelColor"></Label>
+                <Entry x:Name="ColorWheelColor"></Entry>
+                <Label Text="TComments"></Label>
+                <Entry x:Name="TComments"></Entry>
+                <Label Text="EndLocation"></Label>
+                <Entry x:Name="EndLocation"></Entry>
+                <Label Text="EScore"></Label>
+                <Entry x:Name="EScore"></Entry>
+                <Label Text="InitialClimbHeight"></Label>
+                <Entry x:Name="InitialClimbHeight"></Entry>
+                <Label Text="ClimbPosition"></Label>
+                <Entry x:Name="ClimbPosition"></Entry>
+                <Label Text="ClimbTime"></Label>
+                <Entry x:Name="ClimbTime"></Entry>
+                <Label Text="EComments"></Label>
+                <Entry x:Name="EComments"></Entry>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -5,83 +5,214 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ScoutSheet.Scout">
-    <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="TextColor" Value="Black"></Setter>
-        </Style>
-        <Style x:Key="Title_Words" TargetType="Label">
-            <Setter Property="FontSize" Value="Large"></Setter>
-            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
-        </Style>
-        <Style x:Key="Prompt_Words" TargetType="Label">
-            <Setter Property="FontSize" Value="Default"></Setter>
-            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>            
-        </Style>
-    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Decrement" x:Name="Decrement" Clicked="Decrement_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Reset" x:Name="Reset" Clicked="Reset_Clicked" ></ToolbarItem>
+        <ToolbarItem Text="Save" x:Name="SaveData" Clicked="SaveData_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Save and Export" x:Name="Export" Clicked="Export_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Entry Text="Enter Team Number Here"></Entry>
-                <Label Text="Match Number:"></Label>
-                <Picker x:Name="Match_Type" Title="Click Here to select the match type">
-                </Picker>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
-                <Entry Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
-                <Label Text="Scouters"></Label>
-                <Entry></Entry>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
-                <Image x:Name="PowerCellPhoto" Aspect="AspectFill" HorizontalOptions="FillAndExpand"></Image>
-                <Button HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
-                <Label x:Name="PowerCellCount" Text="Something"></Label> <!--Set Text in C#!-->
-                <Label Text="Autonomous" FontSize="Large" HorizontalTextAlignment="Center"></Label>
-                <Image x:Name="Field"></Image> <!--Set the source in C#!!!-->
-                <Button Text="Crosses Initiation Line"></Button>
-                <Button Text="Left"></Button>
-                <Button Text="Middle"></Button>
-                <Button Text="Right"></Button>
-                <Button Text="Low"></Button>
-                <Button Text="Outer"></Button>
-                <Button Text="Inner"></Button>
-                <Button Text="Missed"></Button>
-                <Button Text="Balls Picked Up"></Button>
-                <Label Text="Comments"></Label>
+                <Label Text="Match Info" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold" ></Label>
+                
+                <Grid x:Name="MatchInfo" BackgroundColor="LightGray" Padding="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"></ColumnDefinition>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Team Number:" VerticalOptions="Center"></Label>
+                    <!--<Entry Grid.Column="2" Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry"></Entry>-->
+                    <Label VerticalOptions="Center" Grid.Row ="1" Grid.Column="0" Text="Match Number:"></Label>
+                    <Entry Grid.Column="2" Grid.Row="1" Text="0" HorizontalTextAlignment="Center" x:Name="MatchNumber"></Entry>
+                    <Picker Grid.Row="2" x:Name="Match_Type" Title="Click Here to select the match type"></Picker>
+                    <Button Grid.Row ="1" Grid.Column="3" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="+" x:Name="PlusMNumber" Clicked="PlusMNumber_Clicked"></Button>
+                    <Button Grid.Column="1" Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
+                    <Label VerticalOptions="Center" Text="Scouters:" x:Name="ScouterEntry" Grid.Row="3"></Label>
+                    <!--<Entry Grid.Row ="3" Grid.Column="0" Margin="100,0,0,0" ></Entry>-->
+                    <Button Grid.Row ="1" Grid.Column="6" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
+                    <!--<Image Grid.Row ="3" Grid.Column="5" x:Name="PowerCellPhoto" Aspect="AspectFit" ></Image>-->
+                    <Button Grid.Row ="1" Grid.Column="4"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
+                    <Label Grid.Row="4" Grid.Column="5" HorizontalOptions="CenterAndExpand" x:Name="PowerCellCount" Text="0/3"></Label>
+                </Grid>
+                <Label Text="Autonomous" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>            
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Field" Grid.ColumnSpan="15" Grid.RowSpan="12"></Image>
+                    <Button Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="3" Text="Crosses Initiation Line" x:Name="ILine" Clicked="ILine_Clicked"></Button>
+                    <Button Grid.Row="4" Grid.Column="11" Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Grid.Row="6" Grid.Column="11" Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Grid.Row="8" Grid.Column="11" Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Text="Low (0)" x:Name ="ALow" Clicked="ALow_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer (0)" x:Name="AOuter" Clicked="AOuter_Clicked"></Button>
+                    <Button Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner (0)" x:Name="AInner" Clicked="AInner_Clicked"></Button>
+                    <Button Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed (0)" x:Name="AMissed" Clicked="AMissed_Clicked"></Button>
+                    <Button Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="3" Text="Balls Picked Up (0)" x:Name="APickedUp" Clicked="APickedUp_Clicked"></Button> 
+                </Grid>
+                <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <Entry></Entry>
-                <Label Text="Tele-Op"></Label>
-                <Button Text="Plays Defense"></Button>
-                <Button Text="Balls Picked Up From Loading Station"></Button>
-                <Button Text="Rotation"></Button>
-                <Button Text="Color"></Button>
-                <Button Text="Fits Under Trench"></Button>
-                <Button Text="Balls Picked Up from Floor"></Button>
-                <Button Text="Trench Zone"></Button>
-                <Button Text="Target Zone"></Button>
-                <Button Text="Other"></Button>
-                <Button Text="Low"></Button>
-                <Button Text="Outer"></Button>
-                <Button Text="Inner"></Button>
-                <Button Text="Missed"></Button>
-                <Label Text="Comments"></Label>
+                <Entry Placeholder="Enter your comments here..." x:Name="ACommentsEntry"></Entry>
+                <!-- Teleop-->
+                <Label Text="Tele-Op" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.ColumnSpan="15" Grid.RowSpan="12" x:Name="Field2" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
+                    <Button Text="Plays Defense" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" x:Name="DefenseButton" Clicked="Defense_Clicked"></Button>
+                    <Button Text="Balls Picked Up From Loading Station(0)"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" x:Name="BallsFromLoadingStationTeleop" Clicked="BallsFromLoadingStationTeleop_Clicked"></Button>
+                    <Button Grid.Row="9" Grid.Column="5" Text="Rotation" x:Name="RotationButton" Clicked="Rotation_Clicked"></Button> <!--Something To see later-->
+                    <Button Grid.Row="10" Grid.Column="5" Text="Color" x:Name="ColorWheel" Clicked="ColorWheel_Clicked"></Button>
+                    <Button Grid.Row="9" Grid.Column="7" Grid.ColumnSpan="2" Text="Fits Under Trench" x:Name="UnderTrench" Clicked="UnderTrench_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="6" HorizontalOptions="StartAndExpand" Grid.ColumnSpan="3" Text="Balls Picked Up from Floor(0)" x:Name="PickedUpT" Clicked="PickedUpT_Clicked"></Button>
+                    <Button Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Text="Trench Zone" x:Name="Trench" Clicked="Shooting_Location"></Button> <!--Can we do Trench/Target/Other later.....-->
+                    <Button Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2" Text="Target Zone" x:Name="Target" Clicked="Shooting_Location"></Button>
+                    <Button Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Text="Other" x:Name="Other" Clicked="Shooting_Location"></Button>
+                    <Button Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Text="Low(0)" x:Name="TLow" Clicked="TLow_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer(0)" x:Name="TOuter" Clicked="TOuter_Clicked"></Button>
+                    <Button Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner(0)" x:Name="TInner" Clicked="TInner_Clicked"></Button>
+                    <Button Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed(0)" x:Name="TMissed" Clicked="TMissed_Clicked"></Button>
+                </Grid>
+                <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <Entry></Entry>
-                <Label Text="Endgame"></Label>
-                <Button Text="Balls Scored"></Button>
-                <!--I guess I will leave the park/climb/none to later-->
-                <Button Text="Start Stopwatch"></Button>
-                <Button Text="Stop Stopwatch"></Button>
-                <!--Same Thing with initial climb height I guess-->
-                <Label Text="Climb Position"></Label>
-                <Button Text="Edge"></Button>
-                <Button Text ="Middle Bar"></Button>
-                <Button Text="Center"></Button>
-                <Image x:Name="Bar_Thingy"></Image>
-                <Label Text="Comments"></Label>
-                <Label Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
-                <Entry></Entry>
-                <Label Text ="Other"></Label>
-                <Button Text ="Yellow Card"></Button>
-                <Button Text="Red Card"></Button>
+                <Entry x:Name="TeleopCommentsEntry"></Entry>
+                <!--EndGame -->
+                <Label Text="Endgame" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
+                <Button Text="Balls Scored(0)" x:Name="EScores" Clicked="EScores_Clicked" HorizontalOptions="CenterAndExpand"></Button>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text="Park" x:Name="Park" BackgroundColor ="Default" Clicked="EndLocation_Clicked"></Button>
+                    <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
+                    <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="StopwatchLabel" IsVisible="False"></Label>
+                    <Button HorizontalOptions="CenterAndExpand" Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>
+                    <Button Text="Reset" x:Name="ResetStopwatch" Clicked="ResetStopwatch_Clicked" IsVisible="False"></Button>
+                </StackLayout>
+                <Label HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold" Text="Initial Climb Height" x:Name="InitialClimbHeightLabel"></Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="400"></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ImageButton ScaleY=".7" x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                    <ImageButton Grid.Column="1" ScaleY=".7" x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                    <ImageButton Grid.Column="2" ScaleY=".7" x:Name="HighInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
+                                    <Label IsVisible="False" Text="Low" Grid.Row="1" x:Name="LowClimb" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+                <Label IsVisible="False" Text="Balanced" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="BalanceClimb" VerticalOptions="Start"></Label>
+                <Label IsVisible="False" Text="High" Grid.Column="2" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="HighClimb" VerticalOptions="Start"></Label>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Text="Climb Position" HorizontalOptions="CenterAndExpand" x:Name="ClimbPositionTitle" IsVisible="False" FontAttributes="Bold" FontSize="Subtitle"></Label>
+                    <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" HorizontalOptions="CenterAndExpand" IsVisible="False" x:Name="ECommentsLabel" Text="Comments" FontAttributes="Bold" FontSize="Subtitle"></Label>
+                    <Image Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Bar_Thingy" IsVisible="False"></Image>
+                    <Button Grid.Row="6" Grid.Column="1" Text="Edge" x:Name="EdgeLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="2" Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                    <Button Grid.Row="6" Grid.Column="0" Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
+                    <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" WidthRequest="700" HorizontalOptions="CenterAndExpand" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
+                    <Entry Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="4" x:Name="EndgameCommentsEntry"></Entry>
+                </Grid>
+                <Label Text ="Other" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text ="Yellow Card" x:Name="YellowCard" Clicked="YellowCard_Clicked"></Button>
+                    <Label Text="     "></Label>
+                    <Button Text="Red Card" x:Name="RedCard" Clicked="RedCard_Clicked"></Button>
+                </StackLayout>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
