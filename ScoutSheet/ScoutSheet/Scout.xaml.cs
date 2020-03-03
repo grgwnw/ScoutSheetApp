@@ -486,5 +486,20 @@ namespace ScoutSheet
             if (beforeText == null | GetParenthesisValue(LastClickedButton) == 0) return;
             LastClickedButton.Text = beforeText + "(" + (GetParenthesisValue(LastClickedButton) - 1) + ")";
         }
+        private void Increment_Clicked(object sender, EventArgs e)
+        {
+            string buttonText = ((Button)sender).Text;
+            string beforeText = null;
+            for (int i = 0; i < buttonText.Length; i++)
+            {
+                if (buttonText[i] == '(')
+                {
+                    beforeText = buttonText.Substring(0, i);
+                }
+            }
+            if (beforeText == null | GetParenthesisValue(LastClickedButton) == 0) return;
+            LastClickedButton.Text = beforeText + "(" + (GetParenthesisValue(LastClickedButton) + 1) + ")";
+        }
     }
 }
+//You can use onButtonPressed and onButtonReleased to do hold for decrementing
