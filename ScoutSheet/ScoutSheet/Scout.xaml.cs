@@ -136,7 +136,6 @@ namespace ScoutSheet
             YellowCard.BackgroundColor = DefaultColor;
             RedCard.BackgroundColor = DefaultColor;
             timeElapsedClimb = new Stopwatch();
-            DisplayAlert("Successful!", "You cleared the data!", "Confirm");
         }
         public Matches RecordAllData()
         { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
