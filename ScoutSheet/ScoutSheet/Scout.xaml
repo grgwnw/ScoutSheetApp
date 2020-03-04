@@ -6,6 +6,8 @@
              mc:Ignorable="d"
              x:Class="ScoutSheet.Scout">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Red" x:Name="Red" Clicked="Red_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Blue" x:Name="Blue" Clicked="Blue_Clicked"></ToolbarItem>
         <ToolbarItem Text="Reset" x:Name="Reset" Clicked="Reset_Clicked" ></ToolbarItem>
         <ToolbarItem Text="Save" x:Name="SaveData" Clicked="SaveData_Clicked"></ToolbarItem>
         <ToolbarItem Text="Save and Export" x:Name="Export" Clicked="Export_Clicked"></ToolbarItem>

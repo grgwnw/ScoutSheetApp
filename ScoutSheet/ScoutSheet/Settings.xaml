@@ -10,8 +10,6 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Alliance Selection"></Label>
-            <Picker x:Name="AllianceSelection"></Picker>
             <Label Text="Press Length (in milliseconds)"></Label>
             <Entry x:Name="PressLength_Entry"></Entry>
         </StackLayout>

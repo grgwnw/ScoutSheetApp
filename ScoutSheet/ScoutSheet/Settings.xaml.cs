@@ -15,11 +15,6 @@ namespace ScoutSheet
 		public Settings()
 		{
 			InitializeComponent();
-			List<string> allianceColor = new List<string>();
-			allianceColor.Add("Red");
-			allianceColor.Add("Blue");
-			AllianceSelection.ItemsSource = allianceColor;
-			AllianceSelection.SelectedIndex = 0;
 			PressLength_Entry.Text = (App.PressLength).ToString();
 		}
 

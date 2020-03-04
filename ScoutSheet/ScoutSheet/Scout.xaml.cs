@@ -339,10 +339,13 @@ namespace ScoutSheet
         private void Red_Clicked(object sender, EventArgs e)
         {
             App.ChangeColor(Color.Red);
+            SwitchComponents(true);
+            
         }
         private void Blue_Clicked(object sender, EventArgs e)
         {
             App.ChangeColor(Color.Blue);
+            SwitchComponents(false);
         }
         private void ResetStopwatch_Clicked(object sender, EventArgs e)
         {
@@ -393,15 +396,30 @@ namespace ScoutSheet
         private void SwitchComponents(bool colorValue)
         {
             List<Button> allButtons = new List<Button>(new Button[] { ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
-            for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
+            if (colorValue)
             {
-                Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
-                Grid.SetRow(allButtons[i], 12 - Grid.GetRow(allButtons[i])-Grid.GetRowSpan(allButtons[i]));
+                for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
+                {
+                    Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
+                    Grid.SetRow(allButtons[i], 12 - Grid.GetRow(allButtons[i]) - Grid.GetRowSpan(allButtons[i]));
+                }
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
+                Grid.SetRow(Trench, Grid.GetRow(Trench) - 1);
+                Grid.SetRow(Target, Grid.GetRow(Target) - 1);
+                Grid.SetRow(Other, Grid.GetRow(Other) + 3);
             }
-            Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
-            Grid.SetRow(Trench, Grid.GetRow(Trench) - 1);
-            Grid.SetRow(Target, Grid.GetRow(Target) - 1);
-            Grid.SetRow(Other, Grid.GetRow(Other) + 3);
+            else
+            {
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) - 2);
+                Grid.SetRow(Trench, Grid.GetRow(Trench) + 1);
+                Grid.SetRow(Target, Grid.GetRow(Target) + 1);
+                Grid.SetRow(Other, Grid.GetRow(Other) - 3);
+                for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
+                {
+                    Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
+                    Grid.SetRow(allButtons[i], 12 - Grid.GetRow(allButtons[i]) - Grid.GetRowSpan(allButtons[i]));
+                }
+            }
         }
 
         private void Value_Pressed(object sender, EventArgs e)
