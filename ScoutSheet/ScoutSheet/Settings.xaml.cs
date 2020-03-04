@@ -21,5 +21,10 @@ namespace ScoutSheet
 			AllianceSelection.ItemsSource = allianceColor;
 			AllianceSelection.SelectedIndex = 0;
 		}
+
+		private void ToolbarItem_Clicked(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

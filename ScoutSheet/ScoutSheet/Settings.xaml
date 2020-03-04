@@ -5,10 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ScoutSheet.Settings">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Alliance Selection"></Label>
             <Picker x:Name="AllianceSelection"></Picker>
+            <Label Text="Press Length"></Label>
+            <Entry x:Name="PressLength_Entry"></Entry>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
