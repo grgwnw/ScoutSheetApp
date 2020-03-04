@@ -398,6 +398,20 @@ namespace ScoutSheet
                 Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
             }
         }
+
+        private void Value_Pressed(object sender, EventArgs e)
+        {
+            timeInBetweenPresses.Start();
+        }
+
+        private void Value_Released(object sender, EventArgs e)
+        {
+            timeInBetweenPresses.Stop();
+            if (timeInBetweenPresses.ElapsedMilliseconds > 750)
+                Decrement_Clicked(sender, e);
+            else
+                Increment_Clicked(sender, e);
+        }
     }
 }
 //You can use onButtonPressed and onButtonReleased to do hold for decrementing
