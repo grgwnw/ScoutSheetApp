@@ -20,7 +20,6 @@ namespace ScoutSheet
         private Color DefaultColor = (Device.RuntimePlatform == Device.Android) ? Color.FromRgb(214, 215, 215) : Color.White;
         private Stopwatch timeElapsedClimb = new Stopwatch();
         public Entry TeamNumberEntry = new Entry();
-        private Button LastClickedButton = null;
         public Scout()
         {
             InitializeComponent();
@@ -180,7 +179,6 @@ namespace ScoutSheet
             }
             catch (Exception) { DisplayAlert("Error", "You have not entered a number in the match number. Please try again", "Ok!"); }
         }
-
         private void MinusMNumber_Clicked(object sender, EventArgs e)
         {
             try
@@ -196,21 +194,10 @@ namespace ScoutSheet
             int something = (Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1 > 3) ? 3 : Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1;
             PowerCellCount.Text = something + PowerCellCount.Text.Substring(1);
         }
-
         private void MinusPCellNumber_Clicked(object sender, EventArgs e)
         {
             int something = (Int32.Parse(PowerCellCount.Text.Substring(0, 1)) - 1 < 0) ? 0 : Int32.Parse(PowerCellCount.Text.Substring(0, 1)) - 1;
             PowerCellCount.Text = something + PowerCellCount.Text.Substring(1);
-        }
-        //Changes boolean CrossesInitiationLine
-        private void ILine_Clicked(object sender, EventArgs e)
-        {
-            if (ILine.BackgroundColor == ButtonClickedColor)
-            {
-                ILine.BackgroundColor = DefaultColor;
-                return;
-            }
-            ILine.BackgroundColor = ButtonClickedColor;
         }
         //Maybe this one might just remain as is. Don't instantiate StartingLocation property
         private void Starting_Clicked(object sender, EventArgs e)
@@ -224,42 +211,7 @@ namespace ScoutSheet
         }
         private int GetParenthesisValue(Button sender)
         {
-            LastClickedButton = sender;
             return Int32.Parse(Regex.Match(sender.Text, @"\d+").Value);
-        }
-        //DefenseButton Button with Defense Property
-        private void Defense_Clicked(object sender, EventArgs e)
-        {
-            if (DefenseButton.BackgroundColor == ButtonClickedColor)
-            {
-                DefenseButton.BackgroundColor = DefaultColor;
-                return;
-            }
-            DefenseButton.BackgroundColor = ButtonClickedColor;
-        }
-        //BallsFromLoadingStationTeleop is button Name (longest button name ever...) and TBallsFromLoadStation is the property
-        private void BallsFromLoadingStationTeleop_Clicked(object sender, EventArgs e)
-        {
-            BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        private void ColorWheel_Clicked(object sender, EventArgs e)
-        {
-            if (((Button)sender).BackgroundColor == ButtonClickedColor)
-            {
-                ((Button)sender).BackgroundColor = DefaultColor;
-                return;
-            }
-            ((Button)sender).BackgroundColor = ButtonClickedColor;
-        }
-        //UnderTrench is button name with FitsUnderButton property
-        private void UnderTrench_Clicked(object sender, EventArgs e)
-        {
-            if (((Button)sender).BackgroundColor == ButtonClickedColor)
-            {
-                ((Button)sender).BackgroundColor = DefaultColor;
-                return;
-            }
-            ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
         //YellowCard is the button and YellowCards is the property
         private void YellowCard_Clicked(object sender, EventArgs e)
@@ -281,16 +233,6 @@ namespace ScoutSheet
             }
             RedCard.BackgroundColor = Color.Red;
         }
-        //Rotation is the button name and Rotations is the property
-        private void Rotation_Clicked(object sender, EventArgs e)
-        {
-            if (RotationButton.BackgroundColor == ButtonClickedColor)
-            {
-                RotationButton.BackgroundColor = DefaultColor;
-                return;
-            }
-            RotationButton.BackgroundColor = ButtonClickedColor;
-        }
         //Shooting is th button name and TShootingLocation is the property
         private void Shooting_Location(object sender, EventArgs e)
         {
@@ -300,7 +242,6 @@ namespace ScoutSheet
             currentMatch.TShootingLocation = ((Button)sender).Text;
             ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
-
         private void Stopwatch_Clicked(object sender, EventArgs e)
         {
             if (((Button)sender).Text == "Start Stopwatch")
@@ -325,7 +266,6 @@ namespace ScoutSheet
             HighInitClimb.BorderColor = Color.Gray;
             ((ImageButton)sender).BorderColor = ButtonClickedColor;
         }
-
         private void EndLocation_Clicked(object sender, EventArgs e)
         {
             Park.BackgroundColor = DefaultColor;
@@ -353,7 +293,6 @@ namespace ScoutSheet
             HighClimb.IsVisible = value;
             ECommentsLabel.IsVisible = value;
         }
-
         private void ClimbLocation_Clicked(object sender, EventArgs e)
         {
             EdgeLocation.BackgroundColor = DefaultColor;
@@ -369,7 +308,6 @@ namespace ScoutSheet
                 ResetData();
             }
         }
-
         private async void SaveData_Clicked(object sender, EventArgs e)
         {
             SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
@@ -385,7 +323,6 @@ namespace ScoutSheet
             }
             conn.Dispose();
         }
-
         private async void Export_Clicked(object sender, EventArgs e)
         {
             SaveData_Clicked(sender, e);
@@ -401,12 +338,10 @@ namespace ScoutSheet
         {
             App.ChangeColor(Color.Red);
         }
-
         private void Blue_Clicked(object sender, EventArgs e)
         {
             App.ChangeColor(Color.Blue);
         }
-
         private void ResetStopwatch_Clicked(object sender, EventArgs e)
         {
             timeElapsedClimb = new Stopwatch();
@@ -415,24 +350,8 @@ namespace ScoutSheet
             Stopwatch.IsEnabled = true;
             Stopwatch.Text = "Start Stopwatch";
         }
-
         private void Decrement_Clicked(object sender, EventArgs e)
         {
-            string buttonText = LastClickedButton.Text;
-            string beforeText = null;
-            for (int i = 0; i < buttonText.Length; i++)
-            {
-                if (buttonText[i] == '(')
-                {
-                    beforeText = buttonText.Substring(0, i);
-                }
-            }
-            if (beforeText == null | GetParenthesisValue(LastClickedButton) == 0) return;
-            LastClickedButton.Text = beforeText + "(" + (GetParenthesisValue(LastClickedButton) - 1) + ")";
-        }
-        private void Increment_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("", "Got Here", "FSD");
             string buttonText = ((Button)sender).Text;
             string beforeText = null;
             for (int i = 0; i < buttonText.Length; i++)
@@ -443,7 +362,20 @@ namespace ScoutSheet
                 }
             }
             if (beforeText == null) return;
-            DisplayAlert((GetParenthesisValue((Button)sender) + 1).ToString(), "Something", "Ok");
+            ((Button)sender).Text = beforeText + "(" + (GetParenthesisValue((Button)sender) - 1) + ")";
+        }
+        private void Increment_Clicked(object sender, EventArgs e)
+        {
+            string buttonText = ((Button)sender).Text;
+            string beforeText = null;
+            for (int i = 0; i < buttonText.Length; i++)
+            {
+                if (buttonText[i] == '(')
+                {
+                    beforeText = buttonText.Substring(0, i);
+                }
+            }
+            if (beforeText == null) return;
             ((Button)sender).Text = beforeText + "(" + (GetParenthesisValue((Button)sender) + 1) + ")";
         }
         private void Color_Change(object sender, EventArgs e)
