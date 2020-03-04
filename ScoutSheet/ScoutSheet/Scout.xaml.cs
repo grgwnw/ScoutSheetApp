@@ -432,6 +432,7 @@ namespace ScoutSheet
         }
         private void Increment_Clicked(object sender, EventArgs e)
         {
+            DisplayAlert("", "Got Here", "FSD");
             string buttonText = ((Button)sender).Text;
             string beforeText = null;
             for (int i = 0; i < buttonText.Length; i++)
@@ -442,7 +443,8 @@ namespace ScoutSheet
                 }
             }
             if (beforeText == null) return;
-            LastClickedButton.Text = beforeText + "(" + (GetParenthesisValue(LastClickedButton) + 1) + ")";
+            DisplayAlert((GetParenthesisValue((Button)sender) + 1).ToString(), "Something", "Ok");
+            ((Button)sender).Text = beforeText + "(" + (GetParenthesisValue((Button)sender) + 1) + ")";
         }
         private void Color_Change(object sender, EventArgs e)
         {
