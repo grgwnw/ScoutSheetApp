@@ -8,7 +8,7 @@ namespace ScoutSheet
 	{
 		public static string DatabaseLocation = string.Empty;
 		public static string folderPathSave = string.Empty;
-		public static int PressLength = 750;
+		public static int PressLength = 400;
 		public App(string folderPath, string databaseStorage)
 		{
 			InitializeComponent();

@@ -407,7 +407,7 @@ namespace ScoutSheet
         private void Value_Released(object sender, EventArgs e)
         {
             timeInBetweenPresses.Stop();
-            if (timeInBetweenPresses.ElapsedMilliseconds > 750)
+            if (timeInBetweenPresses.ElapsedMilliseconds > App.PressLength)
             {
                 Decrement_Clicked(sender, e);
             }
