@@ -393,7 +393,7 @@ namespace ScoutSheet
         private void SwitchComponents(bool colorValue)
         {
             List<Button> allButtons = new List<Button>(new Button[] { ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
-            for (int i = 0; i < 9; i++) //Autonomous Buttons. Total Columns: 15
+            for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
             {
                 Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
             }
