@@ -19,6 +19,8 @@ namespace ScoutSheet
         private Color ButtonClickedColor = Color.Orange;
         private Color DefaultColor = (Device.RuntimePlatform == Device.Android) ? Color.FromRgb(214, 215, 215) : Color.White;
         private Stopwatch timeElapsedClimb = new Stopwatch();
+        private Stopwatch timeInBetweenPresses = new Stopwatch();
+        private bool IncrementClicked = false;
         public Entry TeamNumberEntry = new Entry();
         public Scout()
         {
@@ -86,7 +88,7 @@ namespace ScoutSheet
             MiddleBarLocation.BackgroundColor = DefaultColor;
             CenterLocation.BackgroundColor = DefaultColor;
             EdgeLocation.BackgroundColor = DefaultColor;
-            ChangeClimb(true);
+            SwitchComponents(true);
             
         }
         public void ResetData()
@@ -386,6 +388,15 @@ namespace ScoutSheet
                 return;
             }
             ((Button)sender).BackgroundColor = ButtonClickedColor;
+        }
+
+        private void SwitchComponents(bool colorValue)
+        {
+            List<Button> allButtons = new List<Button>(new Button[] { ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
+            for (int i = 0; i < 9; i++) //Autonomous Buttons. Total Columns: 15
+            {
+                Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
+            }
         }
     }
 }

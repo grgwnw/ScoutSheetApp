@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              x:Class="ScoutSheet.Scout">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Decrement" x:Name="Decrement" Clicked="Decrement_Clicked"></ToolbarItem>
         <ToolbarItem Text="Reset" x:Name="Reset" Clicked="Reset_Clicked" ></ToolbarItem>
         <ToolbarItem Text="Save" x:Name="SaveData" Clicked="SaveData_Clicked"></ToolbarItem>
         <ToolbarItem Text="Save and Export" x:Name="Export" Clicked="Export_Clicked"></ToolbarItem>
