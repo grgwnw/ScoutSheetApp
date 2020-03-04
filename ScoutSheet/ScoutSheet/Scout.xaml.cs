@@ -363,7 +363,7 @@ namespace ScoutSheet
                     beforeText = buttonText.Substring(0, i);
                 }
             }
-            if (beforeText == null) return;
+            if (beforeText == null | GetParenthesisValue((Button)sender) == 0) return;
             ((Button)sender).Text = beforeText + "(" + (GetParenthesisValue((Button)sender) - 1) + ")";
         }
         private void Increment_Clicked(object sender, EventArgs e)
@@ -408,10 +408,14 @@ namespace ScoutSheet
         {
             timeInBetweenPresses.Stop();
             if (timeInBetweenPresses.ElapsedMilliseconds > 750)
+            {
                 Decrement_Clicked(sender, e);
+            }
             else
+            {
                 Increment_Clicked(sender, e);
+            }
+            timeInBetweenPresses.Reset();
         }
     }
 }
-//You can use onButtonPressed and onButtonReleased to do hold for decrementing
