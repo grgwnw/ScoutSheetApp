@@ -441,7 +441,7 @@ namespace ScoutSheet
                     beforeText = buttonText.Substring(0, i);
                 }
             }
-            if (beforeText == null | GetParenthesisValue(LastClickedButton) == 0) return;
+            if (beforeText == null) return;
             LastClickedButton.Text = beforeText + "(" + (GetParenthesisValue(LastClickedButton) + 1) + ")";
         }
         private void Color_Change(object sender, EventArgs e)
