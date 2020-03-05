@@ -16,8 +16,9 @@
         <ScrollView>
             <StackLayout>
                 <Label Text="Match Info" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold" ></Label>
-                
-                <Grid x:Name="MatchInfo" BackgroundColor="LightGray" Padding="15">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" HeightRequest="200">
+                <Grid x:Name="MatchInfo" Padding="15">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"></RowDefinition>
                         <RowDefinition Height="30"></RowDefinition>
@@ -30,9 +31,6 @@
                         <ColumnDefinition Width="10"></ColumnDefinition>
                         <ColumnDefinition Width="150"></ColumnDefinition>
                         <ColumnDefinition Width="30"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Text="Team Number:" VerticalOptions="Center"></Label>
                     <Entry Grid.Column="0" Placeholder="Enter Team Number Here" x:Name="TeamNumberEntry" Margin = "110, 0, 0, 0" Grid.ColumnSpan="4" ></Entry>
@@ -43,11 +41,17 @@
                     <Button Grid.Column="1" Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Scale="2" Text="-" x:Name="MinusMNumber" Clicked="MinusMNumber_Clicked"></Button>
                     <Label VerticalOptions="Center" Text="Scouters:" x:Name="ScouterEntry" Grid.Row="3"></Label>
                     <Entry Grid.Row ="3" Grid.Column="0" Margin="80,0,0,0" Grid.ColumnSpan="4" Placeholder="Scouters" x:Name="Scouter"></Entry>
-                    <Button Grid.Row ="1" Grid.Column="6" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="2" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
-                    <Image Grid.Row ="1" Grid.Column="4" Scale="2" x:Name="PowerCellPhoto" Aspect="AspectFit" Grid.RowSpan="2" Grid.ColumnSpan="4"></Image>
-                    <Button Grid.Row ="1" Grid.Column="4"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="2" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
-                    <Label Grid.Row="4" Grid.Column="5" HorizontalOptions="CenterAndExpand" x:Name="PowerCellCount" Text="0/3"></Label>
                 </Grid>
+                    <StackLayout Margin="200,0,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Button Grid.Row ="1" Grid.Column="4"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="2" Text="-" x:Name="MinusPCellNumber" Clicked="MinusPCellNumber_Clicked"></Button>
+                            <Image Grid.Row ="1" Grid.Column="4" Scale=".8" x:Name="PowerCellPhoto" Grid.RowSpan="2" Grid.ColumnSpan="4"></Image>
+                             <Button Grid.Row ="1" Grid.Column="6" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="2" Text="+" x:Name="AddPCellNumber" Clicked="AddPCellNumber_Clicked"></Button>
+                        </StackLayout>
+                        <Label Grid.Row="4" Grid.Column="5" HorizontalOptions="CenterAndExpand" x:Name="PowerCellCount" Text="0/3"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
                 <Label Text="Autonomous" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>            
                 <Grid>
                     <Grid.RowDefinitions>
