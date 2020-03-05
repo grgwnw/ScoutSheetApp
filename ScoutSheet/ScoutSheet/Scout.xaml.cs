@@ -20,8 +20,7 @@ namespace ScoutSheet
         private Color DefaultColor = (Device.RuntimePlatform == Device.Android) ? Color.FromRgb(214, 215, 215) : Color.White;
         private Stopwatch timeElapsedClimb = new Stopwatch();
         private Stopwatch timeInBetweenPresses = new Stopwatch();
-        private bool IncrementClicked = false;
-        public Entry TeamNumberEntry = new Entry();
+        private bool BlueIsClicked = true;
         public Scout()
         {
             InitializeComponent();
@@ -33,14 +32,6 @@ namespace ScoutSheet
             };
             Match_Type.ItemsSource = MatchTypeList;
             var assembly = typeof(MainPage);
-            Image PowerCellPhoto = new Image();
-            Entry scouter = new Entry();
-            TeamNumberEntry.Placeholder = "Enter Team Number Here";
-            TeamNumberEntry.Margin = new Thickness(110, 0, 0, 0);
-            MatchInfo.Children.Add(TeamNumberEntry, 0, 3, 0, 1);
-            scouter.Placeholder = "Scouters";
-            scouter.Margin = new Thickness(80, 0, 0, 0);
-            MatchInfo.Children.Add(scouter, 0, 3, 3, 4);
             PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
             Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field2.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
@@ -50,8 +41,7 @@ namespace ScoutSheet
             BallInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Level.png", assembly);
             HighInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End High.png", assembly);
             None.BackgroundColor = ButtonClickedColor;
-            PowerCellPhoto.Aspect = Aspect.AspectFit;
-            MatchInfo.Children.Add(PowerCellPhoto, 4, 7, 0, 4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
+            //MatchInfo.Children.Add(PowerCellPhoto, 4, 7, 0, 4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
             ILine.BackgroundColor = DefaultColor;
             StartingLeft.BackgroundColor = DefaultColor;
             StartingMiddle.BackgroundColor = DefaultColor;
@@ -88,8 +78,6 @@ namespace ScoutSheet
             MiddleBarLocation.BackgroundColor = DefaultColor;
             CenterLocation.BackgroundColor = DefaultColor;
             EdgeLocation.BackgroundColor = DefaultColor;
-            SwitchComponents(true);
-            
         }
         public void ResetData()
         {
@@ -141,7 +129,7 @@ namespace ScoutSheet
         public Matches RecordAllData()
         { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
             currentMatch.TeamNumber = TeamNumberEntry.Text;
-            currentMatch.Scouters = ScouterEntry.Text;
+            currentMatch.Scouters = Scouter.Text;
             currentMatch.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
             currentMatch.StartingGamePieces = Int32.Parse(PowerCellCount.Text.Substring(0, 1));
             currentMatch.CrossesInitiationLine = ((ILine.BackgroundColor) == ButtonClickedColor) ? "Yes" : "No";
@@ -393,10 +381,10 @@ namespace ScoutSheet
             ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
 
-        private void SwitchComponents(bool colorValue)
+        private void SwitchComponents(bool colorValue) //RedClicked is true BlueClicked is false
         {
             List<Button> allButtons = new List<Button>(new Button[] { ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
-            if (colorValue)
+            if (colorValue && BlueIsClicked)
             {
                 for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
                 {
@@ -407,8 +395,9 @@ namespace ScoutSheet
                 Grid.SetRow(Trench, Grid.GetRow(Trench) - 1);
                 Grid.SetRow(Target, Grid.GetRow(Target) - 1);
                 Grid.SetRow(Other, Grid.GetRow(Other) + 3);
+                BlueIsClicked = false;
             }
-            else
+            else if(!colorValue && !BlueIsClicked)
             {
                 Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) - 2);
                 Grid.SetRow(Trench, Grid.GetRow(Trench) + 1);
@@ -419,12 +408,17 @@ namespace ScoutSheet
                     Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
                     Grid.SetRow(allButtons[i], 12 - Grid.GetRow(allButtons[i]) - Grid.GetRowSpan(allButtons[i]));
                 }
+                BlueIsClicked = true;
             }
         }
 
         private void Value_Pressed(object sender, EventArgs e)
         {
             timeInBetweenPresses.Start();
+            while (timeInBetweenPresses.ElapsedMilliseconds > App.PressLength)
+            {
+                ((Button)sender).BackgroundColor = ButtonClickedColor;
+            }
         }
 
         private void Value_Released(object sender, EventArgs e)
@@ -438,6 +432,7 @@ namespace ScoutSheet
             {
                 Increment_Clicked(sender, e);
             }
+            ((Button)sender).BackgroundColor = DefaultColor;
             timeInBetweenPresses.Reset();
         }
     }
