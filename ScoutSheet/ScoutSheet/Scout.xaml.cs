@@ -22,7 +22,7 @@ namespace ScoutSheet
         private Stopwatch timeInBetweenPresses = new Stopwatch();
         private bool BlueIsClicked = true;
         public Scout()
-        {
+        { 
             InitializeComponent();
             List<string> MatchTypeList = new List<string>
             {
