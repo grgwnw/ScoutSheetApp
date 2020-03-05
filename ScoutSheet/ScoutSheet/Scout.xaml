@@ -95,7 +95,7 @@
                     <Button Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer (0)" x:Name="AOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner (0)" x:Name="AInner" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="9" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed (0)" x:Name="AMissed" Pressed="Value_Pressed" Released="Value_Released"></Button>
-                    <Button Grid.Row="10" Grid.Column="8" Grid.ColumnSpan="3" Text="Balls Picked Up (0)" x:Name="APickedUp" Pressed="Value_Pressed" Released="Value_Released"></Button> 
+                    <Button Grid.Row="8" Grid.Column="8" Grid.ColumnSpan="3" Text="Balls Picked Up (0)" x:Name="APickedUp" Pressed="Value_Pressed" Released="Value_Released"></Button> 
                 </Grid>
                 <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
@@ -143,7 +143,7 @@
                     <Button Grid.Row="6" Grid.Column="6" HorizontalOptions="StartAndExpand" Grid.ColumnSpan="3" Text="Balls Picked Up from Floor(0)" x:Name="PickedUpT" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Text="Trench Zone" x:Name="Trench" Clicked="Shooting_Location"></Button> <!--Can we do Trench/Target/Other later.....-->
                     <Button Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2" Text="Target Zone" x:Name="Target" Clicked="Shooting_Location"></Button>
-                    <Button Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="2" Text="Other" x:Name="Other" Clicked="Shooting_Location"></Button>
+                    <Button Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Text="Other" x:Name="Other" Clicked="Shooting_Location"></Button>
                     <Button Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Low(0)" x:Name="TLow" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer(0)" x:Name="TOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner(0)" x:Name="TInner" Pressed="Value_Pressed" Released="Value_Released"></Button>

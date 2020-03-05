@@ -386,6 +386,7 @@ namespace ScoutSheet
             List<Button> allButtons = new List<Button>(new Button[] { ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
             if (colorValue && BlueIsClicked)
             {
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
                 for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
                 {
                     Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
@@ -394,7 +395,7 @@ namespace ScoutSheet
                 Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
                 Grid.SetRow(Trench, Grid.GetRow(Trench) - 1);
                 Grid.SetRow(Target, Grid.GetRow(Target) - 1);
-                Grid.SetRow(Other, Grid.GetRow(Other) + 3);
+                Grid.SetRow(Other, Grid.GetRow(Other) + 2);
                 BlueIsClicked = false;
             }
             else if(!colorValue && !BlueIsClicked)
@@ -402,12 +403,13 @@ namespace ScoutSheet
                 Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) - 2);
                 Grid.SetRow(Trench, Grid.GetRow(Trench) + 1);
                 Grid.SetRow(Target, Grid.GetRow(Target) + 1);
-                Grid.SetRow(Other, Grid.GetRow(Other) - 3);
+                Grid.SetRow(Other, Grid.GetRow(Other) - 2);
                 for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
                 {
                     Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
                     Grid.SetRow(allButtons[i], 12 - Grid.GetRow(allButtons[i]) - Grid.GetRowSpan(allButtons[i]));
                 }
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) - 2);
                 BlueIsClicked = true;
             }
         }
