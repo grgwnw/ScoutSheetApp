@@ -91,6 +91,7 @@
                     <Button Scale=".7" FontSize="Large" Grid.Row="4" Grid.Column="11" Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="11" Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="8" Grid.Column="11" Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Label TextColor="White" Grid.ColumnSpan="2" Text="BallsScored" Grid.Row="5" Grid.Column="12" x:Name="ABallLabel"></Label>
                     <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Low (0)" x:Name ="ALow" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <!--Find and replace all Increment_Clicked with Pressed="Value_Pressed" Released="Value_Released" if it works-->
                     <Button Scale=".7" FontSize="Large" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer (0)" x:Name="AOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>

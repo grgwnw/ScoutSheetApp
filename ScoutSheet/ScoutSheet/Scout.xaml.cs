@@ -383,7 +383,7 @@ namespace ScoutSheet
 
         private void SwitchComponents(bool colorValue) //RedClicked is true BlueClicked is false
         {
-            List<Button> allButtons = new List<Button>(new Button[] { ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
+            List<View> allButtons = new List<View>(new View[] { ABallLabel,ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
             if (colorValue && BlueIsClicked)
             {
                 Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
