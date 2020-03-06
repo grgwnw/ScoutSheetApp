@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ScoutSheet.Scout">
+             x:Class="ScoutSheet.Scout"
+             Padding="10">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Red" x:Name="Red" Clicked="Red_Clicked"></ToolbarItem>
         <ToolbarItem Text="Blue" x:Name="Blue" Clicked="Blue_Clicked"></ToolbarItem>
@@ -86,16 +87,16 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="Field" Grid.ColumnSpan="15" Grid.RowSpan="12"></Image>
-                    <Button Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="3" Text="Crosses Initiation Line" x:Name="ILine" Clicked="Color_Change"></Button>
-                    <Button Grid.Row="4" Grid.Column="11" Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                    <Button Grid.Row="6" Grid.Column="11" Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                    <Button Grid.Row="8" Grid.Column="11" Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                    <Button Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Low (0)" x:Name ="ALow" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="3" Text="Crosses Initiation Line" x:Name="ILine" Clicked="Color_Change"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="4" Grid.Column="11" Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="11" Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="8" Grid.Column="11" Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Low (0)" x:Name ="ALow" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <!--Find and replace all Increment_Clicked with Pressed="Value_Pressed" Released="Value_Released" if it works-->
-                    <Button Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer (0)" x:Name="AOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
-                    <Button Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner (0)" x:Name="AInner" Pressed="Value_Pressed" Released="Value_Released"></Button>
-                    <Button Grid.Row="9" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed (0)" x:Name="AMissed" Pressed="Value_Pressed" Released="Value_Released"></Button>
-                    <Button Grid.Row="8" Grid.Column="8" Grid.ColumnSpan="3" Text="Balls Picked Up (0)" x:Name="APickedUp" Pressed="Value_Pressed" Released="Value_Released"></Button> 
+                    <Button Scale=".7" FontSize="Large" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer (0)" x:Name="AOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner (0)" x:Name="AInner" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="9" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed (0)" x:Name="AMissed" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="8" Grid.Column="8" Grid.ColumnSpan="3" Text="Balls Picked Up (0)" x:Name="APickedUp" Pressed="Value_Pressed" Released="Value_Released"></Button> 
                 </Grid>
                 <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
@@ -135,8 +136,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image Grid.ColumnSpan="15" Grid.RowSpan="12" x:Name="Field2" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
-                    <Button Text="Plays Defense" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" x:Name="DefenseButton" Clicked="Color_Change"></Button>
-                    <Button Text="Balls Picked Up From Loading Station(0)"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" x:Name="BallsFromLoadingStationTeleop" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Button FontSize="Subtitle" Text="Plays Defense" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" x:Name="DefenseButton" Clicked="Color_Change"></Button>
+                    <Button Text="Balls Picked Up From Loading Station(0)" Grid.RowSpan="2"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" x:Name="BallsFromLoadingStationTeleop" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="9" Grid.Column="5" Text="Rotation" x:Name="RotationButton" Clicked="Color_Change"></Button> <!--Something To see later-->
                     <Button Grid.Row="10" Grid.Column="5" Text="Color" x:Name="ColorWheel" Clicked="Color_Change"></Button>
                     <Button Grid.Row="9" Grid.Column="7" Grid.ColumnSpan="2" Text="Fits Under Trench" x:Name="UnderTrench" Clicked="Color_Change"></Button>
@@ -151,7 +152,7 @@
                 </Grid>
                 <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <Entry x:Name="TeleopCommentsEntry"></Entry>
+                <Editor x:Name="TeleopCommentsEntry" HeightRequest="100" Placeholder="Enter Tele-op" Margin="1" BackgroundColor="Gray"></Editor>
                 <!--EndGame -->
                 <Label Text="Endgame" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
                 <Button Text="Balls Scored(0)" x:Name="EScores" Pressed="Value_Pressed" Released="Value_Released" HorizontalOptions="CenterAndExpand"></Button>
