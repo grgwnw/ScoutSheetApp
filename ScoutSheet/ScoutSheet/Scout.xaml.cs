@@ -147,6 +147,7 @@ namespace ScoutSheet
             currentMatch.TInnerScored = GetParenthesisValue(TInner);
             currentMatch.TMissedBalls = GetParenthesisValue(TMissed);
             currentMatch.TBallsFromFloor = GetParenthesisValue(PickedUpT);
+            currentMatch.TShootingLocation = ((Trench.BackgroundColor == ButtonClickedColor) ? "Trench " : "") + ((Target.BackgroundColor == ButtonClickedColor) ? "Target " : "") + ((Other.BackgroundColor == ButtonClickedColor) ? "Other":"");
             currentMatch.TComments = TeleopCommentsEntry.Text;
             currentMatch.EScore = GetParenthesisValue(EScores);
             currentMatch.EComments = EndgameCommentsEntry.Text;
@@ -222,15 +223,6 @@ namespace ScoutSheet
                 return;
             }
             RedCard.BackgroundColor = Color.Red;
-        }
-        //Shooting is th button name and TShootingLocation is the property
-        private void Shooting_Location(object sender, EventArgs e)
-        {
-            Trench.BackgroundColor = DefaultColor; //DEFAULT COLOR!!!!!!
-            Target.BackgroundColor = DefaultColor;
-            Other.BackgroundColor = DefaultColor;
-            currentMatch.TShootingLocation = ((Button)sender).Text;
-            ((Button)sender).BackgroundColor = ButtonClickedColor;
         }
         private void Stopwatch_Clicked(object sender, EventArgs e)
         {
