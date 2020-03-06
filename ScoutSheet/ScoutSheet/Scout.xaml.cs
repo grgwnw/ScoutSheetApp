@@ -294,6 +294,21 @@ namespace ScoutSheet
         {
             SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
             conn.CreateTable<Matches>();
+            List<Matches> matchList = conn.Table<Matches>().ToList();
+            foreach(Matches m in matchList)
+            {
+                if (m.MatchNumberEntry == Int32.Parse(MatchNumber.Text))
+                {
+                    if (await DisplayAlert("Do you want to replace match #" + m.MatchNumberEntry + "?", "Proceed with caution.", "Yes", "No"))
+                    {
+                        Matches match = RecordAllData();
+                        match.Id = m.Id;
+                        conn.Update(match);
+                        return;
+                    }
+                    else return;
+                }
+            }
             int rows = conn.Insert(RecordAllData()); //KEY DOESN'T WORRRRRKKKKK!!!!!!!
             if (rows > 0)
             {
