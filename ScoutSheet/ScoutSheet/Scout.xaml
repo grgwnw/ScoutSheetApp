@@ -101,9 +101,9 @@
                 </Grid>
                 <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <StackLayout Padding="4" BackgroundColor="Black">
+                <Frame Padding="1" BackgroundColor="Black" CornerRadius="10">
                     <Editor Placeholder="Enter your comments here..." x:Name="ACommentsEntry" Margin="1" HeightRequest="100"></Editor>
-                </StackLayout>
+                </Frame>
                 <!-- Teleop-->
                 <Label Text="Tele-Op" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
                 <Grid>
@@ -157,9 +157,9 @@
                 </Grid>
                 <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <StackLayout Padding="4" BackgroundColor="Black">
+                <Frame Padding="1" BackgroundColor="Black" CornerRadius="10">
                     <Editor x:Name="TeleopCommentsEntry" HeightRequest="100" Placeholder="Comments are typed here..." Margin="1"></Editor>
-                </StackLayout>
+                </Frame>
                 <!--EndGame -->
                 <Label Text="Endgame" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
                 <Button Text="Balls Scored(0)" x:Name="EScores" Pressed="Value_Pressed" Released="Value_Released" HorizontalOptions="CenterAndExpand"></Button>
@@ -218,9 +218,9 @@
                     <Button Margin="0,10,0,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="1" Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
                     <Button Margin="0,10,30,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="2" Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
                     <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" WidthRequest="700" HorizontalOptions="CenterAndExpand" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
-                    <StackLayout Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="5" Grid.RowSpan="3" HeightRequest="500" Padding="1" BackgroundColor="Black">
-                        <Editor x:Name="EndgameCommentsEntry" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Editor>
-                    </StackLayout>
+                    <Frame Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="5" Grid.RowSpan="2" Padding="1" BackgroundColor="Black">
+                           <Editor x:Name="EndgameCommentsEntry" HorizontalOptions="Fill" VerticalOptions="Fill"></Editor>
+                    </Frame>
                 </Grid>
                 <Label Text ="Other" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
