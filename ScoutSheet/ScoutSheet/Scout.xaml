@@ -101,7 +101,7 @@
                 </Grid>
                 <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Where do they shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <StackLayout Padding="5" BackgroundColor="Black">
+                <StackLayout Padding="4" BackgroundColor="Black">
                     <Editor Placeholder="Enter your comments here..." x:Name="ACommentsEntry" Margin="1" HeightRequest="100"></Editor>
                 </StackLayout>
                 <!-- Teleop-->
@@ -157,7 +157,7 @@
                 </Grid>
                 <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
-                <StackLayout Padding="5" BackgroundColor="Black">
+                <StackLayout Padding="4" BackgroundColor="Black">
                     <Editor x:Name="TeleopCommentsEntry" HeightRequest="100" Placeholder="Comments are typed here..." Margin="1"></Editor>
                 </StackLayout>
                 <!--EndGame -->
