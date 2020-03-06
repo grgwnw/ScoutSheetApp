@@ -91,7 +91,7 @@
                     <Button Scale=".7" FontSize="Large" Grid.Row="4" Grid.Column="11" Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="11" Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="8" Grid.Column="11" Text="Right" x:Name="StartingRight" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
-                    <Label TextColor="White" Grid.ColumnSpan="2" Text="BallsScored" Grid.Row="5" Grid.Column="12" x:Name="ABallLabel"></Label>
+                    <Label TextColor="White" Grid.ColumnSpan="2" Text="Balls Scored" Grid.Row="5" Grid.Column="12" Margin="20,0,0,0" x:Name="ABallLabel"></Label>
                     <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Low (0)" x:Name ="ALow" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <!--Find and replace all Increment_Clicked with Pressed="Value_Pressed" Released="Value_Released" if it works-->
                     <Button Scale=".7" FontSize="Large" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer (0)" x:Name="AOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
@@ -137,15 +137,17 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image Grid.ColumnSpan="15" Grid.RowSpan="12" x:Name="Field2" Aspect="AspectFit" HorizontalOptions="FillAndExpand"></Image>
-                    <Button FontSize="Subtitle" Text="Plays Defense" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" x:Name="DefenseButton" Clicked="Color_Change"></Button>
+                    <Button Scale=".7" FontSize="Large" Text="Plays Defense" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" x:Name="DefenseButton" Clicked="Color_Change"></Button>
                     <Button Text="Balls Picked Up From Loading Station(0)" Grid.RowSpan="2"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" x:Name="BallsFromLoadingStationTeleop" Pressed="Value_Pressed" Released="Value_Released"></Button>
-                    <Button Grid.Row="9" Grid.Column="5" Text="Rotation" x:Name="RotationButton" Clicked="Color_Change"></Button> <!--Something To see later-->
-                    <Button Grid.Row="10" Grid.Column="5" Text="Color" x:Name="ColorWheel" Clicked="Color_Change"></Button>
-                    <Button Grid.Row="9" Grid.Column="7" Grid.ColumnSpan="2" Text="Fits Under Trench" x:Name="UnderTrench" Clicked="Color_Change"></Button>
-                    <Button Grid.Row="6" Grid.Column="6" HorizontalOptions="StartAndExpand" Grid.ColumnSpan="3" Text="Balls Picked Up from Floor(0)" x:Name="PickedUpT" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="9" Grid.Column="5" Text="Rotation" x:Name="RotationButton" Clicked="Color_Change"></Button> <!--Something To see later-->
+                    <Button Scale=".7" FontSize="Large" Grid.Row="10" Grid.Column="5" Text="Color" x:Name="ColorWheel" Clicked="Color_Change"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="9" Grid.Column="7" Grid.ColumnSpan="2" Text="Fits Under Trench" x:Name="UnderTrench" Clicked="Color_Change"></Button>
+                    <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="6" HorizontalOptions="StartAndExpand" Grid.ColumnSpan="3" Text="Balls Picked Up from Floor(0)" x:Name="PickedUpT" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Label Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2" Text="Where can they shoot from?" x:Name="TShootLabel" TextColor="White"></Label>
                     <Button Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Text="Trench Zone" x:Name="Trench" Clicked="Shooting_Location"></Button> <!--Can we do Trench/Target/Other later.....-->
                     <Button Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2" Text="Target Zone" x:Name="Target" Clicked="Shooting_Location"></Button>
-                    <Button Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Text="Other" x:Name="Other" Clicked="Shooting_Location"></Button>
+                    <Button Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Text="Other" x:Name="Other" Clicked="Shooting_Location"></Button>                    
+                    <Label TextColor="White" Grid.ColumnSpan="2" Text="Balls Scored" Grid.Row="5" Grid.Column="12" Margin="20,0,0,0" x:Name="TBallLabel"></Label>
                     <Button Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" Text="Low(0)" x:Name="TLow" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer(0)" x:Name="TOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner(0)" x:Name="TInner" Pressed="Value_Pressed" Released="Value_Released"></Button>

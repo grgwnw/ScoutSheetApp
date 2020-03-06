@@ -383,7 +383,7 @@ namespace ScoutSheet
 
         private void SwitchComponents(bool colorValue) //RedClicked is true BlueClicked is false
         {
-            List<View> allButtons = new List<View>(new View[] { ABallLabel,ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
+            List<View> allButtons = new List<View>(new View[] { TShootLabel, TBallLabel, ABallLabel,ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
             if (colorValue && BlueIsClicked)
             {
                 Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
@@ -396,6 +396,7 @@ namespace ScoutSheet
                 Grid.SetRow(Trench, Grid.GetRow(Trench) - 1);
                 Grid.SetRow(Target, Grid.GetRow(Target) - 1);
                 Grid.SetRow(Other, Grid.GetRow(Other) + 2);
+                Grid.SetRow(TShootLabel, Grid.GetRow(TShootLabel) - 4);
                 BlueIsClicked = false;
             }
             else if(!colorValue && !BlueIsClicked)
@@ -404,6 +405,7 @@ namespace ScoutSheet
                 Grid.SetRow(Trench, Grid.GetRow(Trench) + 1);
                 Grid.SetRow(Target, Grid.GetRow(Target) + 1);
                 Grid.SetRow(Other, Grid.GetRow(Other) - 2);
+                Grid.SetRow(TShootLabel, Grid.GetRow(TShootLabel) + 4);
                 for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
                 {
                     Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
