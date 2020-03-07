@@ -78,6 +78,7 @@ namespace ScoutSheet
             MiddleBarLocation.BackgroundColor = DefaultColor;
             CenterLocation.BackgroundColor = DefaultColor;
             EdgeLocation.BackgroundColor = DefaultColor;
+            ChangeClimb(false);
         }
         public void ResetData()
         {
@@ -253,6 +254,7 @@ namespace ScoutSheet
             Park.BackgroundColor = DefaultColor;
             Climb.BackgroundColor = DefaultColor;
             None.BackgroundColor = DefaultColor;
+
             ((Button)sender).BackgroundColor = ButtonClickedColor;
             currentMatch.EndLocation = ((Button)sender).Text;
             if (((Button)sender).Text == "Climb") { ChangeClimb(true); }
@@ -260,6 +262,7 @@ namespace ScoutSheet
         }
         private void ChangeClimb(bool value)
         {
+            ClimbLayout.IsVisible = value;
             InitialClimbHeightLabel.IsVisible = value;
             LowInitClimb.IsVisible = value;
             BallInitClimb.IsVisible = value;
@@ -274,6 +277,12 @@ namespace ScoutSheet
             LowClimb.IsVisible = value;
             HighClimb.IsVisible = value;
             ECommentsLabel.IsVisible = value;
+            EndgameCommentsEntry.IsVisible = value;
+            EndGameCommentsLabel.IsVisible = value;
+            EndgameCommentsEntry2.IsVisible = !value;
+            EndGameCommentsLabel2.IsVisible = !value;
+            GridStuff.IsVisible = value;
+            GridStuff2.IsVisible = value;
         }
         private void ClimbLocation_Clicked(object sender, EventArgs e)
         {

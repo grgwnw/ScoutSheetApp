@@ -154,7 +154,7 @@
                     <Button Scale=".7" FontSize="Large" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer(0)" x:Name="TOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner(0)" x:Name="TInner" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="9" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed(0)" x:Name="TMissed" Pressed="Value_Pressed" Released="Value_Released"></Button>
-                    <Label Grid.Row="12" Grid.Column="7" Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Row="12" Grid.Column="7" Grid.ColumnSpan="2" Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 </Grid>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
                 <Frame Padding="1" BackgroundColor="Black" CornerRadius="10">
@@ -168,13 +168,14 @@
                     <Button Text="Climb" x:Name="Climb" Clicked="EndLocation_Clicked"></Button>
                     <Button Text="None" x:Name="None" Clicked="EndLocation_Clicked"></Button>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="100,100,0,0">
-                    <Label x:Name="StopwatchLabel" IsVisible="False"></Label>
-                    <Button HorizontalOptions="CenterAndExpand" Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" IsVisible="False"></Button>
-                    <Button Text="Reset" x:Name="ResetStopwatch" Clicked="ResetStopwatch_Clicked" IsVisible="False"></Button>
+                <StackLayout x:Name="ClimbLayout">
+                    <StackLayout Orientation="Horizontal" Margin="100,100,0,0">
+                    <Label x:Name="StopwatchLabel" ></Label>
+                    <Button HorizontalOptions="CenterAndExpand" Text="Start Stopwatch" x:Name="Stopwatch" Clicked="Stopwatch_Clicked" ></Button>
+                    <Button Text="Reset" x:Name="ResetStopwatch" Clicked="ResetStopwatch_Clicked" ></Button>
                 </StackLayout>
                 <Label HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold" Text="Initial Climb Height" x:Name="InitialClimbHeightLabel"></Label>
-                <Grid>
+                <Grid x:Name="GridStuff">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -184,14 +185,15 @@
                         <RowDefinition Height="400"></RowDefinition>
                         <RowDefinition Height="20"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ImageButton ScaleY=".7" x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
-                    <ImageButton Grid.Column="1" ScaleY=".7" x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
-                    <ImageButton Grid.Column="2" ScaleY=".7" x:Name="HighInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" IsVisible="False"></ImageButton>
-                                    <Label IsVisible="False" Text="Low" Grid.Row="1" x:Name="LowClimb" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
-                <Label IsVisible="False" Text="Balanced" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="BalanceClimb" VerticalOptions="Start"></Label>
-                <Label IsVisible="False" Text="High" Grid.Column="2" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="HighClimb" VerticalOptions="Start"></Label>
+                    <ImageButton ScaleY=".7" x:Name="LowInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" ></ImageButton>
+                    <ImageButton Grid.Column="1" ScaleY=".7" x:Name="BallInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" ></ImageButton>
+                    <ImageButton Grid.Column="2" ScaleY=".7" x:Name="HighInitClimb" Clicked="InitClimb_Clicked" BorderColor="Gray" BorderWidth="10" ></ImageButton>
+                                    <Label  Text="Low" Grid.Row="1" x:Name="LowClimb" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+                <Label  Text="Balanced" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="BalanceClimb" VerticalOptions="Start"></Label>
+                <Label  Text="High" Grid.Column="2" Grid.Row="1" HorizontalOptions="CenterAndExpand" x:Name="HighClimb" VerticalOptions="Start"></Label>
                 </Grid>
-                <Grid>
+                </StackLayout>
+                <Grid x:Name="GridStuff2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
                                                 <RowDefinition Height="*"></RowDefinition>
@@ -211,17 +213,19 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Text="Climb Position" HorizontalOptions="CenterAndExpand" x:Name="ClimbPositionTitle" IsVisible="False" FontAttributes="Bold" FontSize="Subtitle"></Label>
-                    <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" HorizontalOptions="CenterAndExpand" IsVisible="False" x:Name="ECommentsLabel" Text="Comments" FontAttributes="Bold" FontSize="Subtitle"></Label>
-                    <Image Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Bar_Thingy" IsVisible="False"></Image>
-                    <Button Margin="0,10,0,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="0" Text="Edge" x:Name="EdgeLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
-                    <Button Margin="0,10,0,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="1" Text ="Middle Bar" x:Name="MiddleBarLocation" IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
-                    <Button Margin="0,10,30,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="2" Text="Center" x:Name="CenterLocation"  IsVisible="False" Clicked="ClimbLocation_Clicked"></Button>
-                    <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" WidthRequest="700" HorizontalOptions="CenterAndExpand" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
+                    <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Text="Climb Position" HorizontalOptions="CenterAndExpand" x:Name="ClimbPositionTitle"  FontAttributes="Bold" FontSize="Subtitle"></Label>
+                    <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" HorizontalOptions="CenterAndExpand"  x:Name="ECommentsLabel" Text="Comments" FontAttributes="Bold" FontSize="Subtitle"></Label>
+                    <Image Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Bar_Thingy" ></Image>
+                    <Button Margin="0,10,0,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="0" Text="Edge" x:Name="EdgeLocation"  Clicked="ClimbLocation_Clicked"></Button>
+                    <Button Margin="0,10,0,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="1" Text ="Middle Bar" x:Name="MiddleBarLocation"  Clicked="ClimbLocation_Clicked"></Button>
+                    <Button Margin="0,10,30,0" Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="2" Text="Center" x:Name="CenterLocation"   Clicked="ClimbLocation_Clicked"></Button>
+                    <Label x:Name="EndGameCommentsLabel" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" WidthRequest="700" HorizontalOptions="CenterAndExpand" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
                     <Frame Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="5" Grid.RowSpan="2" Padding="1" BackgroundColor="Black">
                            <Editor x:Name="EndgameCommentsEntry" HorizontalOptions="Fill" VerticalOptions="Fill" ></Editor>
                     </Frame>
                 </Grid>
+                <Label x:Name="EndGameCommentsLabel2" HorizontalOptions="CenterAndExpand" Text="Add any comments that you feel are useful. Do they attempt to climb but fail? Do they get in the way of other robots? Do they swing a lot on the climb? Are they able to balance the rung? Are they able to adjust their climb position? Do they slide on the rung? Anything else that shows evidence of a poor/good performance?"></Label>
+                <Editor x:Name="EndgameCommentsEntry2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Editor>
                 <Label Text ="Other" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text ="Yellow Card" x:Name="YellowCard" Clicked="YellowCard_Clicked"></Button>
