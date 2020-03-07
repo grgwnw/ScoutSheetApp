@@ -52,9 +52,8 @@
                         <Label Grid.Row="4" Grid.Column="5" HorizontalOptions="CenterAndExpand" x:Name="PowerCellCount" Text="0/3"></Label>
                     </StackLayout>
                 </StackLayout>
-            </StackLayout>
-                <Label Text="Autonomous" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold"></Label>            
-                <Grid>
+            </StackLayout>          
+                <Grid Margin="0,13,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -86,7 +85,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="Field" Grid.ColumnSpan="15" Grid.RowSpan="12"></Image>
+                    <Label Text="Autonomous" HorizontalOptions="CenterAndExpand" FontSize="Title" FontAttributes="Bold" Grid.ColumnSpan="3" Grid.Column="6" Margin="15,0,0,12"></Label>  
+                    <Image x:Name="Field" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="15" Grid.RowSpan="12"></Image>
                     <Button Scale=".7" FontSize="Large" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="3" Text="Crosses Initiation Line" x:Name="ILine" Clicked="Color_Change"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="4" Grid.Column="11" Text="Left" x:Name="StartingLeft" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="6" Grid.Column="11" Text="Middle" x:Name="StartingMiddle" Clicked="Starting_Clicked" BackgroundColor="Default"></Button>
@@ -145,7 +145,7 @@
                     <Button Grid.Row="10" Grid.Column="5" Text="Color" x:Name="ColorWheel" Clicked="Color_Change"></Button>
                     <Button Grid.Row="9" Grid.Column="7" Grid.ColumnSpan="2" Text="Fits Under Trench" x:Name="UnderTrench" Clicked="Color_Change"></Button>
                     <Button Grid.Row="6" Grid.Column="6" HorizontalOptions="StartAndExpand" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" Text="Balls Picked Up from Floor(0)" x:Name="PickedUpT" Pressed="Value_Pressed" Released="Value_Released"></Button>
-                    <Label Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="3" Text="Where can they shoot from?" x:Name="TShootLabel" TextColor="White"></Label>
+                    <Label Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Text="Where can they shoot from?" x:Name="TShootLabel" TextColor="White"></Label>
                     <Button Scale=".7" FontSize="Large" Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2" Text="Trench Zone" x:Name="Trench" Clicked="Color_Change"></Button> <!--Can we do Trench/Target/Other later.....-->
                     <Button Scale=".7" FontSize="Large" Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Text="Target Zone" x:Name="Target" Clicked="Color_Change"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="2" Text="Other" x:Name="Other" Clicked="Color_Change"></Button>                    
@@ -154,8 +154,8 @@
                     <Button Scale=".7" FontSize="Large" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="Outer(0)" x:Name="TOuter" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="8" Grid.Column="12" Grid.ColumnSpan="2" Text="Inner(0)" x:Name="TInner" Pressed="Value_Pressed" Released="Value_Released"></Button>
                     <Button Scale=".7" FontSize="Large" Grid.Row="9" Grid.Column="12" Grid.ColumnSpan="2" Text="Missed(0)" x:Name="TMissed" Pressed="Value_Pressed" Released="Value_Released"></Button>
+                    <Label Grid.Row="12" Grid.Column="7" Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 </Grid>
-                <Label Text="Comments" HorizontalOptions="CenterAndExpand" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Label Text="Add any comments that you feel are useful. Does the robot get any penalties? Does the robot cycle efficiently? Do they struggle with picking up balls or shooting? Do they play defense and if so, how? Where do they usually shoot from? Anything else that shows evidence of good/poor performance?"></Label>
                 <Frame Padding="1" BackgroundColor="Black" CornerRadius="10">
                     <Editor x:Name="TeleopCommentsEntry" HeightRequest="100" Placeholder="Comments are typed here..." Margin="1"></Editor>
