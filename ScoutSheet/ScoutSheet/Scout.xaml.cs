@@ -19,27 +19,19 @@ namespace ScoutSheet
         private Color ButtonClickedColor = Color.Orange;
         private Color DefaultColor = (Device.RuntimePlatform == Device.Android) ? Color.FromRgb(214, 215, 215) : Color.White;
         private Stopwatch timeElapsedClimb = new Stopwatch();
-        public Entry TeamNumberEntry = new Entry();
-        private Button LastClickedButton = null;
+        private Stopwatch timeInBetweenPresses = new Stopwatch();
+        private bool BlueIsClicked = true;
         public Scout()
-        {
+        { 
             InitializeComponent();
             List<string> MatchTypeList = new List<string>
             {
                 "Qualification",
-                "Quaterfinals",
+                "Quarterfinals",
                 "Semifinals"
             };
             Match_Type.ItemsSource = MatchTypeList;
             var assembly = typeof(MainPage);
-            Image PowerCellPhoto = new Image();
-            Entry scouter = new Entry();
-            TeamNumberEntry.Placeholder = "Enter Team Number Here";
-            TeamNumberEntry.Margin = new Thickness(110, 0, 0, 0);
-            MatchInfo.Children.Add(TeamNumberEntry, 0, 3, 0, 1);
-            scouter.Placeholder = "Scouters";
-            scouter.Margin = new Thickness(80, 0, 0, 0);
-            MatchInfo.Children.Add(scouter, 0, 3, 3, 4);
             PowerCellPhoto.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.PowerCell.jpg", assembly);
             Field.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
             Field2.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.field.jpg", assembly);
@@ -49,8 +41,7 @@ namespace ScoutSheet
             BallInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End Level.png", assembly);
             HighInitClimb.Source = ImageSource.FromResource("ScoutSheet.Assets.Images.End High.png", assembly);
             None.BackgroundColor = ButtonClickedColor;
-            PowerCellPhoto.Aspect = Aspect.AspectFit;
-            MatchInfo.Children.Add(PowerCellPhoto, 4, 7, 0, 4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
+            //MatchInfo.Children.Add(PowerCellPhoto, 4, 7, 0, 4); //Some stuff goes here, but I eat dinner first...Then come back.... GTG then back
             ILine.BackgroundColor = DefaultColor;
             StartingLeft.BackgroundColor = DefaultColor;
             StartingMiddle.BackgroundColor = DefaultColor;
@@ -87,8 +78,7 @@ namespace ScoutSheet
             MiddleBarLocation.BackgroundColor = DefaultColor;
             CenterLocation.BackgroundColor = DefaultColor;
             EdgeLocation.BackgroundColor = DefaultColor;
-            ChangeClimb(true);
-            
+            ChangeClimb(false);
         }
         public void ResetData()
         {
@@ -140,7 +130,7 @@ namespace ScoutSheet
         public Matches RecordAllData()
         { //RECORDS ALL DATA INTO PROPERTIES AND FIELDS SO MAINPAGE.XAML.CS CAN ACCESS AND CONVERT TO STRING.
             currentMatch.TeamNumber = TeamNumberEntry.Text;
-            currentMatch.Scouters = ScouterEntry.Text;
+            currentMatch.Scouters = Scouter.Text;
             currentMatch.MatchNumberEntry = Int32.Parse(MatchNumber.Text);
             currentMatch.StartingGamePieces = Int32.Parse(PowerCellCount.Text.Substring(0, 1));
             currentMatch.CrossesInitiationLine = ((ILine.BackgroundColor) == ButtonClickedColor) ? "Yes" : "No";
@@ -158,6 +148,7 @@ namespace ScoutSheet
             currentMatch.TInnerScored = GetParenthesisValue(TInner);
             currentMatch.TMissedBalls = GetParenthesisValue(TMissed);
             currentMatch.TBallsFromFloor = GetParenthesisValue(PickedUpT);
+            currentMatch.TShootingLocation = ((Trench.BackgroundColor == ButtonClickedColor) ? "Trench " : "") + ((Target.BackgroundColor == ButtonClickedColor) ? "Target " : "") + ((Other.BackgroundColor == ButtonClickedColor) ? "Other":"");
             currentMatch.TComments = TeleopCommentsEntry.Text;
             currentMatch.EScore = GetParenthesisValue(EScores);
             currentMatch.EComments = EndgameCommentsEntry.Text;
@@ -180,7 +171,6 @@ namespace ScoutSheet
             }
             catch (Exception) { DisplayAlert("Error", "You have not entered a number in the match number. Please try again", "Ok!"); }
         }
-
         private void MinusMNumber_Clicked(object sender, EventArgs e)
         {
             try
@@ -196,21 +186,10 @@ namespace ScoutSheet
             int something = (Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1 > 3) ? 3 : Int32.Parse(PowerCellCount.Text.Substring(0, 1)) + 1;
             PowerCellCount.Text = something + PowerCellCount.Text.Substring(1);
         }
-
         private void MinusPCellNumber_Clicked(object sender, EventArgs e)
         {
             int something = (Int32.Parse(PowerCellCount.Text.Substring(0, 1)) - 1 < 0) ? 0 : Int32.Parse(PowerCellCount.Text.Substring(0, 1)) - 1;
             PowerCellCount.Text = something + PowerCellCount.Text.Substring(1);
-        }
-        //Changes boolean CrossesInitiationLine
-        private void ILine_Clicked(object sender, EventArgs e)
-        {
-            if (ILine.BackgroundColor == ButtonClickedColor)
-            {
-                ILine.BackgroundColor = DefaultColor;
-                return;
-            }
-            ILine.BackgroundColor = ButtonClickedColor;
         }
         //Maybe this one might just remain as is. Don't instantiate StartingLocation property
         private void Starting_Clicked(object sender, EventArgs e)
@@ -224,97 +203,7 @@ namespace ScoutSheet
         }
         private int GetParenthesisValue(Button sender)
         {
-            LastClickedButton = sender;
             return Int32.Parse(Regex.Match(sender.Text, @"\d+").Value);
-        }
-        //This controls the ALow button for the ALowerScored Property
-        private void ALow_Clicked(object sender, EventArgs e)
-        {
-            ALow.Text = "Low (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //AOuter Button with AOuterScored Property
-        private void AOuter_Clicked(object sender, EventArgs e)
-        {
-            AOuter.Text = "Outer (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //AInner Button with AInnerScored Text
-        private void AInner_Clicked(object sender, EventArgs e)
-        {
-            AInner.Text = "Inner (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //AMissed Button with AMissedBalls Property
-        private void AMissed_Clicked(object sender, EventArgs e)
-        {
-            AMissed.Text = "Missed (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //APickedUp Button with ABallsPickedUp Property
-        private void APickedUp_Clicked(object sender, EventArgs e)
-        {
-            APickedUp.Text = "Balls Picked Up (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //DefenseButton Button with Defense Property
-        private void Defense_Clicked(object sender, EventArgs e)
-        {
-            if (DefenseButton.BackgroundColor == ButtonClickedColor)
-            {
-                DefenseButton.BackgroundColor = DefaultColor;
-                return;
-            }
-            DefenseButton.BackgroundColor = ButtonClickedColor;
-        }
-        //BallsFromLoadingStationTeleop is button Name (longest button name ever...) and TBallsFromLoadStation is the property
-        private void BallsFromLoadingStationTeleop_Clicked(object sender, EventArgs e)
-        {
-            BallsFromLoadingStationTeleop.Text = "Balls Picked Up From Loading Station (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        private void ColorWheel_Clicked(object sender, EventArgs e)
-        {
-            if (((Button)sender).BackgroundColor == ButtonClickedColor)
-            {
-                ((Button)sender).BackgroundColor = DefaultColor;
-                return;
-            }
-            ((Button)sender).BackgroundColor = ButtonClickedColor;
-        }
-        //UnderTrench is button name with FitsUnderButton property
-        private void UnderTrench_Clicked(object sender, EventArgs e)
-        {
-            if (((Button)sender).BackgroundColor == ButtonClickedColor)
-            {
-                ((Button)sender).BackgroundColor = DefaultColor;
-                return;
-            }
-            ((Button)sender).BackgroundColor = ButtonClickedColor;
-        }
-        //TLow is the button Name and TLowerScored is the property
-        private void TLow_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Low (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //TOuter is button Name and TOuterScored is the property
-        private void TOuter_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Outer (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //TInner is the button Name with TInnerScored
-        private void TInner_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Inner (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //TMissed is button name and TMissedBalls is property
-        private void TMissed_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Missed (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //PickedUpT is the button name and TBallsFromFloor is the property
-        private void PickedUpT_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Balls Picked Up From The Floor (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
-        }
-        //EScores is button name and EScore is the property
-        private void EScores_Clicked(object sender, EventArgs e)
-        {
-            ((Button)sender).Text = "Balls Scored (" + (GetParenthesisValue(((Button)sender)) + 1) + ")";
         }
         //YellowCard is the button and YellowCards is the property
         private void YellowCard_Clicked(object sender, EventArgs e)
@@ -336,26 +225,6 @@ namespace ScoutSheet
             }
             RedCard.BackgroundColor = Color.Red;
         }
-        //Rotation is the button name and Rotations is the property
-        private void Rotation_Clicked(object sender, EventArgs e)
-        {
-            if (RotationButton.BackgroundColor == ButtonClickedColor)
-            {
-                RotationButton.BackgroundColor = DefaultColor;
-                return;
-            }
-            RotationButton.BackgroundColor = ButtonClickedColor;
-        }
-        //Shooting is th button name and TShootingLocation is the property
-        private void Shooting_Location(object sender, EventArgs e)
-        {
-            Trench.BackgroundColor = DefaultColor; //DEFAULT COLOR!!!!!!
-            Target.BackgroundColor = DefaultColor;
-            Other.BackgroundColor = DefaultColor;
-            currentMatch.TShootingLocation = ((Button)sender).Text;
-            ((Button)sender).BackgroundColor = ButtonClickedColor;
-        }
-
         private void Stopwatch_Clicked(object sender, EventArgs e)
         {
             if (((Button)sender).Text == "Start Stopwatch")
@@ -380,12 +249,12 @@ namespace ScoutSheet
             HighInitClimb.BorderColor = Color.Gray;
             ((ImageButton)sender).BorderColor = ButtonClickedColor;
         }
-
         private void EndLocation_Clicked(object sender, EventArgs e)
         {
             Park.BackgroundColor = DefaultColor;
             Climb.BackgroundColor = DefaultColor;
             None.BackgroundColor = DefaultColor;
+
             ((Button)sender).BackgroundColor = ButtonClickedColor;
             currentMatch.EndLocation = ((Button)sender).Text;
             if (((Button)sender).Text == "Climb") { ChangeClimb(true); }
@@ -393,6 +262,7 @@ namespace ScoutSheet
         }
         private void ChangeClimb(bool value)
         {
+            ClimbLayout.IsVisible = value;
             InitialClimbHeightLabel.IsVisible = value;
             LowInitClimb.IsVisible = value;
             BallInitClimb.IsVisible = value;
@@ -407,8 +277,13 @@ namespace ScoutSheet
             LowClimb.IsVisible = value;
             HighClimb.IsVisible = value;
             ECommentsLabel.IsVisible = value;
+            EndgameCommentsEntry.IsVisible = value;
+            EndGameCommentsLabel.IsVisible = value;
+            EndgameCommentsEntry2.IsVisible = !value;
+            EndGameCommentsLabel2.IsVisible = !value;
+            GridStuff.IsVisible = value;
+            GridStuff2.IsVisible = value;
         }
-
         private void ClimbLocation_Clicked(object sender, EventArgs e)
         {
             EdgeLocation.BackgroundColor = DefaultColor;
@@ -424,11 +299,25 @@ namespace ScoutSheet
                 ResetData();
             }
         }
-
         private async void SaveData_Clicked(object sender, EventArgs e)
         {
             SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
             conn.CreateTable<Matches>();
+            List<Matches> matchList = conn.Table<Matches>().ToList();
+            foreach(Matches m in matchList)
+            {
+                if (m.MatchNumberEntry == Int32.Parse(MatchNumber.Text))
+                {
+                    if (await DisplayAlert("Do you want to replace match #" + m.MatchNumberEntry + "?", "Proceed with caution.", "Yes", "No"))
+                    {
+                        Matches match = RecordAllData();
+                        match.Id = m.Id;
+                        conn.Update(match);
+                        return;
+                    }
+                    else return;
+                }
+            }
             int rows = conn.Insert(RecordAllData()); //KEY DOESN'T WORRRRRKKKKK!!!!!!!
             if (rows > 0)
             {
@@ -440,7 +329,6 @@ namespace ScoutSheet
             }
             conn.Dispose();
         }
-
         private async void Export_Clicked(object sender, EventArgs e)
         {
             SaveData_Clicked(sender, e);
@@ -455,13 +343,14 @@ namespace ScoutSheet
         private void Red_Clicked(object sender, EventArgs e)
         {
             App.ChangeColor(Color.Red);
+            SwitchComponents(true);
+            
         }
-
         private void Blue_Clicked(object sender, EventArgs e)
         {
             App.ChangeColor(Color.Blue);
+            SwitchComponents(false);
         }
-
         private void ResetStopwatch_Clicked(object sender, EventArgs e)
         {
             timeElapsedClimb = new Stopwatch();
@@ -470,10 +359,9 @@ namespace ScoutSheet
             Stopwatch.IsEnabled = true;
             Stopwatch.Text = "Start Stopwatch";
         }
-
         private void Decrement_Clicked(object sender, EventArgs e)
         {
-            string buttonText = LastClickedButton.Text;
+            string buttonText = ((Button)sender).Text;
             string beforeText = null;
             for (int i = 0; i < buttonText.Length; i++)
             {
@@ -482,8 +370,90 @@ namespace ScoutSheet
                     beforeText = buttonText.Substring(0, i);
                 }
             }
-            if (beforeText == null | GetParenthesisValue(LastClickedButton) == 0) return;
-            LastClickedButton.Text = beforeText + "(" + (GetParenthesisValue(LastClickedButton) - 1) + ")";
+            if (beforeText == null | GetParenthesisValue((Button)sender) == 0) return;
+            ((Button)sender).Text = beforeText + "(" + (GetParenthesisValue((Button)sender) - 1) + ")";
+        }
+        private void Increment_Clicked(object sender, EventArgs e)
+        {
+            string buttonText = ((Button)sender).Text;
+            string beforeText = null;
+            for (int i = 0; i < buttonText.Length; i++)
+            {
+                if (buttonText[i] == '(')
+                {
+                    beforeText = buttonText.Substring(0, i);
+                }
+            }
+            if (beforeText == null) return;
+            ((Button)sender).Text = beforeText + "(" + (GetParenthesisValue((Button)sender) + 1) + ")";
+        }
+        private void Color_Change(object sender, EventArgs e)
+        {
+            if (((Button)sender).BackgroundColor == ButtonClickedColor)
+            {
+                ((Button)sender).BackgroundColor = DefaultColor;
+                return;
+            }
+            ((Button)sender).BackgroundColor = ButtonClickedColor;
+        }
+
+        private void SwitchComponents(bool colorValue) //RedClicked is true BlueClicked is false
+        {
+            List<View> allButtons = new List<View>(new View[] { TShootLabel, TBallLabel, ABallLabel,ILine, StartingLeft, StartingMiddle, StartingRight, ALow, AOuter, AInner, AMissed, APickedUp, DefenseButton, BallsFromLoadingStationTeleop, RotationButton, Target, ColorWheel, UnderTrench, PickedUpT, Trench, Target, Other, Target, TLow, TOuter, TInner, TMissed });
+            if (colorValue && BlueIsClicked)
+            {
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
+                for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
+                {
+                    Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
+                    Grid.SetRow(allButtons[i], 12 - Grid.GetRow(allButtons[i]) - Grid.GetRowSpan(allButtons[i]));
+                }
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) + 2);
+                Grid.SetRow(Trench, Grid.GetRow(Trench) - 1);
+                Grid.SetRow(Target, Grid.GetRow(Target) - 1);
+                Grid.SetRow(Other, Grid.GetRow(Other) + 2);
+                Grid.SetRow(TShootLabel, Grid.GetRow(TShootLabel) - 4);
+                BlueIsClicked = false;
+            }
+            else if(!colorValue && !BlueIsClicked)
+            {
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) - 2);
+                Grid.SetRow(Trench, Grid.GetRow(Trench) + 1);
+                Grid.SetRow(Target, Grid.GetRow(Target) + 1);
+                Grid.SetRow(Other, Grid.GetRow(Other) - 2);
+                Grid.SetRow(TShootLabel, Grid.GetRow(TShootLabel) + 4);
+                for (int i = 0; i < allButtons.Capacity; i++) //Autonomous Buttons. Total Columns: 15
+                {
+                    Grid.SetColumn(allButtons[i], 15 - Grid.GetColumn(allButtons[i]) - Grid.GetColumnSpan(allButtons[i]));
+                    Grid.SetRow(allButtons[i], 12 - Grid.GetRow(allButtons[i]) - Grid.GetRowSpan(allButtons[i]));
+                }
+                Grid.SetRow(APickedUp, Grid.GetRow(APickedUp) - 2);
+                BlueIsClicked = true;
+            }
+        }
+
+        private void Value_Pressed(object sender, EventArgs e)
+        {
+            timeInBetweenPresses.Start();
+            while (timeInBetweenPresses.ElapsedMilliseconds > App.PressLength)
+            {
+                ((Button)sender).BackgroundColor = ButtonClickedColor;
+            }
+        }
+
+        private void Value_Released(object sender, EventArgs e)
+        {
+            timeInBetweenPresses.Stop();
+            if (timeInBetweenPresses.ElapsedMilliseconds > App.PressLength)
+            {
+                Decrement_Clicked(sender, e);
+            }
+            else
+            {
+                Increment_Clicked(sender, e);
+            }
+            ((Button)sender).BackgroundColor = DefaultColor;
+            timeInBetweenPresses.Reset();
         }
     }
 }

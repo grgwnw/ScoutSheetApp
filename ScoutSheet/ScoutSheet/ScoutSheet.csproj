@@ -21,6 +21,10 @@
     <None Remove="Assets\Images\field.jpg" />
     <None Remove="Assets\Images\field.png" />
     <None Remove="Assets\PowerCell.jpg" />
+    <None Remove="Assets\Images\End High.png" />
+    <None Remove="Assets\Images\End Level.png" />
+    <None Remove="Assets\Images\End Low.png" />
+    <None Remove="Assets\Images\PowerCell.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +46,9 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Remove="Assets\Images\PowerCell.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="PastMatches.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
